@@ -4,35 +4,60 @@ library(ggplot2)
 library(gridExtra)
 
 
+#' Title
+#'
+#' @importFrom magrittr %>%
+#' @importFrom dplyr mutate bind_rows filter
+#' @import ggplot2
+#'
+#' @param rma_results a list of rma results created by metafor
+#' @param sig_level the two sided significance value
+#' @param z transforms the sig_level to z
+#' @param null_value null effect size. In case of SMD = 0 and RR = 1
+#' @param margin_bottom distance from last effect description to x_axis
+#' @param headlines group headlines
+#' @param error_bar_height height of the errorbars
+#' @param pooled_estimate_height height of the pooled estimate parallelogram
+#' @param textsize general text size
+#' @param title_size size of the plot title
+#' @param top_space space from panel to top
+#' @param pooled_estimate_position position of the pooled effect in relation to the lowermost study
+#' @param distance_headline distance of the group headlines
+#' @param group_distance distance from one group to the next
+#' @param CI_title title for the text CIs
+#' @param label_title title for the studies
+#' @param values_title title for the plotted CIs
+#' @param summary_title title written in front of the summary effects
+#'
+#' @return
+#' @export
+#'
+#' @examples
 easyforest <- function(
-  rma_results, # a list of rma results
+  rma_results, #
   sig_level = 0.05, # the two sided significance value
-  z = qnorm(sig_level / 2) * -1, # transforms the sig_level to z
   null_value = 0, # null effect size. In case of SMD = 0 and RR = 1.
   margin_bottom = 1, # Distance from last effect description to x_axis
-  headlines = c("Not Registered", "Registered", "Registered and Unpublished"),
-  error_bar_height = 0.2,
+  headlines,
+  error_bar_height = 0.2, # Height of the errorbars
+  pooled_estimate_height = 0.3, # T
 
   textsize = 3, # general text size
   title_size = 3.5,
   top_space = 0,
 
-  pooled_estimate_position = -1, # position of the pooled effect in relation to the lowermost study
-  distance_headline = 1.4, # distance of the grouped headline
+  pooled_estimate_position = -1, #
+  distance_headline = 1.4, #
 
-  group_distance = 1.5, # distance from one group to the next
+  group_distance = 1.5, #
 
   CI_title = "SMD [95% CI]",
   label_title = "Author (Year)",
   values_title = "Standardized Mean Differences",
 
-
-  outcome_left = "Favours Homeopathy",
-  outcome_right = "Favours Placebo",
-  outcome_height = 0,
-
   summary_title = "Random Effects"
 ){
+  z = qnorm(sig_level / 2) * -1
 
 
   create_data <- function(rma_results){
@@ -49,25 +74,25 @@ easyforest <- function(
       )
 
       #creating the summary esimates
-      y <- tibble(x_pooled = c(meta_result$beta,
+      y <- data.frame(x_pooled = c(meta_result$beta,
                                meta_result$ci.ub, meta_result$beta, meta_result$ci.lb),
-                  y_pooled = c(-0.5, 0, 0.5, 0) + 1,
+                  y_pooled = c(-pooled_estimate_height, 0, pooled_estimate_height, 0) + 1,
                   group = i)
 
       #creating the studie effect sizes and CIs
-      x <- tibble(row =length(meta_result$slab):1, yi = meta_result$yi.f, vi = meta_result$vi.f,
+      x <- data.frame(row =length(meta_result$slab):1, yi = meta_result$yi.f, vi = meta_result$vi.f,
                   label = meta_result$slab, group=i, type="study", face="plain") %>%
         mutate(ci_low = yi - z * sqrt(vi), ci_up = yi + z * sqrt(vi))
 
       #adding group headlines
       x <- bind_rows(
-        tibble(label = headlines[i], type = "headline", row = max(x$row) + distance_headline, face="bold"),
+        data.frame(label = headlines[i], type = "headline", row = max(x$row) + distance_headline, face="bold"),
         x
       )
 
       # adding the values of the pooled effect estimate
       x <- bind_rows(x,
-                     tibble(row=pooled_estimate_position, label=summary_measure, type="summary", face="plain",
+                     data.frame(row=pooled_estimate_position, label=summary_measure, type="summary", face="plain",
                             ci_low = meta_result$ci.lb, ci_up = meta_result$ci.ub, yi = meta_result$beta),
       )
 
@@ -167,9 +192,9 @@ easyforest <- function(
 
   g <- cbind(labels, values, CIs)
 
-  grid.newpage()
+  grid::grid.newpage()
 
-  grid.draw(g)
+  grid::grid.draw(g)
 
 }
 
