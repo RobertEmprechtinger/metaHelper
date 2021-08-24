@@ -5,9 +5,9 @@
 #' Converts SMD to OR by using the formula provided here:
 #' https://stats.stackexchange.com/questions/68290/converting-odds-ratios-to-cohens-d-for-meta-analysis
 #'
-#' @param OR
+#' @param OR Odds Ratio
 #'
-#' @return
+#' @return Returns SMD
 #' @export
 #'
 #' @examples
@@ -16,32 +16,48 @@ SMD_from_OR <- function(OR){
   log(OR) * sqrt(3)/pi
 }
 
-SMD.SE_from_OR <- function(CI_low, CI_up, z){
-  SE_log_OR <- (log(CI_up) - log(CI_low)) / (2 * z)
-  SE_SMD <- SE_log_OR * sqrt(3)/pi
-  return(SE_SMD)
-}
 
-
-#' Approximate SMD standard error from sample sizes
+#' Calculates SMD
 #'
-#' Approximation provided by Borenstein M: Effect sizes for continuous data.
-#' The Handbook of Research Synthesis and Meta-Analysis. Edited by: Cooper H, Hedges LV, Valentine JC. 2009,
-#' New York: Russell Sage, 221-235. 2
+#' Uses the differences of two means and divides with the (pooled) standard deviation or the standard deviation of the
+#' control group in case Glass's delta should be calculated.
 #'
-#' @param n1 sample size group 1
-#' @param n2 sample size group 2
-#' @param SMD standardized mean differences
+#' @param M1 treatment effect size group 1
+#' @param M2 treatment effect size group 2
+#' @param SD_pooled the pooled standard deviation or the standard deviation of the control group in case Glass's delta should be calculated
 #'
-#' @return Returns standard error
+#' @return
 #' @export
 #'
 #' @examples
-SMD.SE_from_SMD_n <- function(n1, n2, SMD){
-  sqrt(
-    (n1 + n2) / (n1 * n2) +
-      SMD^2 / (2 * (n1 + n2) )
-  )
+SMD_calc <- function(M1, M2, SD_pooled){
+  (M1 - M2) /
+    SD_pooled
 }
 
 
+#' Calculates SMD from arm data
+#'
+#' @param M1 treatment effect size group 1
+#' @param M2 treatment effect size group 2
+#' @param SD1 standard deviation group 1
+#' @param SD2 standard deviation group 2
+#' @param n1 sample size group 1
+#' @param n2 sample size group 2
+#' @param method
+#'
+#' @return
+#' @export
+#'
+#' @examples
+SMD_from_arm <-
+  function(M1,
+           M2,
+           SD1,
+           SD2,
+           n1 = NA,
+           n2 = NA,
+           method = "hedges") {
+    SMD_calc((M1 - M2) /
+               SD_pool(SD1, SD2, n1, n2, method))
+  }
