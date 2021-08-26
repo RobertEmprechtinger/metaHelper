@@ -5,6 +5,8 @@
 #' Converts SMD to OR by using the formula provided here:
 #' https://stats.stackexchange.com/questions/68290/converting-odds-ratios-to-cohens-d-for-meta-analysis
 #'
+#' Borenstein, M., Hedges, L.V., Higgins, J.P.T. and Rothstein, H.R. (2009). Converting Among Effect Sizes. In Introduction to Meta-Analysis (eds M. Borenstein, L.V. Hedges, J.P.T. Higgins and H.R. Rothstein). https://doi.org/10.1002/9780470743386.ch7
+#'
 #' @param OR Odds Ratio
 #'
 #' @return Returns SMD
@@ -13,7 +15,7 @@
 #' @examples
 #'
 SMD_from_OR <- function(OR){
-  log(OR) * sqrt(3)/pi
+  log(OR) * sqrt(3) / pi
 }
 
 
@@ -61,3 +63,5 @@ SMD_from_arm <-
     SMD_calc((M1 - M2) /
                SD_pool(SD1, SD2, n1, n2, method))
   }
+
+

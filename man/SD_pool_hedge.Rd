@@ -4,7 +4,7 @@
 \alias{SD_pool_hedge}
 \title{Title}
 \usage{
-SD_pool_hedge(n1, n2, SD1, SD2)
+SD_pool_hedge(SD1, SD2, n1, n2)
 }
 \arguments{
 \item{SD2}{}

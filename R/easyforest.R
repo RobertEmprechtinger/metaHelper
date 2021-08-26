@@ -4,7 +4,7 @@ library(ggplot2)
 library(gridExtra)
 
 
-#' Title
+#' Create forest plots for metafor outcomes
 #'
 #' @importFrom magrittr %>%
 #' @importFrom dplyr mutate bind_rows filter

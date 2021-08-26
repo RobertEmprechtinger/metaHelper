@@ -2,7 +2,7 @@
 % Please edit documentation in R/easyforest.R
 \name{easyforest}
 \alias{easyforest}
-\title{Title}
+\title{Create forest plots for metafor outcomes}
 \usage{
 easyforest(
   rma_results,
@@ -65,5 +65,5 @@ easyforest(
 
 }
 \description{
-Title
+Create forest plots for metafor outcomes
 }

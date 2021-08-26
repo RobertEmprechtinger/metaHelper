@@ -10,7 +10,7 @@
 #'
 #' @examples
 #' @keywords internal
-SD_pool_hedge <- function(n1, n2, SD1, SD2) {
+SD_pool_hedge <- function(SD1, SD2, n1, n2) {
   not_possible <- (!is.na(SD1) & !is.na(SD2)) & (is.na(n1) | is.na(n2))
   ifelse(not_possible,
     stop("hedges method needs sample size. You could try method=cohen instead"),
@@ -44,7 +44,7 @@ SD_pool <- function(SD1,
   # SD calculation according to Hedges 1981 or Cohen
   ifelse(method == "hedges",
          #hedge method
-         SD_pool_hedge(n1, n2, SD1, SD2),
+         SD_pool_hedge(SD1, SD2, n1, n2),
          #cohen method
          sqrt((SD1 ^ 2 + SD2 ^ 2) /
                 2))

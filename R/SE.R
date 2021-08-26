@@ -1,4 +1,49 @@
-#' SE of SMD from Confidence Intervals of OR
+#' Calculates the Standard Error for a Single Group
+#'
+#' @param SD standard deviation
+#' @param n sample size
+#'
+#' Calculates the standard error with the following formulae:
+#' SD / sqrt(n)
+#'
+#' @return
+#' @export
+#'
+#' @examples
+SE_from_SD.N <- function(SD, n){
+  SD / sqrt(n)
+}
+
+
+#' Calculates the pooled Standard Error
+#'
+#' @param SDp pooled standard deviation
+#' @param n1 sample size group 1
+#' @param n2 sample size group 2
+#'
+#' @return
+#' @export
+#'
+#' @examples
+SEp_from_SDp.N <- function(SDp, n1, n2){
+  SDp * sqrt(1/n1 + 1/n2)
+}
+
+
+#' SE of SMD from Confidence Intervals of
+#'
+#' https://stats.stackexchange.com/questions/68290/converting-odds-ratios-to-cohens-d-for-meta-analysis
+#'
+#' The method uses multiple steps in background:
+#' 1. It takes to OR limits and transforms them to log(OR)
+#' 2. It calculates the standard error for the log(OR)
+#' 3. It transforms the log(OR) standard error to SMD standard error by multiplying it with sqrt(3)/pi
+#'
+#' The results are tested on the examples provided by Chin (2000). Test tolerance 0.01.
+#'
+#' Literature:
+#' Chinn S. A simple method for converting an odds ratio to effect size for use in meta-analysis. Stat Med. 2000 Nov 30;19(22):3127-31. doi: 10.1002/1097-0258(20001130)19:22<3127::aid-sim784>3.0.co;2-m. PMID: 11113947.
+#'
 #'
 #' @param CI_low lover OR confidence interval limit
 #' @param sig_level the significance level
@@ -10,7 +55,8 @@
 #'
 #' @examples
 SMD.SE_from_OR.CI <- function(CI_low, CI_up, sig_level = 0.05, two_sided = TRUE){
-  SE_log_OR <- (log(CI_up) - log(CI_low)) / (2 * z_calc(sig_level, two_sided))
+  #SE_log_OR <- (log(CI_up) - log(CI_low)) / (2 * z_calc(sig_level, two_sided))
+  SE_log_OR <- SE_from_CI(log(CI_low), log(CI_up), sig_level = sig_level, two_sided = two_sided)
   SE_SMD <- SE_log_OR * sqrt(3)/pi
   return(SE_SMD)
 }
@@ -18,7 +64,10 @@ SMD.SE_from_OR.CI <- function(CI_low, CI_up, sig_level = 0.05, two_sided = TRUE)
 
 #' Approximate SMD standard error from sample sizes
 #'
-#' Approximation provided by Borenstein M: Effect sizes for continuous data.
+#' Estimate SMD standard error from sample sizes. Approximation provided by Borenstein (2009, p.226)
+#'
+#' Literature:
+#' Borenstein M: Effect sizes for continuous data.
 #' The Handbook of Research Synthesis and Meta-Analysis. Edited by: Cooper H, Hedges LV, Valentine JC. 2009,
 #' New York: Russell Sage, 221-235. 2
 #'
