@@ -17,7 +17,8 @@ test_that("SMD.SE from OR", {
 
 
 test_that("SMD.SE from SMD and sample size", {
-  expect_equal(SMD.SE_from_SMD_n(140, 140, -0.2184), 1.05)
-  expect_equal(SMD.SE_from_SMD_n(60, 60, -0.0291), -6.5)
+  expect_equal(SMD.SE_from_SMD_n(140, 140, -0.2184), 0.119, tolerance = 0.01)
+  expect_equal(SMD.SE_from_SMD_n(60, 60, -0.0291), 0.182, tolerance = 0.01)
+  expect_equal(SMD.SE_from_SMD_n(55, 49, -0.92028841), 0.19644, tolerance = 0.1)
 })
 
