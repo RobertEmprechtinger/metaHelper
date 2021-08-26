@@ -17,6 +17,9 @@ SE_from_SD.N <- function(SD, n){
 
 #' Calculates the pooled Standard Error
 #'
+#' Literature:
+#' https://handbook-5-1.cochrane.org/chapter_7/7_7_3_3_obtaining_standard_deviations_from_standard_errors.htm
+#'
 #' @param SDp pooled standard deviation
 #' @param n1 sample size group 1
 #' @param n2 sample size group 2
@@ -54,7 +57,7 @@ SEp_from_SDp.N <- function(SDp, n1, n2){
 #' @export
 #'
 #' @examples
-SMD.SE_from_OR.CI <- function(CI_low, CI_up, sig_level = 0.05, two_sided = TRUE){
+SE.SMD_from_OR.CI <- function(CI_low, CI_up, sig_level = 0.05, two_sided = TRUE){
   #SE_log_OR <- (log(CI_up) - log(CI_low)) / (2 * z_calc(sig_level, two_sided))
   SE_log_OR <- SE_from_CI(log(CI_low), log(CI_up), sig_level = sig_level, two_sided = two_sided)
   SE_SMD <- SE_log_OR * sqrt(3)/pi
@@ -79,7 +82,7 @@ SMD.SE_from_OR.CI <- function(CI_low, CI_up, sig_level = 0.05, two_sided = TRUE)
 #' @export
 #'
 #' @examples
-SMD.SE_from_SMD_n <- function(n1, n2, SMD){
+SE.SMD_from_SMD_n <- function(n1, n2, SMD){
   sqrt(
     (n1 + n2) / (n1 * n2) +
       SMD^2 / (2 * (n1 + n2) )
@@ -121,7 +124,7 @@ SE_from_CI <- function(CI_low, CI_up, sig_level = 0.05, two_sided = TRUE){
 #' @export
 #'
 #' @examples
-SE_from_TE.p <- function(TE, p, two_sided = TRUE){
+SEp_from_TE.p <- function(TE, p, two_sided = TRUE){
   ifelse(p > 1,
          stop("p needs to be 1 or smaller"),
          function(){})

@@ -67,4 +67,25 @@ SD_from_SE <- function(SE, n){
 }
 
 
+#' Calculates the pooled standard deviation from the pooled standard error
+#'
+#' It is the reverse method of SEp_from_SDp.N()
+#'
+#' Literature:
+#' https://handbook-5-1.cochrane.org/chapter_7/7_7_3_3_obtaining_standard_deviations_from_standard_errors.htm
+#'
+#' @param SEp
+#' @param n1
+#' @param n2
+#'
+#' @return
+#' @export
+#'
+#' @examples
+SDp_from_SEp <- function(SEp, n1, n2){
+  SEp / sqrt(1/n1 + 1/n2)
+}
+
+
+
 
