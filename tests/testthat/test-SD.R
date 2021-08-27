@@ -9,5 +9,7 @@ test_that("SD pooled from SE pooled", {
 })
 
 test_that("SD from CI single group",{
-  expect_equal(SD_from_CI(81.6, 84.2, 360), 13.3)
+  expect_equal(SD_from_CI(81.5261, 84.2739, 360), 13.3, tolerance = 0.001)
 })
+
+
