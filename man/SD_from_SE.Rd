@@ -2,7 +2,7 @@
 % Please edit documentation in R/SD.R
 \name{SD_from_SE}
 \alias{SD_from_SE}
-\title{SD from Standard Error}
+\title{SD from Standard Error (single group)}
 \usage{
 SD_from_SE(SE, n)
 }
@@ -12,8 +12,19 @@ SD_from_SE(SE, n)
 \item{n}{sample size}
 }
 \value{
-
+Single group standard deviation
 }
 \description{
-This is a simple helper to calculate standard deviation from the standard error
+This is a simple helper to calculate standard deviation from the standard error. In case of two arms the method for the pooled standard
+error has to be used: SDp_from_SEp()
+}
+\examples{
+# Standard error = 2 and sample size = 100
+SE <- 2
+n <- 100
+SD_from_SE(SE, n)
+
+}
+\references{
+https://handbook-5-1.cochrane.org/chapter_7/7_7_3_2_obtaining_standard_deviations_from_standard_errors_and.htm
 }

@@ -51,6 +51,12 @@ easyforest <- function(
 
   group_distance = 1.5, #
 
+  show_fav = FALSE,
+  fav_height = 0.017,
+  fav_space = 0.05,
+  fav_textsize = 2.5,
+  fav_lab = c('Favours X', "Favours Y"),
+
   CI_title = "SMD [95% CI]",
   label_title = "Author (Year)",
   values_title = "Standardized Mean Differences",
@@ -192,13 +198,17 @@ easyforest <- function(
 
   g <- cbind(labels, values, CIs)
 
-  favour_left <- grid::textGrob("text_left")
 
+  favour_left <- grid::textGrob(fav_lab[1], 0.58 - fav_space, fav_height, just = "right", gp = grid::gpar(fontsize = 9, cex = 0.1 * fav_textsize * textsize))
+  favour_right <- grid::textGrob(fav_lab[2], 0.58 + fav_space, fav_height, just = "left", gp = grid::gpar(fontsize = 9, cex = 0.1 * fav_textsize * textsize))
 
   grid::grid.newpage()
 
   grid::grid.draw(g)
-  grid::grid.draw(favour_left)
 
+  if(show_fav){
+    grid::grid.draw(favour_left)
+    grid::grid.draw(favour_right)
+    }
 }
 
