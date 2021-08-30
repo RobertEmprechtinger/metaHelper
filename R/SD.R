@@ -1,16 +1,15 @@
 #' Pools the SD according to hedge
 #'
-#' @param n1
-#' @param n2
-#' @param SD1
-#' @param SD2
+#' @param n1 sample size group 1
+#' @param n2 sample size group 2
+#' @param SD1 standard deviation group 1
+#' @param SD2 standard deviation group 2
 #'
 #' @return
 #' @export
 #'
 #' @examples
-#' @keywords internal
-SD_pool_hedge <- function(SD1, SD2, n1, n2) {
+SD_pool_hedges <- function(SD1, SD2, n1, n2) {
   not_possible <- (!is.na(SD1) & !is.na(SD2)) & (is.na(n1) | is.na(n2))
   ifelse(not_possible,
     stop("hedges method needs sample size. You could try method=cohen instead"),
@@ -31,10 +30,19 @@ SD_pool_hedge <- function(SD1, SD2, n1, n2) {
 #' @param SD2 Standard deviation of group 2
 #' @param n1 Sample size of group 1
 #' @param n2 Sample size of group 2
-#' @param method the method that should be used to calculate the SD. "hedges" calculates SD* Hedges (1981, p.110) which can further be used to compute hedges g. "cohen" uses the simpliefied method by Cohen 1988,
+#' @param method the method that should be used to calculate the SD. "hedge" calculates SD* Hedges' (1981, p.110).
+#' "cohen" uses the simplified method by Cohen 1988,
 #'
 #' @return
 #' @export
+#'
+#' @references
+#' https://www.polyu.edu.hk/mm/effectsizefaqs/effect_size_equations2.html
+#'
+#' Hedges, L. V. (1981). Distribution theory for Glass’s estimator of effect size and related estimators.
+#' Journal of Educational Statistics, 6, 107–128.
+#'
+#' https://www.meta-analysis.com/downloads/Meta-analysis%20Effect%20sizes%20based%20on%20means.pdf
 #'
 #' @examples
 SD_pool <- function(SD1,
@@ -43,9 +51,13 @@ SD_pool <- function(SD1,
                     n2 = NA,
                     method = "hedges") {
   # SD calculation according to Hedges 1981 or Cohen
+  ifelse(method %in% c("hedges", "cohen"),
+         "works",
+         stop("method needs to be either 'hedges' or 'cohen'"))
+
   ifelse(method == "hedges",
-         #hedge method
-         SD_pool_hedge(SD1, SD2, n1, n2),
+         #hedges method
+         SD_pool_hedges(SD1, SD2, n1, n2),
          #cohen method
          sqrt((SD1 ^ 2 + SD2 ^ 2) /
                 2))
@@ -126,4 +138,3 @@ SDp_from_SEp <- function(SEp, n1, n2){
 SD_from_CI <- function(CI_low, CI_up, N, sig_level = 0.05, two_sided = TRUE){
   sqrt(N) * (CI_up - CI_low) / (z_calc(sig_level, two_sided) * 2)
 }
-

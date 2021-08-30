@@ -3,3 +3,6 @@ test_that("SMD from OR", {
   expect_equal(SMD_from_OR(2), 0.382, tolerance = 0.001)
 })
 
+test_that("SMD from arm", {
+  expect_equal(SMD_from_arm(103, 100, 5.5, 4.5, 50, 50), 0.5924, tolerance = 0.001)
+})

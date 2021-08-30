@@ -46,7 +46,7 @@ SMD_calc <- function(M1, M2, SD_pooled){
 #' @param SD2 standard deviation group 2
 #' @param n1 sample size group 1
 #' @param n2 sample size group 2
-#' @param method
+#' @param method either "cohen" for Cohen's d or "hedges" for Hedges' g
 #'
 #' @return
 #' @export
@@ -60,8 +60,14 @@ SMD_from_arm <-
            n1 = NA,
            n2 = NA,
            method = "hedges") {
-    SMD_calc((M1 - M2) /
-               SD_pool(SD1, SD2, n1, n2, method))
+    SMD <- SMD_calc(M1, M2,
+                      SD_pool(SD1, SD2, n1, n2, method))
+
+    h_fac <- ifelse(method = "hedges",
+           hedges_factor(n1, n2),
+           1)
+
+    SMD * h_fac
   }
 
 

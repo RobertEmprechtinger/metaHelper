@@ -17,6 +17,9 @@ SEp_from_SDp.N(SDp, n1, n2)
 
 }
 \description{
-Literature:
+If SMD are used it is recommended to use the approximation provided by Borenstein:
+See ?SE.SMD_from_SMD.n
+}
+\references{
 https://handbook-5-1.cochrane.org/chapter_7/7_7_3_3_obtaining_standard_deviations_from_standard_errors.htm
 }

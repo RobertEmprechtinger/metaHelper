@@ -15,7 +15,8 @@ SD_pool(SD1, SD2, n1 = NA, n2 = NA, method = "hedges")
 
 \item{n2}{Sample size of group 2}
 
-\item{method}{the method that should be used to calculate the SD. "hedges" calculates SD* Hedges (1981, p.110) which can further be used to compute hedges g. "cohen" uses the simpliefied method by Cohen 1988,}
+\item{method}{the method that should be used to calculate the SD. "hedge" calculates SD* Hedges' (1981, p.110).
+"cohen" uses the simplified method by Cohen 1988,}
 }
 \value{
 
@@ -24,4 +25,12 @@ SD_pool(SD1, SD2, n1 = NA, n2 = NA, method = "hedges")
 Calculates pooled standard deviation. The method according to Hedges (1981, p.110)
 needs the sample sizes (https://www.polyu.edu.hk/mm/effectsizefaqs/effect_size_equations2.html).
 If exclusively SDs are provided, the simpler equation provided by Cohen 1988 can be used.
+}
+\references{
+https://www.polyu.edu.hk/mm/effectsizefaqs/effect_size_equations2.html
+
+Hedges, L. V. (1981). Distribution theory for Glass’s estimator of effect size and related estimators.
+Journal of Educational Statistics, 6, 107–128.
+
+https://www.meta-analysis.com/downloads/Meta-analysis\%20Effect\%20sizes\%20based\%20on\%20means.pdf
 }

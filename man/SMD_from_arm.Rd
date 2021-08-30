@@ -19,7 +19,7 @@ SMD_from_arm(M1, M2, SD1, SD2, n1 = NA, n2 = NA, method = "hedges")
 
 \item{n2}{sample size group 2}
 
-\item{method}{}
+\item{method}{either "cohen" for Cohen's d or "hedges" for Hedges' g}
 }
 \value{
 

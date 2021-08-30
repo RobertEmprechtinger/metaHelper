@@ -17,8 +17,9 @@ SE_from_SD.N <- function(SD, n){
 
 #' Calculates the pooled Standard Error
 #'
-#' Literature:
-#' https://handbook-5-1.cochrane.org/chapter_7/7_7_3_3_obtaining_standard_deviations_from_standard_errors.htm
+#' If SMD are used it is recommended to use the approximation provided by Borenstein:
+#' See ?SE.SMD_from_SMD.n
+#'
 #'
 #' @param SDp pooled standard deviation
 #' @param n1 sample size group 1
@@ -26,6 +27,9 @@ SE_from_SD.N <- function(SD, n){
 #'
 #' @return
 #' @export
+#'
+#' @references
+#' https://handbook-5-1.cochrane.org/chapter_7/7_7_3_3_obtaining_standard_deviations_from_standard_errors.htm
 #'
 #' @examples
 SEp_from_SDp.N <- function(SDp, n1, n2){
@@ -67,7 +71,7 @@ SE.SMD_from_OR.CI <- function(CI_low, CI_up, sig_level = 0.05, two_sided = TRUE)
 
 #' Approximate SMD standard error from sample sizes
 #'
-#' Estimate SMD standard error from sample sizes. Approximation provided by Borenstein (2009, p.226)
+#' Estimate SMD standard error from sample sizes. Approximation provided by Borenstein (2009, p.226).
 #'
 #' Literature:
 #' Borenstein M: Effect sizes for continuous data.
@@ -82,7 +86,7 @@ SE.SMD_from_OR.CI <- function(CI_low, CI_up, sig_level = 0.05, two_sided = TRUE)
 #' @export
 #'
 #' @examples
-SE.SMD_from_SMD_n <- function(n1, n2, SMD){
+SE.SMD_from_SMD.n <- function(SMD, n1, n2){
   sqrt(
     (n1 + n2) / (n1 * n2) +
       SMD^2 / (2 * (n1 + n2) )
