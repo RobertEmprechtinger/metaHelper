@@ -3,7 +3,7 @@
 #' @param SD standard deviation
 #' @param n sample size
 #'
-#' Calculates the standard error with the following formulae:
+#' Calculates the standard error with the following formula:
 #' SD / sqrt(n)
 #'
 #' @return
@@ -16,10 +16,6 @@ SE_from_SD.N <- function(SD, n){
 
 
 #' Calculates the pooled Standard Error
-#'
-#' If SMD are used it is recommended to use the approximation provided by Borenstein:
-#' See ?SE.SMD_from_SMD.n
-#'
 #'
 #' @param SDp pooled standard deviation
 #' @param n1 sample size group 1
@@ -86,11 +82,20 @@ SE.SMD_from_OR.CI <- function(CI_low, CI_up, sig_level = 0.05, two_sided = TRUE)
 #' @export
 #'
 #' @examples
-SE.SMD_from_SMD.n <- function(SMD, n1, n2){
-  sqrt(
+SE.SMD_from_SMD.n <- function(SMD, n1, n2, method = "hedges"){
+  ifelse(method %in% c("hedges", "cohen"),
+         function(){},
+         stop("method needs to be either 'hedges' or 'cohen'"))
+
+  SE <- sqrt(
     (n1 + n2) / (n1 * n2) +
       SMD^2 / (2 * (n1 + n2) )
   )
+
+  SE <- ifelse(method == "hedges",
+         SE * hedges_factor(n1, n2),
+         SE)
+  SE
 }
 
 

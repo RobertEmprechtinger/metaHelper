@@ -1,14 +1,16 @@
 test_that("SD hedge", {
-  expect_equal(SD_pool(5.5, 4.5, 50, 50, method = "hedge"), 5.0249, tolerance = 0.001)
-  expect_error(SD_pool(5.5, 4.5, 50, 50, method = "hedges"), "method needs to be either 'hedge' or 'cohen'")
+  expect_equal(SD_pool(5.5, 4.5, 50, 50, method = "hedges"), 5.0249, tolerance = 0.001)
+  expect_error(SD_pool(5.5, 4.5, 50, 50, method = "hedge"), "method needs to be either 'hedges' or 'cohen'")
   })
 
-?expect_error
 
 test_that("SD cohen", {
   expect_equal(SMD_calc(4.5, 3, SD_pool(2.5, 4, method = "cohen")), 0.45, tolerance = 0.001)
+  # check whether cohen and hedges lead to similar results
+  expect_equal(SD_pool(5.5, 4.5, method = "cohen"),
+               SD_pool(5.5, 4.5, 50, 50, method = "hedges"),
+               tolerance = 0.001)
 })
-
 
 test_that("Single group SD", {
   expect_equal(SD_from_SE(1.13, 63), 9, tolerance = 0.1)

@@ -5,4 +5,6 @@ test_that("SMD from OR", {
 
 test_that("SMD from arm", {
   expect_equal(SMD_from_arm(103, 100, 5.5, 4.5, 50, 50), 0.5924, tolerance = 0.001)
+  expect_equal(SMD_from_arm(103, 100, 5.5, 4.5, method = "cohen"), 0.597, tolerance = 0.001)
+  expect_error(SMD_from_arm(103, 100, 5.5, 4.5, method = "hedge"))
 })

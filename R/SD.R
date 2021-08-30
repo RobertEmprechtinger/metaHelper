@@ -52,7 +52,7 @@ SD_pool <- function(SD1,
                     method = "hedges") {
   # SD calculation according to Hedges 1981 or Cohen
   ifelse(method %in% c("hedges", "cohen"),
-         "works",
+         function(){},
          stop("method needs to be either 'hedges' or 'cohen'"))
 
   ifelse(method == "hedges",

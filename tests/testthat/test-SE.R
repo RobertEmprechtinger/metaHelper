@@ -17,9 +17,11 @@ test_that("SMD.SE from OR", {
 
 
 test_that("SMD.SE from SMD and sample size", {
-  expect_equal(SE.SMD_from_SMD_n(140, 140, -0.2184), 0.119, tolerance = 0.01)
-  expect_equal(SE.SMD_from_SMD_n(60, 60, -0.0291), 0.182, tolerance = 0.01)
-  expect_equal(SE.SMD_from_SMD_n(55, 49, -0.92028841), 0.19644, tolerance = 0.1)
+  expect_equal(SE.SMD_from_SMD.n(-0.2184, 140, 140, method = "cohen"), 0.119, tolerance = 0.01)
+  expect_equal(SE.SMD_from_SMD.n(-0.0291, 60, 60, method = "cohen"), 0.182, tolerance = 0.01)
+  expect_equal(SE.SMD_from_SMD.n(-0.92028841, 55, 49, method = "cohen"), 0.19644, tolerance = 0.1)
+  expect_equal(SE.SMD_from_SMD.n(0.5970, 50, 50, method = "hedges"), 0.2028, tolerance = 0.001)
+  expect_error(SE.SMD_from_SMD.n(0.5970, 50, 50, method = "hedge"))
 })
 
 
