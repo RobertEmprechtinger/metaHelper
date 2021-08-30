@@ -65,7 +65,7 @@ easyforest <- function(
     for(meta_result in rma_results){
       i <- i + 1
 
-      #creating the description of the pooled effect estimates
+      # creating the description of the pooled effect estimates
       summary_measure = paste(summary_title,
                               "; Q = ", formatC(meta_result$QE, digits=2, format="f"),
                               "; p = ", formatC(meta_result$QEp, digits=2, format="f"),
@@ -73,7 +73,7 @@ easyforest <- function(
                               sep = ""
       )
 
-      #creating the summary esimates
+      # creating the summary esimates
       y <- data.frame(x_pooled = c(meta_result$beta,
                                meta_result$ci.ub, meta_result$beta, meta_result$ci.lb),
                   y_pooled = c(-pooled_estimate_height, 0, pooled_estimate_height, 0) + 1,
@@ -192,9 +192,13 @@ easyforest <- function(
 
   g <- cbind(labels, values, CIs)
 
+  favour_left <- grid::textGrob("text_left")
+
+
   grid::grid.newpage()
 
   grid::grid.draw(g)
+  grid::grid.draw(favour_left)
 
 }
 

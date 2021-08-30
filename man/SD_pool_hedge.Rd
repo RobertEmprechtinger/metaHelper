@@ -2,7 +2,7 @@
 % Please edit documentation in R/SD.R
 \name{SD_pool_hedge}
 \alias{SD_pool_hedge}
-\title{Title}
+\title{Pools the SD according to hedge}
 \usage{
 SD_pool_hedge(SD1, SD2, n1, n2)
 }
@@ -13,6 +13,6 @@ SD_pool_hedge(SD1, SD2, n1, n2)
 
 }
 \description{
-Title
+Pools the SD according to hedge
 }
 \keyword{internal}

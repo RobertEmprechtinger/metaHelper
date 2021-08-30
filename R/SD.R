@@ -1,4 +1,4 @@
-#' Title
+#' Pools the SD according to hedge
 #'
 #' @param n1
 #' @param n2
