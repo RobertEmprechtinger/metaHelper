@@ -13,7 +13,7 @@ SMD_from_OR(OR)
 Returns SMD
 }
 \description{
-Converts SMD to OR by using the formula provided here:
+Converts OR to SMD by using the formula provided here:
 https://stats.stackexchange.com/questions/68290/converting-odds-ratios-to-cohens-d-for-meta-analysis
 }
 \details{

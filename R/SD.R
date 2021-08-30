@@ -26,7 +26,6 @@ SD_pool_hedge <- function(SD1, SD2, n1, n2) {
 #' needs the sample sizes (https://www.polyu.edu.hk/mm/effectsizefaqs/effect_size_equations2.html).
 #' If exclusively SDs are provided, the simpler equation provided by Cohen 1988 can be used.
 #'
-#' Literature:
 #'
 #' @param SD1 Standard deviation of group 1
 #' @param SD2 Standard deviation of group 2
@@ -56,7 +55,7 @@ SD_pool <- function(SD1,
 #' SD from Standard Error (single group)
 #'
 #' This is a simple helper to calculate standard deviation from the standard error. In case of two arms the method for the pooled standard
-#' error has to be used: SDp_from_SEp()
+#' error has to be used: SDp_from_SEp
 #'
 #' @param SE standard error
 #' @param n sample size
@@ -66,6 +65,8 @@ SD_pool <- function(SD1,
 #'
 #' @references
 #' https://handbook-5-1.cochrane.org/chapter_7/7_7_3_2_obtaining_standard_deviations_from_standard_errors_and.htm
+#'
+#' @export
 #'
 #' @examples
 #' # Standard error = 2 and sample size = 100

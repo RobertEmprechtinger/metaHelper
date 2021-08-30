@@ -16,7 +16,7 @@ Single group standard deviation
 }
 \description{
 This is a simple helper to calculate standard deviation from the standard error. In case of two arms the method for the pooled standard
-error has to be used: SDp_from_SEp()
+error has to be used: SDp_from_SEp
 }
 \examples{
 # Standard error = 2 and sample size = 100

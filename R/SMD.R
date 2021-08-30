@@ -2,7 +2,7 @@
 
 #' Convert SMD to OR
 #'
-#' Converts SMD to OR by using the formula provided here:
+#' Converts OR to SMD by using the formula provided here:
 #' https://stats.stackexchange.com/questions/68290/converting-odds-ratios-to-cohens-d-for-meta-analysis
 #'
 #' Borenstein, M., Hedges, L.V., Higgins, J.P.T. and Rothstein, H.R. (2009). Converting Among Effect Sizes. In Introduction to Meta-Analysis (eds M. Borenstein, L.V. Hedges, J.P.T. Higgins and H.R. Rothstein). https://doi.org/10.1002/9780470743386.ch7
