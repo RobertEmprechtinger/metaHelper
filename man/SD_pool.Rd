@@ -25,3 +25,6 @@ Calculates pooled standard deviation. The method according to Hedges (1981, p.11
 needs the sample sizes (https://www.polyu.edu.hk/mm/effectsizefaqs/effect_size_equations2.html).
 If exclusively SDs are provided, the simpler equation provided by Cohen 1988 can be used.
 }
+\details{
+Literature:
+}
