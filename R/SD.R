@@ -51,8 +51,12 @@ SD_pool <- function(SD1,
                     n2 = NA,
                     method = "hedges") {
   # SD calculation according to Hedges 1981 or Cohen
-  for(i in method){
-    if(!is.element(i, c("hedges", "cohen"))) stop("method needs to be either 'hedges' or 'cohen'")
+  if(length(method) == 1){
+    method <- rep(method, length(SD1))
+  }
+
+  for(i in seq_along(SD1)){
+    if(!is.element(method[i], c("hedges", "cohen"))) stop("method needs to be either 'hedges' or 'cohen'")
   }
 
   ifelse(method == "hedges",

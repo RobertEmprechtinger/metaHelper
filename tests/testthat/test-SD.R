@@ -5,6 +5,17 @@ test_that("SD hedge", {
                        method = c("hedges", "hedges")), c(5.0249, 5.0249), tolerance = 0.0001)
   })
 
+# testing with data frames
+dat <- data.frame(SD1 = c(2,3, NA), SD2 = c(3,5, 3), n1 = c(20, 40, 50), n2= c(30, 60, 50))
+dat2 <- data.frame(SD1 = c(2,3, NA), SD2 = c(3,5, 3), n1 = c(20, 40, 50), n2= c(30, 60, 50),
+                   method = c("hedges", "hedges", "hedges"))
+test_that("SD pool data frame", {
+  expect_equal(mutate(dat, SD = SD_pool(SD1, SD2, n1, n2)) %>%
+            pull(SD), c(2.649686, 4.316556, NA), tolerance = 0.0001)
+  expect_equal(mutate(dat2, SD = SD_pool(SD1, SD2, n1, n2, method)) %>%
+                 pull(SD), c(2.649686, 4.316556, NA), tolerance = 0.0001)
+  })
+
 test_that("SD cohen", {
   expect_equal(SMD_calc(4.5, 3, SD_pool(2.5, 4, method = "cohen")), 0.45, tolerance = 0.001)
   # check whether cohen and hedges lead to similar results
