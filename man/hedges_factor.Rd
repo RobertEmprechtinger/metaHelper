@@ -4,7 +4,7 @@
 \alias{hedges_factor}
 \title{Hedges factor calculation}
 \usage{
-hedges_factor(n1, n2)
+hedges_factor(n1 = NA, n2 = NA, n_total = NA)
 }
 \arguments{
 \item{n1}{sample size group 1}

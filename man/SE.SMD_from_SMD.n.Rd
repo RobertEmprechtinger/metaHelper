@@ -4,7 +4,7 @@
 \alias{SE.SMD_from_SMD.n}
 \title{Approximate SMD standard error from sample sizes}
 \usage{
-SE.SMD_from_SMD.n(SMD, n1, n2)
+SE.SMD_from_SMD.n(SMD, n1, n2, method = "hedges")
 }
 \arguments{
 \item{SMD}{standardized mean differences}

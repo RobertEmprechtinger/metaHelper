@@ -4,7 +4,7 @@
 \alias{hedges_factor_approx}
 \title{Computational simple calculation of the hedges factor}
 \usage{
-hedges_factor_approx(n1, n2)
+hedges_factor_approx(n1 = NA, n2 = NA, n_total = NA)
 }
 \arguments{
 \item{n1}{sample size group 1}

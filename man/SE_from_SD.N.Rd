@@ -11,7 +11,7 @@ SE_from_SD.N(SD, n)
 
 \item{n}{sample size
 
-Calculates the standard error with the following formulae:
+Calculates the standard error with the following formula:
 SD / sqrt(n)}
 }
 \value{

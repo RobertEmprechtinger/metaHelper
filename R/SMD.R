@@ -1,5 +1,3 @@
-###### OR & SMD ##########
-
 #' Convert SMD to OR
 #'
 #' Converts OR to SMD by using the formula provided here:
@@ -40,7 +38,7 @@ SMD_calc <- function(M1, M2, SD_pooled){
 
 #' Calculates SMD from arm data
 #'
-#' Calculate SMD from study data. Hedges g needs samplie size data. The hedges factor is calculated according to Hedges & Olkin (1985) retrieved
+#' Calculate SMD directly from study data. Hedges g needs samplie size data. The hedges factor is calculated according to Hedges & Olkin (1985) retrieved
 #' from Goulet-Pelletier & Cousineau (2018).
 #'
 #' @param M1 treatment effect size group 1
@@ -84,4 +82,56 @@ SMD_from_arm <-
     SMD * h_fac
   }
 
+
+#' Calculates SMD from matched groups
+#'
+#' Calculates the standardized mean differences for matched groups. Needs either the mean of the groups or
+#' the difference between groups.
+#' SD_within is usually not reported but can be calculated by the use of SD.within_from_SD.r()
+#'
+#' @param M_diff mean difference between groups
+#' @param M1 mean group 1 (in case M_diff not provided)
+#' @param M2 mean group 2 (in case M_diff not provided)
+#' @param SD_within within standard deviation. CAVE this is usually not reported but needs to be computed from the difference standard deviation.
+#' This can be done with SD.within_from_SD.r().
+#'
+#' @return
+#' @export
+#'
+#' @references
+#' , M., Hedges, L.V., Higgins, J.P.T. and Rothstein, H.R. (2009). Converting Among Effect Sizes. In Introduction to Meta-Analysis (eds M. Borenstein, L.V. Hedges, J.P.T. Higgins and H.R. Rothstein). https://doi.org/10.1002/9780470743386.ch7
+#'
+#' @examples
+#' # Calcuation with group means
+#' SMD.matched_calc(M1 = 103, M2 = 100, SD_within = 7.1005)
+#'
+#' # Calculation with group difference
+#' SMD.matched_calc(M_diff = 3, SD_within = 7.1005)
+#'
+#' # Calculation with standard deviation between
+#' # Correlation Coefficient between groups
+#' r <- 0.7
+#'
+#' # SD between groups
+#' SD_between <- 5.5
+#'
+#' SMD.matched_calc(M_diff = 3,
+#'     SD_within = SD.within_from_SD.r(SD_between, r))
+SMD.matched_calc <- function(M_diff = NA, M1 = NA, M2 = NA, SD_within) {
+  # check whether differences or group values were reported
+  ifelse(is.na(M_diff),
+         method <- "ind",
+         method <- "diff")
+
+  # calculate d on the basis of group values
+  ifelse(method == "ind" & (is.na(M1) | is.na(M2)),
+         SMD <- NA,
+         SMD <- SMD_calc(M1, M2, SD_within)
+         )
+
+  # on the basis of diff values
+  ifelse(method == "diff",
+         SMD <- M_diff / SD_within,
+         SMD)
+}
 

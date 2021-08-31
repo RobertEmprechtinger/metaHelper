@@ -1,8 +1,9 @@
 test_that("SD hedge", {
   expect_equal(SD_pool(5.5, 4.5, 50, 50, method = "hedges"), 5.0249, tolerance = 0.001)
   expect_error(SD_pool(5.5, 4.5, 50, 50, method = "hedge"), "method needs to be either 'hedges' or 'cohen'")
+  expect_equal(SD_pool(c(5.5, 5.5), c(4.5, 4.5), c(50, 50), c(50, 50),
+                       method = c("hedges", "hedges")), c(5.0249, 5.0249), tolerance = 0.0001)
   })
-
 
 test_that("SD cohen", {
   expect_equal(SMD_calc(4.5, 3, SD_pool(2.5, 4, method = "cohen")), 0.45, tolerance = 0.001)
@@ -26,4 +27,7 @@ test_that("SD from CI single group",{
   expect_equal(SD_from_CI(81.5261, 84.2739, 360), 13.3, tolerance = 0.001)
 })
 
+test_that("SD within for matched groups", {
+  expect_equal(SD.within_from_SD.r(5.5, 0.7), 7.1005, tolerance = 0.0001)
+})
 

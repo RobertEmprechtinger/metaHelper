@@ -25,5 +25,13 @@ SMD_from_arm(M1, M2, SD1, SD2, n1 = NA, n2 = NA, method = "hedges")
 
 }
 \description{
-Calculates SMD from arm data
+Calculate SMD directly from study data. Hedges g needs samplie size data. The hedges factor is calculated according to Hedges & Olkin (1985) retrieved
+from Goulet-Pelletier & Cousineau (2018).
+}
+\references{
+Borenstein, M., Hedges, L.V., Higgins, J.P.T. and Rothstein, H.R. (2009). Converting Among Effect Sizes. In Introduction to Meta-Analysis (eds M. Borenstein, L.V. Hedges, J.P.T. Higgins and H.R. Rothstein). https://doi.org/10.1002/9780470743386.ch7
+
+Hedges L. V., Olkin I. (1985). Statistical methods for meta-analysis. San Diego, CA: Academic Press
+
+Goulet-Pelletier, J.-C., & Cousineau, D. (2018). A review of effect sizes and their confidence intervals, Part 1: The Cohen’s d family. The Quantitative Methods for Psychology, 14(4), 242–265. https://doi.org/10.20982/tqmp.14.4.p242
 }

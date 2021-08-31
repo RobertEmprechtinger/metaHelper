@@ -51,9 +51,9 @@ SD_pool <- function(SD1,
                     n2 = NA,
                     method = "hedges") {
   # SD calculation according to Hedges 1981 or Cohen
-  ifelse(method %in% c("hedges", "cohen"),
-         function(){},
-         stop("method needs to be either 'hedges' or 'cohen'"))
+  for(i in method){
+    if(!is.element(i, c("hedges", "cohen"))) stop("method needs to be either 'hedges' or 'cohen'")
+  }
 
   ifelse(method == "hedges",
          #hedges method
@@ -137,4 +137,21 @@ SDp_from_SEp <- function(SEp, n1, n2){
 #' @examples
 SD_from_CI <- function(CI_low, CI_up, N, sig_level = 0.05, two_sided = TRUE){
   sqrt(N) * (CI_up - CI_low) / (z_calc(sig_level, two_sided) * 2)
+}
+
+
+#' 'Within Standard Deviation for Matched Groups
+#'
+#' Computes the within standard deviation for matched groups. The within standard deviation is further used to compute the standardized mean
+#' differences for matched groups.
+#'
+#' @param SD_diff standard deviation of the difference (usually reported)
+#' @param r correlation between pair of observations
+#'
+#' @return within standard deviation
+#' @export
+#'
+#' @examples
+SD.within_from_SD.r <- function(SD_diff, r){
+  SD_diff / sqrt(2 * (1 - r) )
 }
