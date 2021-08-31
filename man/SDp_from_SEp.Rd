@@ -2,12 +2,16 @@
 % Please edit documentation in R/SD.R
 \name{SDp_from_SEp}
 \alias{SDp_from_SEp}
-\title{Calculates the pooled standard deviation from the pooled standard error}
+\title{Standard Deviation from the Pooled Standard Error}
 \usage{
 SDp_from_SEp(SEp, n1, n2)
 }
 \arguments{
-\item{n2}{}
+\item{SEp}{pooled standard error}
+
+\item{n1}{sample size group 1}
+
+\item{n2}{sample size group 2}
 }
 \value{
 Pooled standard deviation

@@ -2,7 +2,7 @@
 % Please edit documentation in R/SD.R
 \name{SD_pool_hedges}
 \alias{SD_pool_hedges}
-\title{Pools the SD according to hedge}
+\title{Pools the SD according to Hedges}
 \usage{
 SD_pool_hedges(SD1, SD2, n1, n2)
 }
@@ -16,8 +16,26 @@ SD_pool_hedges(SD1, SD2, n1, n2)
 \item{n2}{sample size group 2}
 }
 \value{
-
+Pooled standard deviation according to Hedges (1981)
 }
 \description{
-Pools the SD according to hedge
+Pools the SD according to Hedges
 }
+\examples{
+SD_pool_hedges(2, 3, 50, 50)
+}
+\keyword{SD_pool}
+\keyword{This}
+\keyword{a}
+\keyword{and}
+\keyword{be}
+\keyword{directly.}
+\keyword{for}
+\keyword{function}
+\keyword{helper}
+\keyword{internal}
+\keyword{is}
+\keyword{not}
+\keyword{supposed}
+\keyword{to}
+\keyword{used}

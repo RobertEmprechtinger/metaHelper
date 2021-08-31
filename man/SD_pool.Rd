@@ -7,30 +7,40 @@
 SD_pool(SD1, SD2, n1 = NA, n2 = NA, method = "hedges")
 }
 \arguments{
-\item{SD1}{Standard deviation of group 1}
+\item{SD1}{standard deviation of group 1}
 
-\item{SD2}{Standard deviation of group 2}
+\item{SD2}{standard deviation of group 2}
 
-\item{n1}{Sample size of group 1}
+\item{n1}{sample size of group 1}
 
-\item{n2}{Sample size of group 2}
+\item{n2}{sample size of group 2}
 
-\item{method}{the method that should be used to calculate the SD. "hedge" calculates SD* Hedges' (1981, p.110).
-"cohen" uses the simplified method by Cohen 1988,}
+\item{method}{the method that should be used to calculate the SD. Method "hedges" needs sample sizes.
+Method "cohen" uses the simplified method by Cohen 1988 and does not rely on sample sizes.}
 }
 \value{
-
+Pooled standard deviation
 }
 \description{
-Calculates pooled standard deviation. The method according to Hedges (1981, p.110)
-needs the sample sizes (https://www.polyu.edu.hk/mm/effectsizefaqs/effect_size_equations2.html).
-If exclusively SDs are provided, the simpler equation provided by Cohen 1988 can be used.
+Calculates pooled standard deviation. The method according to Hedges
+requires the sample sizes.
+If exclusively SDs are available, the simpler equation provided by Cohen 1988 can be used.
+}
+\examples{
+# Standard deviation according to Cohen:
+SD_pool(2, 3, method = "cohen")
+
+# Standard deviation according to Hedges needs sample sizes:
+SD_pool(2, 3, 50, 50)
 }
 \references{
-https://www.polyu.edu.hk/mm/effectsizefaqs/effect_size_equations2.html
+Borenstein, M., Hedges, L.V., Higgins, J.P.T. and Rothstein, H.R. (2009). Converting Among Effect Sizes. In Introduction to Meta-Analysis (eds M. Borenstein, L.V. Hedges, J.P.T. Higgins and H.R. Rothstein). https://doi.org/10.1002/9780470743386.ch7
 
-Hedges, L. V. (1981). Distribution theory for Glass’s estimator of effect size and related estimators.
-Journal of Educational Statistics, 6, 107–128.
+Ellis, P.D. (2009), "Effect size equations" website: https://www.polyu.edu.hk/mm/effectsizefaqs/effect_size_equations2.html accessed on 2021.08.31.
 
-https://www.meta-analysis.com/downloads/Meta-analysis\%20Effect\%20sizes\%20based\%20on\%20means.pdf
+Hedges, L. V. (1981). Distribution theory for Glass's estimator of effect size and related estimators.
+Journal of Educational Statistics, 6, 107-128.
+}
+\seealso{
+\code{\link[=SD.within_from_SD.r]{SD.within_from_SD.r()}} for matched groups
 }
