@@ -6,13 +6,31 @@
 \usage{
 SD_from_CI(CI_low, CI_up, N, sig_level = 0.05, two_sided = TRUE)
 }
+\arguments{
+\item{CI_low}{lower limit confidence interval}
+
+\item{CI_up}{upper limit confidence interval}
+
+\item{N}{overall sample size}
+
+\item{sig_level}{significance level}
+
+\item{two_sided}{whether a two sided test for significance was used}
+}
 \value{
 Standard deviation single group
 }
 \description{
 Computes the standard deviation from the confidence interval and sample size. This method is only valid for single groups.
-For two groups (e.g. intervention effects) SDp_from_CIp has to be used.
+For two groups (e.g. intervention effects) \code{\link[=SDp_from_CIp]{SDp_from_CIp()}} has to be used.
+}
+\examples{
+lower_ci <- 2
+SD_from_CI()
 }
 \references{
 https://handbook-5-1.cochrane.org/chapter_7/7_7_3_2_obtaining_standard_deviations_from_standard_errors_and.htm
+}
+\seealso{
+\code{\link[=SDp_from_CIp]{SDp_from_CIp()}} for two groups (e.g. intervention effects).
 }

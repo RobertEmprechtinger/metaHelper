@@ -17,11 +17,12 @@ SDp_from_SEp(SEp, n1, n2)
 Pooled standard deviation
 }
 \description{
-In case studies provide the standard error of a treatment effect estimate of two groups.
-It is the reverse method of SEp_from_SDp.N()
+Calculates the standard deviation from the pooled standard error and sample size fro two groups (e.g. intervention effects).
+For single groups \code{\link[=SD_from_SE]{SD_from_SE()}} has to be used.
+This method is the reverse method of \code{\link[=SEp_from_SDp.N]{SEp_from_SDp.N()}}.
 }
 \examples{
-#pooled standard error, sample size 1 and samplie size 2
+#pooled standard error, sample size 1 and sample size 2
 SE <- 0.12
 n1 <- 140
 n2 <- 140
@@ -30,4 +31,8 @@ SDp_from_SEp(SE, n1, n2)
 }
 \references{
 https://handbook-5-1.cochrane.org/chapter_7/7_7_3_3_obtaining_standard_deviations_from_standard_errors.htm
+}
+\seealso{
+\code{\link[=SD_from_SE]{SD_from_SE()}} for a single group.
+\code{\link[=SEp_from_SDp.N]{SEp_from_SDp.N()}} if the standard error should be computed instead.
 }

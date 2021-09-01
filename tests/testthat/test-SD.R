@@ -34,11 +34,15 @@ test_that("SD pooled from SE pooled", {
   expect_equal(SDp_from_SEp(1.37, 25, 22), 4.69, tolerance = 0.001)
 })
 
+
 test_that("SD from CI single group",{
   expect_equal(SD_from_CI(81.5261, 84.2739, 360), 13.3, tolerance = 0.001)
 })
 
+
 test_that("SD within for matched groups", {
   expect_equal(SD.within_from_SD.r(5.5, 0.7), 7.1005, tolerance = 0.0001)
+  expect_error(SD.within_from_SD.r(5.5, 1.2))
+  expect_error(SD.within_from_SD.r(5.5, - 1.2))
 })
 

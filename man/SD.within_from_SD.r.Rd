@@ -12,9 +12,16 @@ SD.within_from_SD.r(SD_diff, r)
 \item{r}{correlation between pair of observations}
 }
 \value{
-within standard deviation
+Within standard deviation
 }
 \description{
-Computes the within standard deviation for matched groups. The within standard deviation is further used to compute the standardized mean
+Computes the within standard deviation for matched groups. The within standard deviation can further be used to compute the standardized mean
 differences for matched groups.
+}
+\examples{
+# SD_diff is the standard deviation of the group difference
+SD_diff <- 2
+# r is the correlation coefficient between the groups
+r <- 0.5
+SD.within_from_SD.r(SD_diff, r)
 }

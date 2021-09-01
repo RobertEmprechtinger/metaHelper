@@ -2,12 +2,12 @@
 % Please edit documentation in R/SE.R
 \name{SE.SMD_from_OR.CI}
 \alias{SE.SMD_from_OR.CI}
-\title{SE of SMD from Confidence Intervals of}
+\title{SE of SMD from Confidence Intervals of Odds Ratio}
 \usage{
 SE.SMD_from_OR.CI(CI_low, CI_up, sig_level = 0.05, two_sided = TRUE)
 }
 \arguments{
-\item{CI_low}{lover OR confidence interval limit}
+\item{CI_low}{lower OR confidence interval limit}
 
 \item{CI_up}{upper OR confidence interval limit}
 
@@ -24,13 +24,15 @@ https://stats.stackexchange.com/questions/68290/converting-odds-ratios-to-cohens
 \details{
 The method uses multiple steps in background:
 \enumerate{
-\item It takes to OR limits and transforms them to log(OR)
-\item It calculates the standard error for the log(OR)
-\item It transforms the log(OR) standard error to SMD standard error by multiplying it with sqrt(3)/pi
+\item Takes OR limits and transforms them to log(OR)
+\item Calculates the standard error for the log(OR)
+\item Transforms the log(OR) standard error to SMD standard error by multiplying it with sqrt(3)/pi
 }
-
-The results are tested on the examples provided by Chin (2000). Test tolerance 0.01.
-
-Literature:
+}
+\examples{
+# lower CI = 0.6, upper CI = 0.9
+SE.SMD_from_OR.CI(0.6, 0.9)
+}
+\references{
 Chinn S. A simple method for converting an odds ratio to effect size for use in meta-analysis. Stat Med. 2000 Nov 30;19(22):3127-31. doi: 10.1002/1097-0258(20001130)19:22<3127::aid-sim784>3.0.co;2-m. PMID: 11113947.
 }

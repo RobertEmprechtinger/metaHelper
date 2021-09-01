@@ -182,16 +182,24 @@ SD_from_CI <- function(CI_low, CI_up, N, sig_level = 0.05, two_sided = TRUE){
 
 #' 'Within Standard Deviation for Matched Groups
 #'
-#' Computes the within standard deviation for matched groups. The within standard deviation is further used to compute the standardized mean
+#' Computes the within standard deviation for matched groups. The within standard deviation can further be used to compute the standardized mean
 #' differences for matched groups.
 #'
 #' @param SD_diff standard deviation of the difference (usually reported)
 #' @param r correlation between pair of observations
 #'
-#' @return within standard deviation
+#' @return Within standard deviation
 #' @export
 #'
 #' @examples
+#' # SD_diff is the standard deviation of the group difference
+#' SD_diff <- 2
+#' # r is the correlation coefficient between the groups
+#' r <- 0.5
+#' SD.within_from_SD.r(SD_diff, r)
 SD.within_from_SD.r <- function(SD_diff, r){
-  SD_diff / sqrt(2 * (1 - r) )
+  ifelse(abs(r) > 1,
+         stop("correlation of r greater 1 is not allowed"),
+         SD_diff / sqrt(2 * (1 - r) )
+         )
 }

@@ -2,7 +2,7 @@
 % Please edit documentation in R/SE.R
 \name{SE.SMD_from_SMD.n}
 \alias{SE.SMD_from_SMD.n}
-\title{Approximate SMD standard error from sample sizes}
+\title{SMD standard error from sample sizes}
 \usage{
 SE.SMD_from_SMD.n(SMD, n1, n2, method = "hedges")
 }
@@ -14,13 +14,16 @@ SE.SMD_from_SMD.n(SMD, n1, n2, method = "hedges")
 \item{n2}{sample size group 2}
 }
 \value{
-Returns standard error
+Standard error of SMD
 }
 \description{
-Estimate SMD standard error from sample sizes. Approximation provided by Borenstein (2009, p.226).
+Approximates SMD standard error from sample sizes. Approximation provided by Borenstein (2009, p.226).
 }
-\details{
-Literature:
+\examples{
+# SMD = 0.6, sample size group_1 = 50, sample size group_2 = 75
+SE.SMD_from_SMD.n(0.6, 50, 75)
+}
+\references{
 Borenstein M: Effect sizes for continuous data.
 The Handbook of Research Synthesis and Meta-Analysis. Edited by: Cooper H, Hedges LV, Valentine JC. 2009,
 New York: Russell Sage, 221-235. 2
