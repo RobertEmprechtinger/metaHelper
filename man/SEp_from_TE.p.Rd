@@ -2,7 +2,7 @@
 % Please edit documentation in R/SE.R
 \name{SEp_from_TE.p}
 \alias{SEp_from_TE.p}
-\title{Obtains standard error from treatment effect and p-value}
+\title{Standard Error from Treatment Effect and p-value}
 \usage{
 SEp_from_TE.p(TE, p, two_sided = TRUE)
 }
@@ -14,11 +14,16 @@ SEp_from_TE.p(TE, p, two_sided = TRUE)
 \item{two_sided}{whether the two sided z statistics or single sided should be calculated}
 }
 \value{
-
+Pooled standard error
 }
 \description{
-Method is according to Altman D G, Bland J M. How to obtain the confidence interval from a P value BMJ 2011; 343 :d2090 doi:10.1136/bmj.d2090
+Calculates the pooled standard error by the use of the treatment effect and p value.
+To avoid an infinitive return in case of p = 1, p is automatically adjusted to 0.99999
 }
-\details{
-To avoid an infinitive return, p = 1 is automatically adjusted to 0.99999
+\examples{
+# TE = 1.5, p = 0.8
+SEp_from_TE.p(1.5, 0.8)
+}
+\references{
+Altman D G, Bland J M. How to obtain the confidence interval from a P value BMJ 2011; 343 :d2090 doi:10.1136/bmj.d2090
 }
