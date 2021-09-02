@@ -10,11 +10,12 @@ dat <- data.frame(M1 = c(103, 103, 103),
                   n1 = c(50, NA, NA),
                   n2 = c(50, NA, NA),
                   method = c("hedges", "cohen", "hedges"))
-mutate(dat, SMD = SMD_from_arm(M1, M2, SD1, SD2, n1, n2, method))
 test_that("SMD from arm", {
   expect_equal(SMD_from_arm(103, 100, 5.5, 4.5, 50, 50), 0.5924, tolerance = 0.001)
   expect_equal(SMD_from_arm(103, 100, 5.5, 4.5, method = "cohen"), 0.597, tolerance = 0.001)
   expect_error(SMD_from_arm(103, 100, 5.5, 4.5, method = "hedge"))
+  expect_warning(expect_equal(mutate(dat, SMD = SMD_from_arm(M1, M2, SD1, SD2, n1, n2, method)) %>% pull(SMD),
+               c(0.5924, 0.597, NA), tolerance = 0.001))
 })
 
 test_that("SMD calculation matched groups", {

@@ -120,20 +120,30 @@ SMD_from_arm <-
 #' SMD.matched_calc(M_diff = 3,
 #'     SD_within = SD.within_from_SD.r(SD_between, r))
 SMD.matched_calc <- function(M_diff = NA, M1 = NA, M2 = NA, SD_within) {
-  # check whether differences or group values were reported
-  ifelse(is.na(M_diff),
-         method <- "ind",
-         method <- "diff")
+  l <- length(SD_within)
+  M_diff <- extend_var(M_diff, l)
+  M1 <- extend_var(M1, l)
+  M2 <- extend_var(M2, l)
 
-  # calculate d on the basis of group values
-  ifelse(method == "ind" & (is.na(M1) | is.na(M2)),
-         SMD <- NA,
-         SMD <- SMD_calc(M1, M2, SD_within)
-         )
+  SMD <- c()
 
-  # on the basis of diff values
-  ifelse(method == "diff",
-         SMD <- M_diff / SD_within,
-         SMD)
+  for(i in seq_along(SD_within)){
+    # check whether differences or group values were reported
+    ifelse(is.na(M_diff[i]),
+           method <- "ind",
+           method <- "diff")
+
+    # calculate d on the basis of group values
+    ifelse(method == "ind" & (is.na(M1[i]) | is.na(M2[i])),
+           SMD[i] <- NA,
+           SMD[i] <- SMD_calc(M1[i], M2[i], SD_within[i])
+    )
+
+    # on the basis of diff values
+    ifelse(method == "diff",
+           SMD[i] <- M_diff[i] / SD_within[i],
+           SMD[i])
+  }
+  return(SMD)
 }
 
