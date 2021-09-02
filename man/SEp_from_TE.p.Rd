@@ -11,7 +11,7 @@ SEp_from_TE.p(TE, p, two_sided = TRUE)
 
 \item{p}{reported p-value}
 
-\item{two_sided}{whether the two sided z statistics or single sided should be calculated}
+\item{two_sided}{whether the two sided statistics or single sided should be calculated}
 }
 \value{
 Pooled standard error (e.g. standard error of intervention effect)

@@ -19,7 +19,7 @@ Pooled standard deviation
 \description{
 Calculates the standard deviation from the pooled standard error and sample size fro two groups (e.g. intervention effects).
 For single groups \code{\link[=SD_from_SE]{SD_from_SE()}} has to be used.
-This method is the reverse method of \code{\link[=SEp_from_SDp.N]{SEp_from_SDp.N()}}.
+This method is the reverse method of \code{\link[=SEp_from_SDp]{SEp_from_SDp()}}.
 }
 \examples{
 #pooled standard error, sample size 1 and sample size 2
@@ -34,5 +34,5 @@ https://handbook-5-1.cochrane.org/chapter_7/7_7_3_3_obtaining_standard_deviation
 }
 \seealso{
 \code{\link[=SD_from_SE]{SD_from_SE()}} for a single group.
-\code{\link[=SEp_from_SDp.N]{SEp_from_SDp.N()}} if the standard error should be computed instead.
+\code{\link[=SEp_from_SDp]{SEp_from_SDp()}} if the standard error should be computed instead.
 }

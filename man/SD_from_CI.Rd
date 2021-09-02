@@ -4,7 +4,7 @@
 \alias{SD_from_CI}
 \title{Standard Deviation from Confidence interval}
 \usage{
-SD_from_CI(CI_low, CI_up, N, sig_level = 0.05, two_sided = TRUE)
+SD_from_CI(CI_low, CI_up, N, sig_level = 0.05, two_sided = TRUE, t_dist = TRUE)
 }
 \arguments{
 \item{CI_low}{lower limit confidence interval}
@@ -16,17 +16,20 @@ SD_from_CI(CI_low, CI_up, N, sig_level = 0.05, two_sided = TRUE)
 \item{sig_level}{significance level}
 
 \item{two_sided}{whether a two sided test for significance was used}
+
+\item{t_dist}{whether a t distribution has been used to calculate the CI (usually the case if N < 60)}
 }
 \value{
 Standard deviation single group
 }
 \description{
-Computes the standard deviation from the confidence interval and sample size. This method is only valid for single groups.
+Computes the standard deviation from the confidence interval and sample size. This method is only valid for single groups and when the
+CI is symmetrical around the mean.
 For two groups (e.g. intervention effects) \code{\link[=SDp_from_CIp]{SDp_from_CIp()}} has to be used.
 }
 \examples{
-lower_ci <- 2
-SD_from_CI()
+# lower CI = -0.5, upper CI = 2, sample size = 100
+SD_from_CI(-05, 2, 100)
 }
 \references{
 https://handbook-5-1.cochrane.org/chapter_7/7_7_3_2_obtaining_standard_deviations_from_standard_errors_and.htm

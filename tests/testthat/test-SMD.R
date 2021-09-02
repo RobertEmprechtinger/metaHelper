@@ -18,9 +18,13 @@ test_that("SMD from arm", {
                c(0.5924, 0.597, NA), tolerance = 0.001))
 })
 
+dat <- data.frame(M_diff = c(NA, 3, 3, 2), M1 = c(103, NA, 103, NA), M2 = c(100, NA, 100, NA), SD_within = c(7.1005, 7.1005, 7.1005, 4.1005))
 test_that("SMD calculation matched groups", {
   expect_equal(SMD.matched_calc(M1 = 103, M2 = 100, SD_within = 7.1005), 0.4225, tolerance = 0.0001)
   expect_equal(SMD.matched_calc(M_diff = 3, SD_within = 7.1005), 0.4225, tolerance = 0.0001)
   expect_equal(SMD.matched_calc(M_diff = 3, M1 = 103, M2 = 100, SD_within = 7.1005), 0.4225, tolerance = 0.0001)
   expect_error(SMD.matched_calc(M_diff = 3, M1 = 103, M2 = 100))
+  expect_equal(SMD.matched_calc(M_diff = 2, SD_within = 4.1005), 0.4877454, tolerance = 0.0001)
+  expect_equal(mutate(dat, SMD = SMD.matched_calc(M_diff, M1, M2, SD_within)) %>% pull(SMD),
+               c(0.4225, 0.4225, 0.4225, 0.4877454), tolerance = 0.0001)
 })

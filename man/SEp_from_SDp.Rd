@@ -27,5 +27,5 @@ SEp_from_SDp(2, 50, 75)
 https://handbook-5-1.cochrane.org/chapter_7/7_7_3_3_obtaining_standard_deviations_from_standard_errors.htm
 }
 \seealso{
-\code{\link[=SEp_from_SDp]{SEp_from_SDp()}} for a single group
+\code{\link[=SE_from_SD]{SE_from_SD()}} for a single group
 }

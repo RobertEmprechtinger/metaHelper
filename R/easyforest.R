@@ -1,9 +1,3 @@
-library(dplyr)
-library(grid)
-library(ggplot2)
-library(gridExtra)
-
-
 #' Create forest plots for metafor outcomes
 #'
 #' @importFrom magrittr %>%

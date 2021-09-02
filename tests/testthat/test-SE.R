@@ -39,6 +39,17 @@ test_that("SMD.SE from SMD and sample size", {
 })
 
 
+dat <- data.frame(CI_low = c(10, 10, 10),
+                  CI_up = c(5, 5, 5),
+                  N1 = c(NA, 10, NA),
+                  N2 = c(NA, 10, NA),
+                  t_dist = c(F, T, T))
+test_that("Pooled standard error from CI", {
+  expect_equal(expect_warning(mutate(dat, SE = SEp_from_CIp(CI_low, CI_up, N1, N2, t_dist = t_dist))) %>% pull(SE),
+               c(1.27551, 1.189, NA), tolerance = 0.001)
+})
+
+
 dat <- data.frame(TE = c(17, 1.204, 1, 1), p = c(0.032, 0.034, 1, 0.99999))
 test_that("SE pooled from p and treatment effect", {
   expect_equal(SEp_from_TE.p(17, 0.032), 7.94, tolerance = 0.01)
@@ -48,3 +59,4 @@ test_that("SE pooled from p and treatment effect", {
                  pull(SE), c(7.94, 0.569, 79788.45, 79788.45), tolerance = 0.01
                )
 })
+

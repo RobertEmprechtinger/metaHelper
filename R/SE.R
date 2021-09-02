@@ -14,6 +14,9 @@
 #' @return
 #' Single group standard error
 #'
+#' @references
+#' https://handbook-5-1.cochrane.org/chapter_7/7_7_3_2_obtaining_standard_deviations_from_standard_errors_and.htm#'
+#'
 #' @export
 #'
 #' @examples
@@ -29,7 +32,7 @@ SE_from_SD <- function(SD, n){
 #' Caclulates the pooled standard error for two groups (e.g. intervention effect). In case of a single group, [SE_from_SD()] has to be used.
 #'
 #' @seealso
-#' [SEp_from_SDp()] for a single group
+#' [SE_from_SD()] for a single group
 #'
 #' @param SDp pooled standard deviation
 #' @param n1 sample size group 1
@@ -75,15 +78,15 @@ SEp_from_SDp <- function(SDp, n1, n2){
 #' # lower CI = 0.6, upper CI = 0.9
 #' SE.SMD_from_OR.CI(0.6, 0.9)
 SE.SMD_from_OR.CI <- function(CI_low, CI_up, sig_level = 0.05, two_sided = TRUE){
-  SE_log_OR <- SE_from_CI(log(CI_low), log(CI_up), sig_level = sig_level, two_sided = two_sided)
+  SE_log_OR <- SEp_from_CIp(log(CI_low), log(CI_up), sig_level = sig_level, two_sided = two_sided, t_dist = FALSE)
   SE_SMD <- SE_log_OR * sqrt(3)/pi
   return(SE_SMD)
 }
 
 
-#' SMD standard error from sample sizes
+#' Standard Error from Sample Sizes and SMD
 #'
-#' Approximates SMD standard error from sample sizes. Approximation provided by Borenstein (2009, p.226).
+#' Approximates SMD standard error from sample sizes and SMD. Approximation provided by Borenstein (2009, p.226).
 #'
 #' @references
 #' Borenstein M: Effect sizes for continuous data.
@@ -123,27 +126,47 @@ SE.SMD_from_SMD <- function(SMD, n1, n2, method = "hedges"){
 }
 
 
-#' Standard Error from Confidence Interval
+#' Standard Error from Confidence Interval for differences of means
 #'
-#' Calculates the standard error from confidence interval limits.
+#' Calculates the standard error from confidence interval limits for differences of means.
+#' This method is only valid in case the confidence interval is symmetrical
+#' around the mean and works only for the t or normal distribution (argument t_dist).
 #'
 #' @references
 #' https://handbook-5-1.cochrane.org/chapter_7/7_7_7_2_obtaining_standard_errors_from_confidence_intervals_and.htm
 #'
 #' @param CI_low lover OR confidence interval limit
 #' @param sig_level the significance level
-#' @param two_sided whether the two sided z statistics or single sided should be calculated
+#' @param two_sided whether the two sided statistics or single sided should be calculated
 #' @param CI_up upper OR confidence interval limit
 #'
 #' @return
-#' Pooled standard error (e.g. standard error of intervention effect)
+#' Pooled standard error (e.g. intervention effect)
 #' @export
 #'
 #' @examples
 #' # lower CI = -1.5, upper CI = 0.5
-#' SE_from_CI(-1.5, 0.5)
-SE_from_CI <- function(CI_low, CI_up, sig_level = 0.05, two_sided = TRUE){
-  (CI_up - CI_low) / (2 * z_calc(sig_level, two_sided))
+#' SEp_from_CIp(-1.5, 0.5)
+SEp_from_CIp <- function(CI_low, CI_up, N1 = NA, N2 = NA, sig_level = 0.05, two_sided = TRUE, t_dist = TRUE){
+  l <- length(CI_low)
+  sig_level <- extend_var(sig_level, l)
+  two_sided <- extend_var(two_sided, l)
+  t_dist <- extend_var(t_dist, l)
+
+  result <- c()
+  for(i in seq_along(CI_low)){
+    if(t_dist[i]){
+      if(is.na(N1[i]) | is.na(N2[i])){
+        result[i] <- NA
+        warning("t_dist needs sample size")
+      } else{
+        result[i] <- abs((CI_up[i] - CI_low[i]) / (2 * t_calc(sig_level[i], two_sided[i], df = N1[i] + N2[i] - 2)))
+        }
+    } else{
+      result[i] <- abs((CI_up[i] - CI_low[i]) / (2 * z_calc(sig_level[i], two_sided[i])))
+    }
+  }
+  return(result)
 }
 
 
@@ -154,7 +177,7 @@ SE_from_CI <- function(CI_low, CI_up, sig_level = 0.05, two_sided = TRUE){
 #'
 #' @param TE reported treatment effect
 #' @param p reported p-value
-#' @param two_sided whether the two sided z statistics or single sided should be calculated
+#' @param two_sided whether the two sided statistics or single sided should be calculated
 #'
 #' @return
 #' Pooled standard error (e.g. standard error of intervention effect)
@@ -169,7 +192,8 @@ SE_from_CI <- function(CI_low, CI_up, sig_level = 0.05, two_sided = TRUE){
 #' SEp_from_TE.p(1.5, 0.8)
 SEp_from_TE.p <- function(TE, p, two_sided = TRUE){
   SE <- c()
-  if(length(two_sided == 1)) two_sided <- rep(two_sided, length(TE))
+  l <- length(TE)
+  two_sided <- extend_var(two_sided, length(TE))
 
   for(i in seq_along(TE)){
     ifelse(p[i] == 1,

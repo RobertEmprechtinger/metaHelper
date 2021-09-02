@@ -7,6 +7,7 @@ test_that("SD hedges", {
                  c(2, 1.734, NA), tolerance = 0.001)
 })
 
+
 test_that("SD pool", {
   expect_equal(SD_pool(5.5, 4.5, 50, 50, method = "hedges"), 5.0249, tolerance = 0.001)
   expect_error(SD_pool(5.5, 4.5, 50, 50, method = "hedge"), "method needs to be either 'hedges' or 'cohen'")
@@ -44,8 +45,15 @@ test_that("SD pooled from SE pooled", {
 })
 
 
+dat <- data.frame(CI_low = c(81.5261, 81.5261, 81.5261, 81.5261, 30),
+                  CI_up = c(84.2739, 84.2739, 84.2739, 84.2739, 34.2),
+                  N = c(360, 360, 20, 20, 25),
+                  t_dist = c(FALSE, TRUE, FALSE, TRUE, TRUE))
+mutate(dat, SD = SD_from_CI(CI_low, CI_up, N, t_dist = t_dist))
 test_that("SD from CI single group",{
-  expect_equal(SD_from_CI(81.5261, 84.2739, 360), 13.3, tolerance = 0.001)
+  expect_equal(SD_from_CI(81.5261, 84.2739, 360, t_dist = FALSE), 13.3, tolerance = 0.001)
+  expect_equal(mutate(dat, SD = SD_from_CI(CI_low, CI_up, N, t_dist = t_dist)) %>% pull(SD),
+               c(13.3, 13.255, 3.134, 2.935, 5.09), tolerance = 0.001)
 })
 
 

@@ -127,7 +127,7 @@ SD_from_SE <- function(SE, n){
 #'
 #' Calculates the standard deviation from the pooled standard error and sample size fro two groups (e.g. intervention effects).
 #' For single groups [SD_from_SE()] has to be used.
-#' This method is the reverse method of [SEp_from_SDp.N()].
+#' This method is the reverse method of [SEp_from_SDp()].
 #'
 #' @references
 #' https://handbook-5-1.cochrane.org/chapter_7/7_7_3_3_obtaining_standard_deviations_from_standard_errors.htm
@@ -141,7 +141,7 @@ SD_from_SE <- function(SE, n){
 #'
 #' @seealso
 #' [SD_from_SE()] for a single group.
-#' [SEp_from_SDp.N()] if the standard error should be computed instead.
+#' [SEp_from_SDp()] if the standard error should be computed instead.
 #'
 #' @export
 #'
@@ -160,7 +160,8 @@ SDp_from_SEp <- function(SEp, n1, n2){
 #' Standard Deviation from Confidence interval
 #'
 #'
-#' Computes the standard deviation from the confidence interval and sample size. This method is only valid for single groups.
+#' Computes the standard deviation from the confidence interval and sample size. This method is only valid for single groups and when the
+#' CI is symmetrical around the mean.
 #' For two groups (e.g. intervention effects) [SDp_from_CIp()] has to be used.
 #'
 #' @param CI_low lower limit confidence interval
@@ -168,6 +169,7 @@ SDp_from_SEp <- function(SEp, n1, n2){
 #' @param N overall sample size
 #' @param sig_level significance level
 #' @param two_sided whether a two sided test for significance was used
+#' @param t_dist whether a t distribution has been used to calculate the CI (usually the case if N < 60)
 #'
 #' @seealso
 #' [SDp_from_CIp()] for two groups (e.g. intervention effects).
@@ -181,10 +183,24 @@ SDp_from_SEp <- function(SEp, n1, n2){
 #' @export
 #'
 #' @examples
-#' lower_ci <- 2
-#' SD_from_CI()
-SD_from_CI <- function(CI_low, CI_up, N, sig_level = 0.05, two_sided = TRUE){
-  sqrt(N) * (CI_up - CI_low) / (z_calc(sig_level, two_sided) * 2)
+#' # lower CI = -0.5, upper CI = 2, sample size = 100
+#' SD_from_CI(-05, 2, 100)
+SD_from_CI <- function(CI_low, CI_up, N, sig_level = 0.05, two_sided = TRUE, t_dist = TRUE){
+  l <- length(CI_low)
+  sig_level <- extend_var(sig_level, l)
+  two_sided <- extend_var(two_sided, l)
+  t_dist <- extend_var(t_dist, l)
+
+  result <- c()
+
+  for(i in seq_along(CI_low)){
+    if(t_dist[i]){
+      result[i] <- sqrt(N[i]) * (CI_up[i] - CI_low[i]) / (t_calc(sig_level[i], two_sided[i], N[i] - 1) * 2)
+    } else {
+      result[i] <- sqrt(N[i]) * (CI_up[i] - CI_low[i]) / (z_calc(sig_level[i], two_sided[i]) * 2)
+    }
+  }
+  return(result)
 }
 
 
