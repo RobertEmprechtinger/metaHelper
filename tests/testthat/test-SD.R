@@ -5,19 +5,14 @@ test_that("SD hedges", {
   expect_warning(SD_pool_hedges(1, 2, NA, 100))
   expect_equal(mutate(dat, SDp = expect_warning(SD_pool_hedges(SD1, SD2, n1, n2))) %>% pull(SDp),
                  c(2, 1.734, NA), tolerance = 0.001)
-  }
-)
-
-
-?expect_equal
-
+})
 
 test_that("SD pool", {
   expect_equal(SD_pool(5.5, 4.5, 50, 50, method = "hedges"), 5.0249, tolerance = 0.001)
   expect_error(SD_pool(5.5, 4.5, 50, 50, method = "hedge"), "method needs to be either 'hedges' or 'cohen'")
   expect_equal(SD_pool(c(5.5, 5.5), c(4.5, 4.5), c(50, 50), c(50, 50),
                        method = c("hedges", "hedges")), c(5.0249, 5.0249), tolerance = 0.0001)
-  })
+})
 
 # testing with data frames
 dat <- data.frame(SD1 = c(2,3, NA), SD2 = c(3,5, 3), n1 = c(20, 40, 50), n2= c(30, 60, 50))
@@ -28,7 +23,7 @@ test_that("SD pool data frame", {
             pull(SD), c(2.649686, 4.316556, NA), tolerance = 0.0001)
   expect_equal(mutate(dat2, SD = SD_pool(SD1, SD2, n1, n2, method)) %>%
                  pull(SD), c(2.649686, 4.316556, NA), tolerance = 0.0001)
-  })
+})
 
 test_that("SD cohen", {
   expect_equal(SMD_calc(4.5, 3, SD_pool(2.5, 4, method = "cohen")), 0.45, tolerance = 0.001)

@@ -68,18 +68,20 @@ SMD_from_arm <-
            n1 = NA,
            n2 = NA,
            method = "hedges") {
-    ifelse(method %in% c("hedges", "cohen"),
-           function(){},
-           stop("method needs to be either 'hedges' or 'cohen'"))
+    if(length(method) == 1) method <- rep(method, length(M1))
+    SMD <- c()
 
-    SMD <- SMD_calc(M1, M2,
-                      SD_pool(SD1, SD2, n1, n2, method))
+    for(i in seq_along(M1)){
+      if(!(method[i] %in% c("hedges", "cohen"))) stop("method needs to be either 'hedges' or 'cohen'")
 
-    h_fac <- ifelse(method == "hedges",
-           hedges_factor(n1, n2),
-           1)
+      SMD[i] <- SMD_calc(M1[i], M2[i],
+                         SD_pool(SD1[i], SD2[i], n1[i], n2[i], method[i]))
 
-    SMD * h_fac
+      if(method[i] == "hedges"){
+        SMD[i] <- SMD[i] *hedges_factor(n1[i], n2[i])
+      }
+    }
+    return(SMD)
   }
 
 
