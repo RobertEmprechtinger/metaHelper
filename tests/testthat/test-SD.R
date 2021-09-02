@@ -1,4 +1,18 @@
-test_that("SD hedge", {
+dat <- data.frame(SD1 = c(2, 1, 1), SD2 = c(2, 2, 1), n1 = c(50, 50, NA), n2 = c(50, 100, 75))
+test_that("SD hedges", {
+  expect_equal(SD_pool_hedges(2, 2, 50, 50), 2, tolerance = 0.001)
+  expect_equal(SD_pool_hedges(1, 2, 50, 100), 1.734, tolerance = 0.001)
+  expect_warning(SD_pool_hedges(1, 2, NA, 100))
+  expect_equal(mutate(dat, SDp = expect_warning(SD_pool_hedges(SD1, SD2, n1, n2))) %>% pull(SDp),
+                 c(2, 1.734, NA), tolerance = 0.001)
+  }
+)
+
+
+?expect_equal
+
+
+test_that("SD pool", {
   expect_equal(SD_pool(5.5, 4.5, 50, 50, method = "hedges"), 5.0249, tolerance = 0.001)
   expect_error(SD_pool(5.5, 4.5, 50, 50, method = "hedge"), "method needs to be either 'hedges' or 'cohen'")
   expect_equal(SD_pool(c(5.5, 5.5), c(4.5, 4.5), c(50, 50), c(50, 50),

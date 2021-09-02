@@ -2,7 +2,7 @@
 % Please edit documentation in R/SE.R
 \name{SE_from_CI}
 \alias{SE_from_CI}
-\title{Obtains standard error from confidence intervals}
+\title{Standard Error from Confidence Interval}
 \usage{
 SE_from_CI(CI_low, CI_up, sig_level = 0.05, two_sided = TRUE)
 }
@@ -16,9 +16,15 @@ SE_from_CI(CI_low, CI_up, sig_level = 0.05, two_sided = TRUE)
 \item{two_sided}{whether the two sided z statistics or single sided should be calculated}
 }
 \value{
-
+Pooled standard error (e.g. standard error of intervention effect)
 }
 \description{
-Method is according to the archived version of the Cochrane handbook:
+Calculates the standard error from confidence interval limits.
+}
+\examples{
+# lower CI = -1.5, upper CI = 0.5
+SE_from_CI(-1.5, 0.5)
+}
+\references{
 https://handbook-5-1.cochrane.org/chapter_7/7_7_7_2_obtaining_standard_errors_from_confidence_intervals_and.htm
 }

@@ -14,7 +14,7 @@ SE.SMD_from_SMD(SMD, n1, n2, method = "hedges")
 \item{n2}{sample size group 2}
 }
 \value{
-Standard error of SMD
+Standard error of SMD (e.g. standard error of intervention effect)
 }
 \description{
 Approximates SMD standard error from sample sizes. Approximation provided by Borenstein (2009, p.226).

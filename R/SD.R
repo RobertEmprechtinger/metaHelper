@@ -17,12 +17,20 @@
 #' @examples
 #' SD_pool_hedges(2, 3, 50, 50)
 SD_pool_hedges <- function(SD1, SD2, n1, n2) {
-  not_possible <- (!is.na(SD1) & !is.na(SD2)) & (is.na(n1) | is.na(n2))
-  ifelse(not_possible,
-    stop("hedges method needs sample size. You could try method=cohen instead"),
-    sqrt(((n1 - 1) * SD1 ^ 2 + (n2 - 1) * SD2 ^ 2) /
-           (n1 + n2 - 2))
-  )
+  result <- c()
+  for(i in seq_along(SD1)){
+
+    not_possible <- (!is.na(SD1[i]) & !is.na(SD2[i])) & (is.na(n1[i]) | is.na(n2[i]))
+
+    if(not_possible){
+      result[i] <- NA
+      warning("hedges method needs sample size. You could try method=cohen instead")
+    } else{
+      result[i] <- sqrt(((n1[i] - 1) * SD1[i] ^ 2 + (n2[i] - 1) * SD2[i] ^ 2) /
+                          (n1[i] + n2[i] - 2))
+    }
+  }
+  return(result)
 }
 
 

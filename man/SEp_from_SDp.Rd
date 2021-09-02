@@ -14,7 +14,7 @@ SEp_from_SDp(SDp, n1, n2)
 \item{n2}{sample size group 2}
 }
 \value{
-Pooled standard error for for two groups
+Pooled standard error for two groups (e.g. standard error of intervention effect)
 }
 \description{
 Caclulates the pooled standard error for two groups (e.g. intervention effect). In case of a single group, \code{\link[=SE_from_SD]{SE_from_SD()}} has to be used.

@@ -14,7 +14,7 @@ SEp_from_TE.p(TE, p, two_sided = TRUE)
 \item{two_sided}{whether the two sided z statistics or single sided should be calculated}
 }
 \value{
-Pooled standard error
+Pooled standard error (e.g. standard error of intervention effect)
 }
 \description{
 Calculates the pooled standard error by the use of the treatment effect and p value.
