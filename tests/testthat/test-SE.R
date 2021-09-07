@@ -45,6 +45,8 @@ dat <- data.frame(CI_low = c(10, 10, 10),
                   N2 = c(NA, 10, NA),
                   t_dist = c(F, T, T))
 test_that("Pooled standard error from CI", {
+  expect_equal(SEp_from_CIp(-0.37, 5, t_dist = F), 1.37, tolerance = 0.001)
+  expect_equal(SEp_from_CIp(-0.666, 5, 10, 15, t_dist = T), 1.37, tolerance = 0.001)
   expect_equal(expect_warning(mutate(dat, SE = SEp_from_CIp(CI_low, CI_up, N1, N2, t_dist = t_dist))) %>% pull(SE),
                c(1.27551, 1.189, NA), tolerance = 0.001)
 })

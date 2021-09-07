@@ -57,6 +57,21 @@ test_that("SD from CI single group",{
 })
 
 
+dat <- data.frame(CI_low = c(-0.666, 2, 2),
+                  CI_up = c(4.86, 6, 6),
+                  n1 = c(25, 1000, 1000),
+                  n2 = c(22, 1000, 1000),
+                  t_dist = c(T, T, F))
+test_that("SD pooled from CI pooled", {
+  expect_equal(SDp_from_CIp(-0.666, 4.86, 25, 22, t_dist = T), 4.69, tolerance = 0.001)
+  expect_equal(SDp_from_CIp(-0.666, 4.86, NA, NA, t_dist = T), NA)
+  expect_error(SDp_from_CIp(-0.666, 4.86, t_dist = T))
+  expect_equal(mutate(dat, SD = SDp_from_CIp(CI_low, CI_up, n1, n2, t_dist = t_dist)) %>% pull(SD),
+               c(4.69, 22.8036, 22.8174), tolerance = 0.001)
+})
+
+
+
 test_that("SD within for matched groups", {
   expect_equal(SD.within_from_SD.r(5.5, 0.7), 7.1005, tolerance = 0.0001)
   expect_error(SD.within_from_SD.r(5.5, 1.2))

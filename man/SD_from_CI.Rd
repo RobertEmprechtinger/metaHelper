@@ -4,20 +4,20 @@
 \alias{SD_from_CI}
 \title{Standard Deviation from Confidence interval}
 \usage{
-SD_from_CI(CI_low, CI_up, N, sig_level = 0.05, two_sided = TRUE, t_dist = TRUE)
+SD_from_CI(CI_low, CI_up, n, sig_level = 0.05, two_sided = TRUE, t_dist = TRUE)
 }
 \arguments{
 \item{CI_low}{lower limit confidence interval}
 
 \item{CI_up}{upper limit confidence interval}
 
-\item{N}{overall sample size}
-
 \item{sig_level}{significance level}
 
 \item{two_sided}{whether a two sided test for significance was used}
 
 \item{t_dist}{whether a t distribution has been used to calculate the CI (usually the case if N < 60)}
+
+\item{N}{overall sample size}
 }
 \value{
 Standard deviation single group

@@ -4,6 +4,8 @@
 #' @importFrom dplyr mutate bind_rows filter
 #' @import ggplot2
 #'
+#' @keywords internal
+#'
 #' @param rma_results a list of rma results created by metafor
 #' @param sig_level the two sided significance value
 #' @param z transforms the sig_level to z
@@ -27,12 +29,25 @@
 #' @export
 #'
 #' @examples
+#' ### copy BCG vaccine meta-analysis data into 'dat'
+#'
+#' dat <- metafor::dat.bcg
+#'
+#' ### calculate log risk ratios and corresponding sampling variances (and use
+#' ### the 'slab' argument to store study labels as part of the data frame)
+#' dat <- metafor::escalc(measure="RR", ai=tpos, bi=tneg, ci=cpos, di=cneg, data=dat,
+#'              slab=paste(author, year, sep=", "))
+#'
+#' ### fit random-effects model
+#' res <- metafor::rma(yi, vi, data=dat)
+#'
+#' #' easyforest(res)
 easyforest <- function(
   rma_results, #
   sig_level = 0.05, # the two sided significance value
   null_value = 0, # null effect size. In case of SMD = 0 and RR = 1.
   margin_bottom = 1, # Distance from last effect description to x_axis
-  headlines,
+  headlines = "",
   error_bar_height = 0.2, # Height of the errorbars
   pooled_estimate_height = 0.3, # T
 

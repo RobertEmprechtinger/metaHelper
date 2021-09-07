@@ -16,3 +16,10 @@ extend_var <- function(variable, length){
     return(rep(variable, length))
   } else return(variable)
 }
+
+a <- "a"
+b <- "b"
+
+for(x in c(a, b)){
+  assign(x, extend_var(x, 10))
+}

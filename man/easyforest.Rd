@@ -9,7 +9,7 @@ easyforest(
   sig_level = 0.05,
   null_value = 0,
   margin_bottom = 1,
-  headlines,
+  headlines = "",
   error_bar_height = 0.2,
   pooled_estimate_height = 0.3,
   textsize = 3,
@@ -72,3 +72,19 @@ easyforest(
 \description{
 Create forest plots for metafor outcomes
 }
+\examples{
+### copy BCG vaccine meta-analysis data into 'dat'
+
+dat <- metafor::dat.bcg
+
+### calculate log risk ratios and corresponding sampling variances (and use
+### the 'slab' argument to store study labels as part of the data frame)
+dat <- metafor::escalc(measure="RR", ai=tpos, bi=tneg, ci=cpos, di=cneg, data=dat,
+             slab=paste(author, year, sep=", "))
+
+### fit random-effects model
+res <- metafor::rma(yi, vi, data=dat)
+
+#' easyforest(res)
+}
+\keyword{internal}

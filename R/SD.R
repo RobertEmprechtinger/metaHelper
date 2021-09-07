@@ -185,7 +185,7 @@ SDp_from_SEp <- function(SEp, n1, n2){
 #' @examples
 #' # lower CI = -0.5, upper CI = 2, sample size = 100
 #' SD_from_CI(-05, 2, 100)
-SD_from_CI <- function(CI_low, CI_up, N, sig_level = 0.05, two_sided = TRUE, t_dist = TRUE){
+SD_from_CI <- function(CI_low, CI_up, n, sig_level = 0.05, two_sided = TRUE, t_dist = TRUE){
   l <- length(CI_low)
   sig_level <- extend_var(sig_level, l)
   two_sided <- extend_var(two_sided, l)
@@ -195,9 +195,62 @@ SD_from_CI <- function(CI_low, CI_up, N, sig_level = 0.05, two_sided = TRUE, t_d
 
   for(i in seq_along(CI_low)){
     if(t_dist[i]){
-      result[i] <- sqrt(N[i]) * (CI_up[i] - CI_low[i]) / (t_calc(sig_level[i], two_sided[i], N[i] - 1) * 2)
+      result[i] <- sqrt(n[i]) * (CI_up[i] - CI_low[i]) / (t_calc(sig_level[i], two_sided[i], n[i] - 1) * 2)
     } else {
-      result[i] <- sqrt(N[i]) * (CI_up[i] - CI_low[i]) / (z_calc(sig_level[i], two_sided[i]) * 2)
+      result[i] <- sqrt(n[i]) * (CI_up[i] - CI_low[i]) / (z_calc(sig_level[i], two_sided[i]) * 2)
+    }
+  }
+  return(result)
+}
+
+
+#' Pooled Standard Deviation from Confidence Interval
+#'
+#' Computes the pooled standard deviation (e.g. standard deviation of an intervention effect) from confidence intervals and samplie sizes.
+#' The cochrane handbook (see references) calls the resulting standard deviation as "within-group standard deviation". This is not entirely correct,
+#' since the within-group standard deviations (e.g. standard deviation for control and for intervention group) can not be determined with this formula.
+#' This method is only valid if the confidence interval is symmetrical around the mean and when either the t-distribution or
+#' normal-distribution (t_dist = FALSE) has been used to calculate the CI.
+#'
+#' @param CI_low lower limit confidence interval
+#' @param CI_up upper limit confidence interval
+#' @param sig_level significance level
+#' @param two_sided whether a two sided test for significance was used
+#' @param t_dist whether a t distribution has been used to calculate the CI (usually the case if N < 60)
+#' @param n1 sample size group 1
+#' @param n2 sample size group 2
+#'
+#' @return
+#' Pooled standard deviation
+#'
+#' @export
+#'
+#' @seealso
+#' [SD_from_CI()] for single group standard deviation.
+#'
+#' @references
+#' https://handbook-5-1.cochrane.org/chapter_7/7_7_3_3_obtaining_standard_deviations_from_standard_errors.htm
+#'
+#' @examples
+#' #lower CI = 0.5, upper CI = 0.7, N1 = 50, N2 = 70
+#' SDp_from_CIp(0.5, 0.7, 50, 70)
+SDp_from_CIp <- function(CI_low, CI_up, n1, n2, sig_level = 0.05, two_sided = TRUE, t_dist = TRUE){
+  result <- c()
+
+  l <- length(CI_low)
+  sig_level <- extend_var(sig_level, l)
+  two_sided <- extend_var(two_sided, l)
+  t_dist <- extend_var(t_dist, l)
+
+  for(i in seq_along(CI_low)){
+    # In case sample sizes are NA the results will also be NA
+    if(is.na(n1[i]) | is.na(n2[i])){
+      result[i] <- NA
+    } else{
+      # Calculation of SE
+      SE <- SEp_from_CIp(CI_low[i], CI_up[i], n1[i], n2[i], sig_level[i], two_sided[i], t_dist[i])
+
+      result[i] <- SE / sqrt(1/n1[i] + 1/n2[i])
     }
   }
   return(result)

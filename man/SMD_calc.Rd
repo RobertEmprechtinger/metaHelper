@@ -20,3 +20,7 @@ SMD_calc(M1, M2, SD_pooled)
 Uses the differences of two means and divides with the (pooled) standard deviation or the standard deviation of the
 control group in case Glass's delta should be calculated.
 }
+\examples{
+# Mean control = 153, Mean intervention = 136, pooled SD = 25
+SMD_calc(153, 136, 25)
+}

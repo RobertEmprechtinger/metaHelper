@@ -30,6 +30,8 @@ SMD_from_OR <- function(OR){
 #' @export
 #'
 #' @examples
+#' # Mean control = 153, Mean intervention = 136, pooled SD = 25
+#' SMD_calc(153, 136, 25)
 SMD_calc <- function(M1, M2, SD_pooled){
   (M1 - M2) /
     SD_pooled
@@ -60,6 +62,9 @@ SMD_calc <- function(M1, M2, SD_pooled){
 #' Goulet-Pelletier, J.-C., & Cousineau, D. (2018). A review of effect sizes and their confidence intervals, Part 1: The Cohen’s d family. The Quantitative Methods for Psychology, 14(4), 242–265. https://doi.org/10.20982/tqmp.14.4.p242
 #'
 #' @examples
+#' # Mean control = 23, Mean intervention = 56, SD control = 30,
+#' #    SD intervention = 35, sample size control = 45, sample size intervention = 60
+#' SMD_from_arm(23, 56, 30, 35, 45, 60)
 SMD_from_arm <-
   function(M1,
            M2,
