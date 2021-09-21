@@ -9,10 +9,7 @@ SE_from_SD(SD, n)
 \arguments{
 \item{SD}{standard deviation}
 
-\item{n}{sample size
-
-Calculates the standard error with the following formula:
-SD / sqrt(n)}
+\item{n}{sample size}
 }
 \value{
 Single group standard error

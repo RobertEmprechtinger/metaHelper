@@ -38,6 +38,8 @@ hedges_factor <- function(n1 = NA, n2 = NA, n_total = NA){
          df <- n_total - 2
   )
 
-  gamma(df / 2) /
+  result <- gamma(df / 2) /
     (sqrt(df / 2) * gamma((df - 1) / 2))
+  if(is.na(result) & !is.na(df)) result <- 1
+  return(result)
 }
