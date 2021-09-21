@@ -8,9 +8,6 @@
 #' @param SD standard deviation
 #' @param n sample size
 #'
-#' Calculates the standard error with the following formula:
-#' SD / sqrt(n)
-#'
 #' @return
 #' Single group standard error
 #'
