@@ -24,7 +24,7 @@ SD_pool_hedges <- function(SD1, SD2, n1, n2) {
 
     if(not_possible){
       result[i] <- NA
-      warning("hedges method needs sample size. You could try method=cohen instead")
+      warning("hedges method needs sample size. You could try method='cohen' instead")
     } else{
       result[i] <- sqrt(((n1[i] - 1) * SD1[i] ^ 2 + (n2[i] - 1) * SD2[i] ^ 2) /
                           (n1[i] + n2[i] - 2))
@@ -45,7 +45,7 @@ SD_pool_hedges <- function(SD1, SD2, n1, n2) {
 #' @param SD2 standard deviation of group 2
 #' @param n1 sample size of group 1
 #' @param n2 sample size of group 2
-#' @param method the method that should be used to calculate the SD. Method "hedges" needs sample sizes.
+#' @param method the method ("hedges", "cohen") that should be used to calculate the SD. Method "hedges" needs sample sizes.
 #' Method "cohen" uses the simplified method by Cohen 1988 and does not rely on sample sizes.
 #'
 #' @return
@@ -163,13 +163,14 @@ SDp_from_SEp <- function(SEp, n1, n2){
 #' Computes the standard deviation from the confidence interval and sample size. This method is only valid for single groups and when the
 #' CI is symmetrical around the mean.
 #' For two groups (e.g. intervention effects) [SDp_from_CIp()] has to be used.
+#' For sample sizes smaller than 60 usually the t_dist is used to calculate the confidence interval.
 #'
 #' @param CI_low lower limit confidence interval
 #' @param CI_up upper limit confidence interval
-#' @param N overall sample size
 #' @param sig_level significance level
 #' @param two_sided whether a two sided test for significance was used
-#' @param t_dist whether a t distribution has been used to calculate the CI (usually the case if N < 60)
+#' @param t_dist whether a t-distribution has been used to calculate the CI. See description.
+#' @param n sample size
 #'
 #' @seealso
 #' [SDp_from_CIp()] for two groups (e.g. intervention effects).
@@ -216,7 +217,7 @@ SD_from_CI <- function(CI_low, CI_up, n, sig_level = 0.05, two_sided = TRUE, t_d
 #' @param CI_up upper limit confidence interval
 #' @param sig_level significance level
 #' @param two_sided whether a two sided test for significance was used
-#' @param t_dist whether a t distribution has been used to calculate the CI (usually the case if N < 60)
+#' @param t_dist whether a t distribution has been used to calculate the CI
 #' @param n1 sample size group 1
 #' @param n2 sample size group 2
 #'
@@ -262,7 +263,7 @@ SDp_from_CIp <- function(CI_low, CI_up, n1, n2, sig_level = 0.05, two_sided = TR
 #' Computes the within standard deviation for matched groups. The within standard deviation can further be used to compute the standardized mean
 #' differences for matched groups.
 #'
-#' @param SD_diff standard deviation of the difference (usually reported)
+#' @param SD_diff standard deviation of the difference
 #' @param r correlation between pair of observations
 #'
 #' @return Within standard deviation

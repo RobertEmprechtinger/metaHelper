@@ -27,7 +27,7 @@ SDp_from_CIp(
 
 \item{two_sided}{whether a two sided test for significance was used}
 
-\item{t_dist}{whether a t distribution has been used to calculate the CI (usually the case if N < 60)}
+\item{t_dist}{whether a t distribution has been used to calculate the CI}
 }
 \value{
 Pooled standard deviation

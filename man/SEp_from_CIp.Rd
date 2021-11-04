@@ -2,7 +2,7 @@
 % Please edit documentation in R/SE.R
 \name{SEp_from_CIp}
 \alias{SEp_from_CIp}
-\title{Standard Error from Confidence Interval for differences of means}
+\title{Standard Error from Confidence Interval for Differences of Means}
 \usage{
 SEp_from_CIp(
   CI_low,
@@ -19,9 +19,15 @@ SEp_from_CIp(
 
 \item{CI_up}{upper OR confidence interval limit}
 
+\item{N1}{sample size group 1 (not required if t_dist = FALSE)}
+
+\item{N2}{sample size group 2 (not required if t_dist = FALSE)}
+
 \item{sig_level}{the significance level}
 
 \item{two_sided}{whether the two sided statistics or single sided should be calculated}
+
+\item{t_dist}{whether the t-distribution should be calculated - requires samples sizes}
 }
 \value{
 Pooled standard error (e.g. intervention effect)

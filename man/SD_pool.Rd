@@ -15,7 +15,7 @@ SD_pool(SD1, SD2, n1 = NA, n2 = NA, method = "hedges")
 
 \item{n2}{sample size of group 2}
 
-\item{method}{the method that should be used to calculate the SD. Method "hedges" needs sample sizes.
+\item{method}{the method ("hedges", "cohen") that should be used to calculate the SD. Method "hedges" needs sample sizes.
 Method "cohen" uses the simplified method by Cohen 1988 and does not rely on sample sizes.}
 }
 \value{

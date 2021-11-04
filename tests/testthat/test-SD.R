@@ -10,6 +10,7 @@ test_that("SD hedges", {
 
 test_that("SD pool", {
   expect_equal(SD_pool(5.5, 4.5, 50, 50, method = "hedges"), 5.0249, tolerance = 0.001)
+  expect_equal(SD_pool(5.5, 4.5, 50, 50, method = "cohen"), SD_pool(5.5, 4.5, method = "cohen"))
   expect_error(SD_pool(5.5, 4.5, 50, 50, method = "hedge"), "method needs to be either 'hedges' or 'cohen'")
   expect_equal(SD_pool(c(5.5, 5.5), c(4.5, 4.5), c(50, 50), c(50, 50),
                        method = c("hedges", "hedges")), c(5.0249, 5.0249), tolerance = 0.0001)

@@ -24,7 +24,7 @@ SE_from_SD <- function(SD, n){
 }
 
 
-#' Pooled Standard Error
+#' Standard Error (Pooled)
 #'
 #' Caclulates the pooled standard error for two groups (e.g. intervention effect). In case of a single group, [SE_from_SD()] has to be used.
 #'
@@ -93,6 +93,7 @@ SE.SMD_from_OR.CI <- function(CI_low, CI_up, sig_level = 0.05, two_sided = TRUE)
 #' @param n1 sample size group 1
 #' @param n2 sample size group 2
 #' @param SMD standardized mean differences
+#' @param method transformation method ("hedges", "cohen")
 #'
 #' @return Standard error of SMD (e.g. standard error of intervention effect)
 #' @export
@@ -123,7 +124,7 @@ SE.SMD_from_SMD <- function(SMD, n1, n2, method = "hedges"){
 }
 
 
-#' Standard Error from Confidence Interval for differences of means
+#' Standard Error from Confidence Interval for Differences of Means
 #'
 #' Calculates the standard error from confidence interval limits for differences of means.
 #' This method is only valid in case the confidence interval is symmetrical
@@ -136,6 +137,9 @@ SE.SMD_from_SMD <- function(SMD, n1, n2, method = "hedges"){
 #' @param sig_level the significance level
 #' @param two_sided whether the two sided statistics or single sided should be calculated
 #' @param CI_up upper OR confidence interval limit
+#' @param N1 sample size group 1 (not required if t_dist = FALSE)
+#' @param N2 sample size group 2 (not required if t_dist = FALSE)
+#' @param t_dist whether the t-distribution should be calculated - requires samples sizes
 #'
 #' @return
 #' Pooled standard error (e.g. intervention effect)

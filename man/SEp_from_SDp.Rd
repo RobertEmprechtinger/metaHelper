@@ -2,7 +2,7 @@
 % Please edit documentation in R/SE.R
 \name{SEp_from_SDp}
 \alias{SEp_from_SDp}
-\title{Pooled Standard Error}
+\title{Standard Error (Pooled)}
 \usage{
 SEp_from_SDp(SDp, n1, n2)
 }

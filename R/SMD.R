@@ -2,6 +2,7 @@
 #'
 #' Converts OR to SMD by using the formula provided here:
 #' https://stats.stackexchange.com/questions/68290/converting-odds-ratios-to-cohens-d-for-meta-analysis
+#' It is important to note that this is just an approximation.
 #'
 #' Borenstein, M., Hedges, L.V., Higgins, J.P.T. and Rothstein, H.R. (2009). Converting Among Effect Sizes. In Introduction to Meta-Analysis (eds M. Borenstein, L.V. Hedges, J.P.T. Higgins and H.R. Rothstein). https://doi.org/10.1002/9780470743386.ch7
 #'
@@ -49,7 +50,7 @@ SMD_calc <- function(M1, M2, SD_pooled){
 #' @param SD2 standard deviation group 2
 #' @param n1 sample size group 1
 #' @param n2 sample size group 2
-#' @param method either "cohen" for Cohen's d or "hedges" for Hedges' g
+#' @param method transformation method ("hedges", "cohen")
 #'
 #' @return
 #' @export
@@ -106,7 +107,7 @@ SMD_from_arm <-
 #' @export
 #'
 #' @references
-#' , M., Hedges, L.V., Higgins, J.P.T. and Rothstein, H.R. (2009). Converting Among Effect Sizes. In Introduction to Meta-Analysis (eds M. Borenstein, L.V. Hedges, J.P.T. Higgins and H.R. Rothstein). https://doi.org/10.1002/9780470743386.ch7
+#' M., Hedges, L.V., Higgins, J.P.T. and Rothstein, H.R. (2009). Converting Among Effect Sizes. In Introduction to Meta-Analysis (eds M. Borenstein, L.V. Hedges, J.P.T. Higgins and H.R. Rothstein). https://doi.org/10.1002/9780470743386.ch7
 #'
 #' @examples
 #' # Calcuation with group means
@@ -151,4 +152,37 @@ SMD.matched_calc <- function(M_diff = NA, M1 = NA, M2 = NA, SD_within) {
   }
   return(SMD)
 }
+
+
+SMD_from_arm.pre_post <- function(M1_pre,
+                                  M2_pre,
+                                  M1_post,
+                                  M2_post,
+                                  SD1_pre,
+                                  SD2_pre,
+                                  SD1_post,
+                                  SD2_post,
+                                  n1 = NA,
+                                  n2 = NA,
+                                  method = "hedges"){
+  # 1. get pooled SDs
+  if(method == "hedges"){
+    if(is.na(n1) | is.na(n2)){
+      warning("hedges method needs sample size. You could try method='cohen' instead")
+      return(NA)
+    }
+  }
+  SD1 <- SD_pool(SD1_pre, SD1_post, n1, n2, method)
+  SD2 <- SD_pool(SD2_pre, SD2_post, n1, n2, method)
+
+  # 2. get pre post differences
+  MDiff1 <- M1_post - M1_pre
+  MDiff2 <- M2_post - M2_pre
+
+  # 3. Calculate SMD
+  SMD_from_arm(MDiff1, MDiff2, SD1, SD2, n1, n2, method)
+}
+
+
+
 

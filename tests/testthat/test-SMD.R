@@ -28,3 +28,9 @@ test_that("SMD calculation matched groups", {
   expect_equal(mutate(dat, SMD = SMD.matched_calc(M_diff, M1, M2, SD_within)) %>% pull(SMD),
                c(0.4225, 0.4225, 0.4225, 0.4877454), tolerance = 0.0001)
 })
+
+
+test_that("SMD_from_arm.pre_post", {
+  expect_equal(SMD_from_arm.pre_post(43.4, 42.5, 30.5, 42.7, 3.7, 3.9, 4.2, 3.8, method = "cohen"), -3.355116, tolerance = 0.0001)
+  expect_warning(SMD_from_arm.pre_post(43.4, 42.5, 30.5, 42.7, 3.7, 3.9, 4.2, 3.8, method = "hedges"))
+})

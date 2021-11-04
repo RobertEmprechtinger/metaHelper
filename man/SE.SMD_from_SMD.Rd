@@ -12,6 +12,8 @@ SE.SMD_from_SMD(SMD, n1, n2, method = "hedges")
 \item{n1}{sample size group 1}
 
 \item{n2}{sample size group 2}
+
+\item{method}{transformation method ("hedges", "cohen")}
 }
 \value{
 Standard error of SMD (e.g. standard error of intervention effect)

@@ -7,7 +7,7 @@
 SD.within_from_SD.r(SD_diff, r)
 }
 \arguments{
-\item{SD_diff}{standard deviation of the difference (usually reported)}
+\item{SD_diff}{standard deviation of the difference}
 
 \item{r}{correlation between pair of observations}
 }
