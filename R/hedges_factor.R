@@ -2,6 +2,7 @@
 #'
 #' @param n1 sample size group 1
 #' @param n2 sample size group 2
+#' @param n_total total sample size
 #'
 #' @return
 #' @export
@@ -24,6 +25,7 @@ hedges_factor_approx <- function(n1 = NA, n2 = NA, n_total = NA){
 #'
 #' @param n1 sample size group 1
 #' @param n2 sample size group 2
+#' @param n_total total sample size
 #'
 #' @return
 #' @export

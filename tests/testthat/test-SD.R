@@ -8,11 +8,11 @@ test_that("SD hedges", {
 })
 
 
-test_that("SD pool", {
-  expect_equal(SD_pool(5.5, 4.5, 50, 50, method = "hedges"), 5.0249, tolerance = 0.001)
-  expect_equal(SD_pool(5.5, 4.5, 50, 50, method = "cohen"), SD_pool(5.5, 4.5, method = "cohen"))
-  expect_error(SD_pool(5.5, 4.5, 50, 50, method = "hedge"), "method needs to be either 'hedges' or 'cohen'")
-  expect_equal(SD_pool(c(5.5, 5.5), c(4.5, 4.5), c(50, 50), c(50, 50),
+test_that("SDp_from_SD", {
+  expect_equal(SDp_from_SD(5.5, 4.5, 50, 50, method = "hedges"), 5.0249, tolerance = 0.001)
+  expect_equal(SDp_from_SD(5.5, 4.5, 50, 50, method = "cohen"), SD_pool(5.5, 4.5, method = "cohen"))
+  expect_error(SDp_from_SD(5.5, 4.5, 50, 50, method = "hedge"), "method needs to be either 'hedges' or 'cohen'")
+  expect_equal(SDp_from_SD(c(5.5, 5.5), c(4.5, 4.5), c(50, 50), c(50, 50),
                        method = c("hedges", "hedges")), c(5.0249, 5.0249), tolerance = 0.0001)
 })
 
@@ -74,8 +74,19 @@ test_that("SD pooled from CI pooled", {
 
 
 test_that("SD within for matched groups", {
-  expect_equal(SD.within_from_SD.r(5.5, 0.7), 7.1005, tolerance = 0.0001)
-  expect_error(SD.within_from_SD.r(5.5, 1.2))
-  expect_error(SD.within_from_SD.r(5.5, - 1.2))
+  expect_equal(SD_within_from_SD_r(5.5, 0.7), 7.1005, tolerance = 0.0001)
+  expect_error(SD_within_from_SD_r(5.5, 1.2))
+  expect_error(SD_within_from_SD_r(5.5, - 1.2))
+})
+
+
+test_that("Pooled SD, mean and n for multiple groups", {
+  expect_equal(SD_M_n_pooled_from_groups(SD = c(5.5, 4.5), M = c(1, 1), n = c(50, 50))[1], c(SD = 4.999495), tolerance = 0.001)
+  expect_equal(SD_M_n_pooled_from_groups(SD = c(2.7, 2.7), M = c(2.2, 2.2), n = c(145, 81))[1], c(SD = 2.694), tolerance = 0.001)
+  expect_equal(SD_M_n_pooled_from_groups(SD = c(2.7, 2.7), M = c(2.2, 2.2), n = c(145, 81))[2], c(mean = 2.2), tolerance = 0.001)
+  expect_equal(SD_M_n_pooled_from_groups(SD = c(2.7, 2.7), M = c(2.2, 2.2), n = c(145, 81))[3], c(n = 226), tolerance = 0.001)
+  expect_equal(SD_M_n_pooled_from_groups(SD = c(2.7, 2.7, 10), M = c(2.2, 2.2, 10), n = c(145, 81, 90))[1], c(SD = 6.77), tolerance = 0.001)
+  expect_error(SD_M_n_pooled_from_groups(SD = c(2.7, 2.7, 10), M = c(2.2, 2.2), n = c(145, 81, 90)))
+  expect_error(SD_M_n_pooled_from_groups(SD = c(2.7), M = c(2.2), n = c(145)))
 })
 

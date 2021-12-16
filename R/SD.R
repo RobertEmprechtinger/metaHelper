@@ -2,7 +2,7 @@
 #'
 #' @keywords internal
 #'
-#' This is a helper function for SD_pool and not supposed to be used directly.
+#' This is a helper function for SDp_from_SD and not supposed to be used directly.
 #'
 #' @param n1 sample size group 1
 #' @param n2 sample size group 2
@@ -15,8 +15,8 @@
 #' @export
 #'
 #' @examples
-#' SD_pool_hedges(2, 3, 50, 50)
-SD_pool_hedges <- function(SD1, SD2, n1, n2) {
+#' poolSD_hedges(2, 3, 50, 50)
+poolSD_hedges <- function(SD1, SD2, n1, n2) {
   result <- c()
   for(i in seq_along(SD1)){
 
@@ -62,15 +62,15 @@ SD_pool_hedges <- function(SD1, SD2, n1, n2) {
 #' Journal of Educational Statistics, 6, 107-128.
 #'
 #' @seealso
-#' [metaHelper::SD.within_from_SD.r()] for matched groups
+#' [metaHelper::SD_within_from_SD.r()] for matched groups
 #'
 #' @examples
 #' # Standard deviation according to Cohen:
-#' SD_pool(2, 3, method = "cohen")
+#' SDp_from_SD(2, 3, method = "cohen")
 #'
 #' # Standard deviation according to Hedges needs sample sizes:
-#' SD_pool(2, 3, 50, 50)
-SD_pool <- function(SD1,
+#' SDp_from_SD(2, 3, 50, 50)
+SDp_from_SD <- function(SD1,
                     SD2,
                     n1 = NA,
                     n2 = NA,
@@ -86,7 +86,7 @@ SD_pool <- function(SD1,
 
   ifelse(method == "hedges",
          #hedges method
-         SD_pool_hedges(SD1, SD2, n1, n2),
+         poolSD_hedges(SD1, SD2, n1, n2),
          #cohen method
          sqrt((SD1 ^ 2 + SD2 ^ 2) /
                 2))
@@ -207,9 +207,8 @@ SD_from_CI <- function(CI_low, CI_up, n, sig_level = 0.05, two_sided = TRUE, t_d
 
 #' Pooled Standard Deviation from Confidence Interval
 #'
-#' Computes the pooled standard deviation (e.g. standard deviation of an intervention effect) from confidence intervals and samplie sizes.
-#' The cochrane handbook (see references) calls the resulting standard deviation as "within-group standard deviation". This is not entirely correct,
-#' since the within-group standard deviations (e.g. standard deviation for control and for intervention group) can not be determined with this formula.
+#' Computes the pooled standard deviation (e.g. standard deviation of an intervention effect) from confidence intervals and sample sizes.
+#' The cochrane handbook (see references) calls the resulting standard deviation as "within-group standard deviation".
 #' This method is only valid if the confidence interval is symmetrical around the mean and when either the t-distribution or
 #' normal-distribution (t_dist = FALSE) has been used to calculate the CI.
 #'
@@ -274,10 +273,56 @@ SDp_from_CIp <- function(CI_low, CI_up, n1, n2, sig_level = 0.05, two_sided = TR
 #' SD_diff <- 2
 #' # r is the correlation coefficient between the groups
 #' r <- 0.5
-#' SD.within_from_SD.r(SD_diff, r)
-SD.within_from_SD.r <- function(SD_diff, r){
+#' SD_within_from_SD.r(SD_diff, r)
+SD_within_from_SD_r <- function(SD_diff, r){
   ifelse(abs(r) > 1,
          stop("correlation of r greater 1 is not allowed"),
          SD_diff / sqrt(2 * (1 - r) )
          )
 }
+
+
+#' Combined Group Standard Deviation
+#'
+#' Computes the pooled standard deviation for multiple groups.
+#'
+#' @param n vector of group sample sizes
+#' @param SD vector of group SDs
+#' @param M vector of group means
+#'
+#' @return Within standard deviation
+#' @export
+#'
+#' @references
+#' https://handbook-5-1.cochrane.org/chapter_7/table_7_7_a_formulae_for_combining_groups.htm
+#' Rücker G, Cates CJ, Schwarzer G. Methods for including information from multi-arm trials in pairwise meta-analysis. Res Synth Methods. 2017 Dec;8(4):392-403. doi: 10.1002/jrsm.1259. Epub 2017 Aug 25. PMID: 28759708.
+#'
+#' @examples
+SD_M_n_pooled_from_groups <-function(M, SD, n){
+  if(any(c(length(n), length(SD)) != length(M))) stop("All vectors (SD, M, n) need to have the same length")
+  if(length(n) == 1) stop("Need multiple groups. Vector length == 1 indicates that you have only provided data of 1 group")
+
+  for(i in 1:(length(n) - 1)){
+    comparator <- i + 1
+    if(i == 1){
+      n_base <- n[1]
+      M_base <- M[1]
+      SD_base <- SD[1]
+    }
+
+    SD_base <- sqrt(((n_base-1) * SD_base^2 + (n[comparator] - 1) * SD[comparator]^2 + ( (n_base * n[comparator]) / (n_base + n[comparator]) ) *
+      (M_base^2 + M[comparator]^2 - 2*M_base*M[comparator])) /
+      (n_base + n[comparator] - 1))
+
+    M_base <- (n_base * M_base + n[comparator] * M[comparator]) /
+      (n_base + n[comparator])
+
+    n_base <- n_base + n[comparator]
+
+  }
+  result <- c(SD_base, M_base, n_base)
+  names(result) <- c("SD", "mean", "n")
+  return(result)
+}
+
+

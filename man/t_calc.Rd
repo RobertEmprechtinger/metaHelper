@@ -10,6 +10,8 @@ t_calc(sig_level = 0.05, two_sided = TRUE, df)
 \item{sig_level}{the significance level}
 
 \item{two_sided}{whether the two sided t statistics or single sided should be calculated}
+
+\item{df}{= degrees of freedom}
 }
 \value{
 

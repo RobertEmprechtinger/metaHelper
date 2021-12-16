@@ -2,6 +2,7 @@
 #'
 #' @param sig_level the significance level
 #' @param two_sided whether the two sided t statistics or single sided should be calculated
+#' @param df = degrees of freedom
 #'
 #' @return
 #' @export

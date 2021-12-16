@@ -81,7 +81,7 @@ SMD_from_arm <-
       if(!(method[i] %in% c("hedges", "cohen"))) stop("method needs to be either 'hedges' or 'cohen'")
 
       SMD[i] <- SMD_calc(M1[i], M2[i],
-                         SD_pool(SD1[i], SD2[i], n1[i], n2[i], method[i]))
+                         SDp_from_SD(SD1[i], SD2[i], n1[i], n2[i], method[i]))
 
       if(method[i] == "hedges"){
         SMD[i] <- SMD[i] *hedges_factor(n1[i], n2[i])
@@ -172,8 +172,8 @@ SMD_from_arm.pre_post <- function(M1_pre,
       return(NA)
     }
   }
-  SD1 <- SD_pool(SD1_pre, SD1_post, n1, n2, method)
-  SD2 <- SD_pool(SD2_pre, SD2_post, n1, n2, method)
+  SD1 <- SDp_from_SD(SD1_pre, SD1_post, n1, n2, method)
+  SD2 <- SDp_from_SD(SD2_pre, SD2_post, n1, n2, method)
 
   # 2. get pre post differences
   MDiff1 <- M1_post - M1_pre

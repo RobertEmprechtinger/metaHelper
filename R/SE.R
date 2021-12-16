@@ -50,7 +50,7 @@ SEp_from_SDp <- function(SDp, n1, n2){
 }
 
 
-#' SE of SMD from Confidence Intervals of Odds Ratio
+#' SE of SMD from Confidence Intervals of Odds Ratio (OR)
 #'
 #' https://stats.stackexchange.com/questions/68290/converting-odds-ratios-to-cohens-d-for-meta-analysis
 #'
@@ -63,10 +63,10 @@ SEp_from_SDp <- function(SDp, n1, n2){
 #' Chinn S. A simple method for converting an odds ratio to effect size for use in meta-analysis. Stat Med. 2000 Nov 30;19(22):3127-31. doi: 10.1002/1097-0258(20001130)19:22<3127::aid-sim784>3.0.co;2-m. PMID: 11113947.
 #'
 #'
-#' @param CI_low lower OR confidence interval limit
+#' @param CI_low lower odds ratio confidence interval limit
 #' @param sig_level the significance level
 #' @param two_sided whether the two sided z statistics or single sided should be calculated
-#' @param CI_up upper OR confidence interval limit
+#' @param CI_up upper odds ratio confidence interval limit
 #'
 #' @return
 #' @export

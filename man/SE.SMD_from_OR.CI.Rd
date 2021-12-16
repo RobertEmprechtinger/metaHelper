@@ -2,14 +2,14 @@
 % Please edit documentation in R/SE.R
 \name{SE.SMD_from_OR.CI}
 \alias{SE.SMD_from_OR.CI}
-\title{SE of SMD from Confidence Intervals of Odds Ratio}
+\title{SE of SMD from Confidence Intervals of Odds Ratio (OR)}
 \usage{
 SE.SMD_from_OR.CI(CI_low, CI_up, sig_level = 0.05, two_sided = TRUE)
 }
 \arguments{
-\item{CI_low}{lower OR confidence interval limit}
+\item{CI_low}{lower odds ratio confidence interval limit}
 
-\item{CI_up}{upper OR confidence interval limit}
+\item{CI_up}{upper odds ratio confidence interval limit}
 
 \item{sig_level}{the significance level}
 

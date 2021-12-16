@@ -33,9 +33,8 @@ SDp_from_CIp(
 Pooled standard deviation
 }
 \description{
-Computes the pooled standard deviation (e.g. standard deviation of an intervention effect) from confidence intervals and samplie sizes.
-The cochrane handbook (see references) calls the resulting standard deviation as "within-group standard deviation". This is not entirely correct,
-since the within-group standard deviations (e.g. standard deviation for control and for intervention group) can not be determined with this formula.
+Computes the pooled standard deviation (e.g. standard deviation of an intervention effect) from confidence intervals and sample sizes.
+The cochrane handbook (see references) calls the resulting standard deviation as "within-group standard deviation".
 This method is only valid if the confidence interval is symmetrical around the mean and when either the t-distribution or
 normal-distribution (t_dist = FALSE) has been used to calculate the CI.
 }

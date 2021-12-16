@@ -10,6 +10,8 @@ hedges_factor_approx(n1 = NA, n2 = NA, n_total = NA)
 \item{n1}{sample size group 1}
 
 \item{n2}{sample size group 2}
+
+\item{n_total}{total sample size}
 }
 \value{
 
