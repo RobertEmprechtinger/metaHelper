@@ -19,9 +19,6 @@ SE.SMD_from_OR.CI(CI_low, CI_up, sig_level = 0.05, two_sided = TRUE)
 
 }
 \description{
-https://stats.stackexchange.com/questions/68290/converting-odds-ratios-to-cohens-d-for-meta-analysis
-}
-\details{
 The method uses multiple steps in background:
 \enumerate{
 \item Takes OR limits and transforms them to log(OR)

@@ -52,8 +52,6 @@ SEp_from_SDp <- function(SDp, n1, n2){
 
 #' SE of SMD from Confidence Intervals of Odds Ratio (OR)
 #'
-#' https://stats.stackexchange.com/questions/68290/converting-odds-ratios-to-cohens-d-for-meta-analysis
-#'
 #' The method uses multiple steps in background:
 #' 1. Takes OR limits and transforms them to log(OR)
 #' 2. Calculates the standard error for the log(OR)

@@ -33,7 +33,7 @@ SMD_from_OR <- function(OR){
 #' @examples
 #' # Mean control = 153, Mean intervention = 136, pooled SD = 25
 #' SMD_calc(153, 136, 25)
-SMD_calc <- function(M1, M2, SD_pooled){
+SMD_from_mean <- function(M1, M2, SD_pooled){
   (M1 - M2) /
     SD_pooled
 }
@@ -125,7 +125,7 @@ SMD_from_arm <-
 #'
 #' SMD.matched_calc(M_diff = 3,
 #'     SD_within = SD.within_from_SD.r(SD_between, r))
-SMD.matched_calc <- function(M_diff = NA, M1 = NA, M2 = NA, SD_within) {
+SMD_from_mean_matched <- function(M_diff = NA, M1 = NA, M2 = NA, SD_within) {
   l <- length(SD_within)
   M_diff <- extend_var(M_diff, l)
   M1 <- extend_var(M1, l)
