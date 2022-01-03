@@ -2,7 +2,7 @@
 % Please edit documentation in R/SMD.R
 \name{SMD_from_arm}
 \alias{SMD_from_arm}
-\title{Calculates SMD from arm data}
+\title{Standardized Mean Differences from Arm Data}
 \usage{
 SMD_from_arm(M1, M2, SD1, SD2, n1 = NA, n2 = NA, method = "hedges")
 }
@@ -25,8 +25,7 @@ SMD_from_arm(M1, M2, SD1, SD2, n1 = NA, n2 = NA, method = "hedges")
 
 }
 \description{
-Calculate SMD directly from study data. Hedges g needs samplie size data. The hedges factor is calculated according to Hedges & Olkin (1985) retrieved
-from Goulet-Pelletier & Cousineau (2018).
+Calculates SMD directly from study data. Method "hedges" needs sample size data.
 }
 \examples{
 # Mean control = 23, Mean intervention = 56, SD control = 30,

@@ -2,23 +2,23 @@
 % Please edit documentation in R/SE.R
 \name{SEp_from_TE.p}
 \alias{SEp_from_TE.p}
-\title{Standard Error from Treatment Effect and p-value}
+\title{Standard Error from Treatment Effect and p-Value}
 \usage{
-SEp_from_TE.p(TE, p, two_sided = TRUE)
+SEp_from_TE.p(TE, p, two_tailed = TRUE)
 }
 \arguments{
 \item{TE}{reported treatment effect}
 
 \item{p}{reported p-value}
 
-\item{two_sided}{whether the two sided statistics or single sided should be calculated}
+\item{two_tailed}{whether one-tailed or two-tailed statistics should be calculated}
 }
 \value{
 Pooled standard error (e.g. standard error of intervention effect)
 }
 \description{
-Calculates the pooled standard error by the use of the treatment effect and p value.
-To avoid an infinitive return in case of p = 1, p is automatically adjusted to 0.99999
+Calculates the pooled standard error using the treatment effect and p value.
+To avoid an infinitive return when p = 1, p is automatically adjusted to 0.99999
 }
 \examples{
 # TE = 1.5, p = 0.8

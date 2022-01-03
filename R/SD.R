@@ -1,4 +1,4 @@
-#' Pools the SD according to Hedges
+#' Pools the SD According to Hedges
 #'
 #' @keywords internal
 #'
@@ -34,19 +34,19 @@ poolSD_hedges <- function(SD1, SD2, n1, n2) {
 }
 
 
-#' Pooled SD from two SDs
+#' Pooled Standard Deviation from two DStandard Deviations
 #'
 #' Calculates pooled standard deviation. The method according to Hedges
 #' requires the sample sizes.
-#' If exclusively SDs are available, the simpler equation provided by Cohen 1988 can be used.
+#' If only standard deviations are available, the simpler equation provided by Cohen 1988 can be used.
 #'
 #'
 #' @param SD1 standard deviation of group 1
 #' @param SD2 standard deviation of group 2
 #' @param n1 sample size of group 1
 #' @param n2 sample size of group 2
-#' @param method the method ("hedges", "cohen") that should be used to calculate the SD. Method "hedges" needs sample sizes.
-#' Method "cohen" uses the simplified method by Cohen 1988 and does not rely on sample sizes.
+#' @param method the method ("hedges", "cohen") that should be used to calculate the SD. Method "hedges" requires sample sizes.
+#' The "cohen" method uses the simplified method by Cohen 1988 and does not rely on sample sizes.
 #'
 #' @return
 #' Pooled standard deviation
@@ -56,7 +56,7 @@ poolSD_hedges <- function(SD1, SD2, n1, n2) {
 #' @references
 #' Borenstein, M., Hedges, L.V., Higgins, J.P.T. and Rothstein, H.R. (2009). Converting Among Effect Sizes. In Introduction to Meta-Analysis (eds M. Borenstein, L.V. Hedges, J.P.T. Higgins and H.R. Rothstein). https://doi.org/10.1002/9780470743386.ch7
 #'
-#' Ellis, P.D. (2009), "Effect size equations" website: https://www.polyu.edu.hk/mm/effectsizefaqs/effect_size_equations2.html accessed on 2021.08.31.
+#' Ellis, P.D. (2009), "Effect size equations". \href{https://www.polyu.edu.hk/mm/effectsizefaqs/effect_size_equations2.html accessed on 2021.08.31.}{Link}
 #'
 #' Hedges, L. V. (1981). Distribution theory for Glass's estimator of effect size and related estimators.
 #' Journal of Educational Statistics, 6, 107-128.
@@ -93,10 +93,10 @@ SDp_from_SD <- function(SD1,
 }
 
 
-#' SD from Standard Error (single group)
+#' SD from Standard Error (Single Group)
 #'
-#' Calculates the standard deviation from the standard error for a single group. In case of two arms the method for the pooled standard
-#' error has to be used: [metaHelper::SDp_from_SEp()]
+#' Calculates the standard deviation from the standard error for a single group.
+#' When there are two arms, the following method for pooled standard error has to be used: [metaHelper::SDp_from_SEp()]
 #'
 #' @param SE standard error
 #' @param n sample size
@@ -105,7 +105,7 @@ SDp_from_SD <- function(SD1,
 #' Single group standard deviation
 #'
 #' @references
-#' https://handbook-5-1.cochrane.org/chapter_7/7_7_3_2_obtaining_standard_deviations_from_standard_errors_and.htm
+#' \href{https://handbook-5-1.cochrane.org/chapter_7/7_7_3_2_obtaining_standard_deviations_from_standard_errors_and.htm}{Cochrane Handbook}
 #'
 #' @export
 #'
@@ -125,12 +125,12 @@ SD_from_SE <- function(SE, n){
 
 #' Standard Deviation from the Pooled Standard Error
 #'
-#' Calculates the standard deviation from the pooled standard error and sample size fro two groups (e.g. intervention effects).
+#' Calculates the standard deviation from the pooled standard error and sample size from two groups (e.g., intervention effects).
 #' For single groups [SD_from_SE()] has to be used.
 #' This method is the reverse method of [SEp_from_SDp()].
 #'
 #' @references
-#' https://handbook-5-1.cochrane.org/chapter_7/7_7_3_3_obtaining_standard_deviations_from_standard_errors.htm
+#' \href{https://handbook-5-1.cochrane.org/chapter_7/7_7_3_3_obtaining_standard_deviations_from_standard_errors.htm}{Cochrane Handbook}
 #'
 #' @param SEp pooled standard error
 #' @param n1 sample size group 1
@@ -157,13 +157,13 @@ SDp_from_SEp <- function(SEp, n1, n2){
 }
 
 
-#' Standard Deviation from Confidence interval
+#' Standard Deviation from Confidence Interval
 #'
 #'
 #' Computes the standard deviation from the confidence interval and sample size. This method is only valid for single groups and when the
 #' CI is symmetrical around the mean.
-#' For two groups (e.g. intervention effects) [SDp_from_CIp()] has to be used.
-#' For sample sizes smaller than 60 usually the t_dist is used to calculate the confidence interval.
+#' For two groups (e.g., intervention effects), [SDp_from_CIp()] has to be used.
+#' For sample sizes smaller than 60, the t_dist is usually used to calculate the confidence interval.
 #'
 #' @param CI_low lower limit confidence interval
 #' @param CI_up upper limit confidence interval
@@ -179,7 +179,7 @@ SDp_from_SEp <- function(SEp, n1, n2){
 #' Standard deviation single group
 #'
 #' @references
-#' https://handbook-5-1.cochrane.org/chapter_7/7_7_3_2_obtaining_standard_deviations_from_standard_errors_and.htm
+#' \href{https://handbook-5-1.cochrane.org/chapter_7/7_7_3_2_obtaining_standard_deviations_from_standard_errors_and.htm}{Cochrane Handbook}
 #'
 #' @export
 #'
@@ -207,8 +207,8 @@ SD_from_CI <- function(CI_low, CI_up, n, sig_level = 0.05, two_sided = TRUE, t_d
 
 #' Pooled Standard Deviation from Confidence Interval
 #'
-#' Computes the pooled standard deviation (e.g. standard deviation of an intervention effect) from confidence intervals and sample sizes.
-#' The cochrane handbook (see references) calls the resulting standard deviation as "within-group standard deviation".
+#' Computes the pooled standard deviation (e.g., standard deviation of an intervention effect) from confidence intervals and sample sizes.
+#' The Cochrane Handbook (see references) calls the resulting standard deviation as "within-group standard deviation".
 #' This method is only valid if the confidence interval is symmetrical around the mean and when either the t-distribution or
 #' normal-distribution (t_dist = FALSE) has been used to calculate the CI.
 #'
@@ -229,7 +229,7 @@ SD_from_CI <- function(CI_low, CI_up, n, sig_level = 0.05, two_sided = TRUE, t_d
 #' [SD_from_CI()] for single group standard deviation.
 #'
 #' @references
-#' https://handbook-5-1.cochrane.org/chapter_7/7_7_3_3_obtaining_standard_deviations_from_standard_errors.htm
+#' \href{https://handbook-5-1.cochrane.org/chapter_7/7_7_3_3_obtaining_standard_deviations_from_standard_errors.htm}{Cochrane Handbook}
 #'
 #' @examples
 #' #lower CI = 0.5, upper CI = 0.7, N1 = 50, N2 = 70
@@ -257,7 +257,7 @@ SDp_from_CIp <- function(CI_low, CI_up, n1, n2, sig_level = 0.05, two_sided = TR
 }
 
 
-#' 'Within Standard Deviation for Matched Groups
+#' Within Standard Deviation for Matched Groups
 #'
 #' Computes the within standard deviation for matched groups. The within standard deviation can further be used to compute the standardized mean
 #' differences for matched groups.
@@ -267,6 +267,9 @@ SDp_from_CIp <- function(CI_low, CI_up, n1, n2, sig_level = 0.05, two_sided = TR
 #'
 #' @return Within standard deviation
 #' @export
+#'
+#' @references
+#' Borenstein, M., Hedges, L.V., Higgins, J.P.T. and Rothstein, H.R. (2009). Effect Sizes Based on Means . In Introduction to Meta-Analysis (eds M. Borenstein, L.V. Hedges, J.P.T. Higgins and H.R. Rothstein). https://doi.org/10.1002/9780470743386.ch4
 #'
 #' @examples
 #' # SD_diff is the standard deviation of the group difference
@@ -294,7 +297,8 @@ SD_within_from_SD_r <- function(SD_diff, r){
 #' @export
 #'
 #' @references
-#' https://handbook-5-1.cochrane.org/chapter_7/table_7_7_a_formulae_for_combining_groups.htm
+#' \href{https://handbook-5-1.cochrane.org/chapter_7/table_7_7_a_formulae_for_combining_groups.htm}{Cochrane Handbook}
+#'
 #' Rücker G, Cates CJ, Schwarzer G. Methods for including information from multi-arm trials in pairwise meta-analysis. Res Synth Methods. 2017 Dec;8(4):392-403. doi: 10.1002/jrsm.1259. Epub 2017 Aug 25. PMID: 28759708.
 #'
 #' @examples

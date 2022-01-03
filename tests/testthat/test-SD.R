@@ -1,16 +1,14 @@
 dat <- data.frame(SD1 = c(2, 1, 1), SD2 = c(2, 2, 1), n1 = c(50, 50, NA), n2 = c(50, 100, 75))
-test_that("SD hedges", {
-  expect_equal(SD_pool_hedges(2, 2, 50, 50), 2, tolerance = 0.001)
-  expect_equal(SD_pool_hedges(1, 2, 50, 100), 1.734, tolerance = 0.001)
-  expect_warning(SD_pool_hedges(1, 2, NA, 100))
-  expect_equal(mutate(dat, SDp = expect_warning(SD_pool_hedges(SD1, SD2, n1, n2))) %>% pull(SDp),
-                 c(2, 1.734, NA), tolerance = 0.001)
+test_that("poolSD_hedges", {
+  expect_equal(poolSD_hedges(2, 2, 50, 50), 2, tolerance = 0.001)
+  expect_equal(poolSD_hedges(1, 2, 50, 100), 1.734, tolerance = 0.001)
+  expect_warning(poolSD_hedges(1, 2, NA, 100))
 })
 
 
 test_that("SDp_from_SD", {
   expect_equal(SDp_from_SD(5.5, 4.5, 50, 50, method = "hedges"), 5.0249, tolerance = 0.001)
-  expect_equal(SDp_from_SD(5.5, 4.5, 50, 50, method = "cohen"), SD_pool(5.5, 4.5, method = "cohen"))
+  expect_equal(SDp_from_SD(5.5, 4.5, 50, 50, method = "cohen"), SDp_from_SD(5.5, 4.5, method = "cohen"))
   expect_error(SDp_from_SD(5.5, 4.5, 50, 50, method = "hedge"), "method needs to be either 'hedges' or 'cohen'")
   expect_equal(SDp_from_SD(c(5.5, 5.5), c(4.5, 4.5), c(50, 50), c(50, 50),
                        method = c("hedges", "hedges")), c(5.0249, 5.0249), tolerance = 0.0001)
@@ -21,17 +19,17 @@ dat <- data.frame(SD1 = c(2,3, NA), SD2 = c(3,5, 3), n1 = c(20, 40, 50), n2= c(3
 dat2 <- data.frame(SD1 = c(2,3, NA), SD2 = c(3,5, 3), n1 = c(20, 40, 50), n2= c(30, 60, 50),
                    method = c("hedges", "hedges", "hedges"))
 test_that("SD pool data frame", {
-  expect_equal(mutate(dat, SD = SD_pool(SD1, SD2, n1, n2)) %>%
+  expect_equal(mutate(dat, SD = SDp_from_SD(SD1, SD2, n1, n2)) %>%
             pull(SD), c(2.649686, 4.316556, NA), tolerance = 0.0001)
-  expect_equal(mutate(dat2, SD = SD_pool(SD1, SD2, n1, n2, method)) %>%
+  expect_equal(mutate(dat2, SD = SDp_from_SD(SD1, SD2, n1, n2, method)) %>%
                  pull(SD), c(2.649686, 4.316556, NA), tolerance = 0.0001)
 })
 
 test_that("SD cohen", {
-  expect_equal(SMD_calc(4.5, 3, SD_pool(2.5, 4, method = "cohen")), 0.45, tolerance = 0.001)
+  expect_equal(SMD_from_mean(4.5, 3, SDp_from_SD(2.5, 4, method = "cohen")), 0.45, tolerance = 0.001)
   # check whether cohen and hedges lead to similar results
-  expect_equal(SD_pool(5.5, 4.5, method = "cohen"),
-               SD_pool(5.5, 4.5, 50, 50, method = "hedges"),
+  expect_equal(SDp_from_SD(5.5, 4.5, method = "cohen"),
+               SDp_from_SD(5.5, 4.5, 50, 50, method = "hedges"),
                tolerance = 0.001)
 })
 

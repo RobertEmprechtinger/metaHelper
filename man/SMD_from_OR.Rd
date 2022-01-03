@@ -2,24 +2,23 @@
 % Please edit documentation in R/SMD.R
 \name{SMD_from_OR}
 \alias{SMD_from_OR}
-\title{Convert SMD to OR}
+\title{Standardized Mean Difference from Odds Ratio}
 \usage{
 SMD_from_OR(OR)
 }
 \arguments{
-\item{OR}{Odds Ratio}
+\item{OR}{odds ratio}
 }
 \value{
-Returns SMD
+
 }
 \description{
-Converts OR to SMD by using the formula provided here:
+Approximates SMD from OR.
 https://stats.stackexchange.com/questions/68290/converting-odds-ratios-to-cohens-d-for-meta-analysis
-It is important to note that this is just an approximation.
-}
-\details{
-Borenstein, M., Hedges, L.V., Higgins, J.P.T. and Rothstein, H.R. (2009). Converting Among Effect Sizes. In Introduction to Meta-Analysis (eds M. Borenstein, L.V. Hedges, J.P.T. Higgins and H.R. Rothstein). https://doi.org/10.1002/9780470743386.ch7
 }
 \examples{
 
+}
+\references{
+Borenstein, M., Hedges, L.V., Higgins, J.P.T. and Rothstein, H.R. (2009). Converting Among Effect Sizes. In Introduction to Meta-Analysis (eds M. Borenstein, L.V. Hedges, J.P.T. Higgins and H.R. Rothstein). https://doi.org/10.1002/9780470743386.ch7
 }

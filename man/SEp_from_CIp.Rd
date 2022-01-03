@@ -10,7 +10,7 @@ SEp_from_CIp(
   N1 = NA,
   N2 = NA,
   sig_level = 0.05,
-  two_sided = TRUE,
+  two_tailed = TRUE,
   t_dist = TRUE
 )
 }
@@ -25,7 +25,7 @@ SEp_from_CIp(
 
 \item{sig_level}{the significance level}
 
-\item{two_sided}{whether the two sided statistics or single sided should be calculated}
+\item{two_tailed}{whether the two-tailed or one-tailed statistics should be calculated}
 
 \item{t_dist}{whether the t-distribution should be calculated - requires samples sizes}
 }
@@ -34,8 +34,7 @@ Pooled standard error (e.g. intervention effect)
 }
 \description{
 Calculates the standard error from confidence interval limits for differences of means.
-This method is only valid in case the confidence interval is symmetrical
-around the mean and works only for the t or normal distribution (argument t_dist).
+This method is only valid when the confidence interval is symmetrical around the mean and only works for t- or normal distribution (argument t_dist).
 }
 \examples{
 # lower CI = -1.5, upper CI = 0.5

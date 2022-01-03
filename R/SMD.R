@@ -1,24 +1,24 @@
-#' Convert SMD to OR
+#' Standardized Mean Difference from Odds Ratio
 #'
-#' Converts OR to SMD by using the formula provided here:
+#' Approximates SMD from OR.
 #' https://stats.stackexchange.com/questions/68290/converting-odds-ratios-to-cohens-d-for-meta-analysis
-#' It is important to note that this is just an approximation.
 #'
-#' Borenstein, M., Hedges, L.V., Higgins, J.P.T. and Rothstein, H.R. (2009). Converting Among Effect Sizes. In Introduction to Meta-Analysis (eds M. Borenstein, L.V. Hedges, J.P.T. Higgins and H.R. Rothstein). https://doi.org/10.1002/9780470743386.ch7
+#' @param OR odds ratio
 #'
-#' @param OR Odds Ratio
-#'
-#' @return Returns SMD
+#' @return
 #' @export
 #'
 #' @examples
+#'
+#' @references
+#' Borenstein, M., Hedges, L.V., Higgins, J.P.T. and Rothstein, H.R. (2009). Converting Among Effect Sizes. In Introduction to Meta-Analysis (eds M. Borenstein, L.V. Hedges, J.P.T. Higgins and H.R. Rothstein). https://doi.org/10.1002/9780470743386.ch7
 #'
 SMD_from_OR <- function(OR){
   log(OR) * sqrt(3) / pi
 }
 
 
-#' Calculates SMD
+#' Standardized Mean Differences from Means and Standard Deviations
 #'
 #' Uses the differences of two means and divides with the (pooled) standard deviation or the standard deviation of the
 #' control group in case Glass's delta should be calculated.
@@ -39,10 +39,9 @@ SMD_from_mean <- function(M1, M2, SD_pooled){
 }
 
 
-#' Calculates SMD from arm data
+#' Standardized Mean Differences from Arm Data
 #'
-#' Calculate SMD directly from study data. Hedges g needs samplie size data. The hedges factor is calculated according to Hedges & Olkin (1985) retrieved
-#' from Goulet-Pelletier & Cousineau (2018).
+#' Calculates SMD directly from study data. Method "hedges" needs sample size data.
 #'
 #' @param M1 treatment effect size group 1
 #' @param M2 treatment effect size group 2
@@ -80,7 +79,7 @@ SMD_from_arm <-
     for(i in seq_along(M1)){
       if(!(method[i] %in% c("hedges", "cohen"))) stop("method needs to be either 'hedges' or 'cohen'")
 
-      SMD[i] <- SMD_calc(M1[i], M2[i],
+      SMD[i] <- SMD_from_mean(M1[i], M2[i],
                          SDp_from_SD(SD1[i], SD2[i], n1[i], n2[i], method[i]))
 
       if(method[i] == "hedges"){
@@ -142,7 +141,7 @@ SMD_from_mean_matched <- function(M_diff = NA, M1 = NA, M2 = NA, SD_within) {
     # calculate d on the basis of group values
     ifelse(method == "ind" & (is.na(M1[i]) | is.na(M2[i])),
            SMD[i] <- NA,
-           SMD[i] <- SMD_calc(M1[i], M2[i], SD_within[i])
+           SMD[i] <- SMD_from_mean(M1[i], M2[i], SD_within[i])
     )
 
     # on the basis of diff values

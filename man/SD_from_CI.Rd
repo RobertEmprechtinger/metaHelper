@@ -2,7 +2,7 @@
 % Please edit documentation in R/SD.R
 \name{SD_from_CI}
 \alias{SD_from_CI}
-\title{Standard Deviation from Confidence interval}
+\title{Standard Deviation from Confidence Interval}
 \usage{
 SD_from_CI(CI_low, CI_up, n, sig_level = 0.05, two_sided = TRUE, t_dist = TRUE)
 }
@@ -25,15 +25,15 @@ Standard deviation single group
 \description{
 Computes the standard deviation from the confidence interval and sample size. This method is only valid for single groups and when the
 CI is symmetrical around the mean.
-For two groups (e.g. intervention effects) \code{\link[=SDp_from_CIp]{SDp_from_CIp()}} has to be used.
-For sample sizes smaller than 60 usually the t_dist is used to calculate the confidence interval.
+For two groups (e.g., intervention effects), \code{\link[=SDp_from_CIp]{SDp_from_CIp()}} has to be used.
+For sample sizes smaller than 60, the t_dist is usually used to calculate the confidence interval.
 }
 \examples{
 # lower CI = -0.5, upper CI = 2, sample size = 100
 SD_from_CI(-05, 2, 100)
 }
 \references{
-https://handbook-5-1.cochrane.org/chapter_7/7_7_3_2_obtaining_standard_deviations_from_standard_errors_and.htm
+\href{https://handbook-5-1.cochrane.org/chapter_7/7_7_3_2_obtaining_standard_deviations_from_standard_errors_and.htm}{Cochrane Handbook}
 }
 \seealso{
 \code{\link[=SDp_from_CIp]{SDp_from_CIp()}} for two groups (e.g. intervention effects).

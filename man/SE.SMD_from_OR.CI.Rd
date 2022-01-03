@@ -2,9 +2,9 @@
 % Please edit documentation in R/SE.R
 \name{SE.SMD_from_OR.CI}
 \alias{SE.SMD_from_OR.CI}
-\title{SE of SMD from Confidence Intervals of Odds Ratio (OR)}
+\title{Standard Error of Standardized Mean Differences from Confidence Intervals of Odds Ratio}
 \usage{
-SE.SMD_from_OR.CI(CI_low, CI_up, sig_level = 0.05, two_sided = TRUE)
+SE.SMD_from_OR.CI(CI_low, CI_up, sig_level = 0.05, two_tailed = TRUE)
 }
 \arguments{
 \item{CI_low}{lower odds ratio confidence interval limit}
@@ -13,17 +13,17 @@ SE.SMD_from_OR.CI(CI_low, CI_up, sig_level = 0.05, two_sided = TRUE)
 
 \item{sig_level}{the significance level}
 
-\item{two_sided}{whether the two sided z statistics or single sided should be calculated}
+\item{two_tailed}{whether the two-tailed or one-tailed z statistics should be calculated}
 }
 \value{
 
 }
 \description{
-The method uses multiple steps in background:
+This method uses multiple steps in the background. It:
 \enumerate{
-\item Takes OR limits and transforms them to log(OR)
+\item Takes odds ratio (OR) limits and transforms them to log(OR)
 \item Calculates the standard error for the log(OR)
-\item Transforms the log(OR) standard error to SMD standard error by multiplying it with sqrt(3)/pi
+\item Transforms the log(OR) standard error to standardized mean differences (SMD) standard error by multiplying it with sqrt(3)/pi
 }
 }
 \examples{

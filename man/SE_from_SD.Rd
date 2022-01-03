@@ -22,7 +22,7 @@ Calculates the standard error for a single group. In case of two groups (e.g. in
 SE_from_SD(2, 50)
 }
 \references{
-https://handbook-5-1.cochrane.org/chapter_7/7_7_3_2_obtaining_standard_deviations_from_standard_errors_and.htm#'
+\href{https://handbook-5-1.cochrane.org/chapter_7/7_7_3_2_obtaining_standard_deviations_from_standard_errors_and.htm'}{Cochrane Handbook}
 }
 \seealso{
 \code{\link[=SEp_from_SDp]{SEp_from_SDp()}} for two groups

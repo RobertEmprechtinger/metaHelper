@@ -2,7 +2,7 @@
 % Please edit documentation in R/SD.R
 \name{SDp_from_SD}
 \alias{SDp_from_SD}
-\title{Pooled SD from two SDs}
+\title{Pooled Standard Deviation from two DStandard Deviations}
 \usage{
 SDp_from_SD(SD1, SD2, n1 = NA, n2 = NA, method = "hedges")
 }
@@ -15,8 +15,8 @@ SDp_from_SD(SD1, SD2, n1 = NA, n2 = NA, method = "hedges")
 
 \item{n2}{sample size of group 2}
 
-\item{method}{the method ("hedges", "cohen") that should be used to calculate the SD. Method "hedges" needs sample sizes.
-Method "cohen" uses the simplified method by Cohen 1988 and does not rely on sample sizes.}
+\item{method}{the method ("hedges", "cohen") that should be used to calculate the SD. Method "hedges" requires sample sizes.
+The "cohen" method uses the simplified method by Cohen 1988 and does not rely on sample sizes.}
 }
 \value{
 Pooled standard deviation
@@ -24,7 +24,7 @@ Pooled standard deviation
 \description{
 Calculates pooled standard deviation. The method according to Hedges
 requires the sample sizes.
-If exclusively SDs are available, the simpler equation provided by Cohen 1988 can be used.
+If only standard deviations are available, the simpler equation provided by Cohen 1988 can be used.
 }
 \examples{
 # Standard deviation according to Cohen:
@@ -36,7 +36,7 @@ SDp_from_SD(2, 3, 50, 50)
 \references{
 Borenstein, M., Hedges, L.V., Higgins, J.P.T. and Rothstein, H.R. (2009). Converting Among Effect Sizes. In Introduction to Meta-Analysis (eds M. Borenstein, L.V. Hedges, J.P.T. Higgins and H.R. Rothstein). https://doi.org/10.1002/9780470743386.ch7
 
-Ellis, P.D. (2009), "Effect size equations" website: https://www.polyu.edu.hk/mm/effectsizefaqs/effect_size_equations2.html accessed on 2021.08.31.
+Ellis, P.D. (2009), "Effect size equations". \href{https://www.polyu.edu.hk/mm/effectsizefaqs/effect_size_equations2.html accessed on 2021.08.31.}{Link}
 
 Hedges, L. V. (1981). Distribution theory for Glass's estimator of effect size and related estimators.
 Journal of Educational Statistics, 6, 107-128.
