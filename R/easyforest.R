@@ -88,13 +88,13 @@ easyforest <- function(
                               sep = ""
       )
 
-      # creating the summary esimates
+      # creating the summary estimates
       y <- data.frame(x_pooled = c(meta_result$beta,
                                meta_result$ci.ub, meta_result$beta, meta_result$ci.lb),
                   y_pooled = c(-pooled_estimate_height, 0, pooled_estimate_height, 0) + 1,
                   group = i)
 
-      #creating the studie effect sizes and CIs
+      #creating the study effect sizes and CIs
       x <- data.frame(row =length(meta_result$slab):1, yi = meta_result$yi.f, vi = meta_result$vi.f,
                   label = meta_result$slab, group=i, type="study", face="plain") %>%
         mutate(ci_low = yi - z * sqrt(vi), ci_up = yi + z * sqrt(vi))

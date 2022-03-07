@@ -34,7 +34,7 @@ poolSD_hedges <- function(SD1, SD2, n1, n2) {
 }
 
 
-#' Pooled Standard Deviation from two DStandard Deviations
+#' Pooled Standard Deviation from two Standard Deviations
 #'
 #' Calculates pooled standard deviation. The method according to Hedges
 #' requires the sample sizes.

@@ -1,7 +1,6 @@
 #' Standardized Mean Difference from Odds Ratio
 #'
 #' Approximates SMD from OR.
-#' https://stats.stackexchange.com/questions/68290/converting-odds-ratios-to-cohens-d-for-meta-analysis
 #'
 #' @param OR odds ratio
 #'
