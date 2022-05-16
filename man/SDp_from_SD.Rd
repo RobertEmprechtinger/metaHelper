@@ -2,7 +2,7 @@
 % Please edit documentation in R/SD.R
 \name{SDp_from_SD}
 \alias{SDp_from_SD}
-\title{Pooled Standard Deviation from two DStandard Deviations}
+\title{Pooled Standard Deviation from two Standard Deviations}
 \usage{
 SDp_from_SD(SD1, SD2, n1 = NA, n2 = NA, method = "hedges")
 }

@@ -14,7 +14,6 @@ SMD_from_OR(OR)
 }
 \description{
 Approximates SMD from OR.
-https://stats.stackexchange.com/questions/68290/converting-odds-ratios-to-cohens-d-for-meta-analysis
 }
 \examples{
 

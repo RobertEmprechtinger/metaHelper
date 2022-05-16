@@ -14,7 +14,7 @@ SMD_from_mean_matched(M_diff = NA, M1 = NA, M2 = NA, SD_within)
 \item{M2}{mean group 2 (in case M_diff not provided)}
 
 \item{SD_within}{within standard deviation. CAVE this is usually not reported but needs to be computed from the difference standard deviation.
-This can be done with SD.within_from_SD.r().}
+This can be done with \code{\link[=SD_within_from_SD_r]{SD_within_from_SD_r()}}.}
 }
 \value{
 
@@ -22,7 +22,7 @@ This can be done with SD.within_from_SD.r().}
 \description{
 Calculates the standardized mean differences for matched groups. Needs either the mean of the groups or
 the difference between groups.
-SD_within is usually not reported but can be calculated by the use of SD.within_from_SD.r()
+SD_within is usually not reported but can be calculated by the use of \code{\link[=SD_within_from_SD_r]{SD_within_from_SD_r()}}.
 }
 \examples{
 # Calcuation with group means

@@ -8,11 +8,16 @@
 #' @export
 #'
 #' @examples
+#' # Transform an OR of 0.3 to SMD
+#' SMD_from_OR(0.3)
 #'
 #' @references
 #' Borenstein, M., Hedges, L.V., Higgins, J.P.T. and Rothstein, H.R. (2009). Converting Among Effect Sizes. In Introduction to Meta-Analysis (eds M. Borenstein, L.V. Hedges, J.P.T. Higgins and H.R. Rothstein). https://doi.org/10.1002/9780470743386.ch7
 #'
 SMD_from_OR <- function(OR){
+  if(OR <= 0){
+    stop("OR needs to be greater than 0")
+  }
   log(OR) * sqrt(3) / pi
 }
 
@@ -33,6 +38,7 @@ SMD_from_OR <- function(OR){
 #' # Mean control = 153, Mean intervention = 136, pooled SD = 25
 #' SMD_calc(153, 136, 25)
 SMD_from_mean <- function(M1, M2, SD_pooled){
+  if(SD_pooled <= 0) stop("SD needs to be greater than 0")
   (M1 - M2) /
     SD_pooled
 }
@@ -82,7 +88,7 @@ SMD_from_arm <-
                          SDp_from_SD(SD1[i], SD2[i], n1[i], n2[i], method[i]))
 
       if(method[i] == "hedges"){
-        SMD[i] <- SMD[i] *hedges_factor(n1[i], n2[i])
+        SMD[i] <- SMD[i] * hedges_factor(n1[i], n2[i])
       }
     }
     return(SMD)
@@ -93,13 +99,13 @@ SMD_from_arm <-
 #'
 #' Calculates the standardized mean differences for matched groups. Needs either the mean of the groups or
 #' the difference between groups.
-#' SD_within is usually not reported but can be calculated by the use of SD.within_from_SD.r()
+#' SD_within is usually not reported but can be calculated by the use of [SD_within_from_SD_r()].
 #'
 #' @param M_diff mean difference between groups
 #' @param M1 mean group 1 (in case M_diff not provided)
 #' @param M2 mean group 2 (in case M_diff not provided)
 #' @param SD_within within standard deviation. CAVE this is usually not reported but needs to be computed from the difference standard deviation.
-#' This can be done with SD.within_from_SD.r().
+#' This can be done with [SD_within_from_SD_r()].
 #'
 #' @return
 #' @export
