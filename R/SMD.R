@@ -15,9 +15,11 @@
 #' Borenstein, M., Hedges, L.V., Higgins, J.P.T. and Rothstein, H.R. (2009). Converting Among Effect Sizes. In Introduction to Meta-Analysis (eds M. Borenstein, L.V. Hedges, J.P.T. Higgins and H.R. Rothstein). https://doi.org/10.1002/9780470743386.ch7
 #'
 SMD_from_OR <- function(OR){
+  # check data
   if(OR <= 0){
     stop("OR needs to be greater than 0")
   }
+  # check data end
   log(OR) * sqrt(3) / pi
 }
 
@@ -38,7 +40,10 @@ SMD_from_OR <- function(OR){
 #' # Mean control = 153, Mean intervention = 136, pooled SD = 25
 #' SMD_calc(153, 136, 25)
 SMD_from_mean <- function(M1, M2, SD_pooled){
+  # check data
   if(SD_pooled <= 0) stop("SD needs to be greater than 0")
+  # check data end
+
   (M1 - M2) /
     SD_pooled
 }
@@ -79,6 +84,11 @@ SMD_from_arm <-
            n2 = NA,
            method = "hedges") {
     if(length(method) == 1) method <- rep(method, length(M1))
+    #check data
+    if(n1 < 0 | n2 < 0) stop("n needs to be > 0")
+    if(SD1 < 0 | SD2 < 0) stop("SD needs to be > 0")
+    #check data end
+
     SMD <- c()
 
     for(i in seq_along(M1)){
@@ -130,6 +140,10 @@ SMD_from_arm <-
 #' SMD.matched_calc(M_diff = 3,
 #'     SD_within = SD.within_from_SD.r(SD_between, r))
 SMD_from_mean_matched <- function(M_diff = NA, M1 = NA, M2 = NA, SD_within) {
+  #check data
+  if(any(SD_within < 0)) stop("SD needs to be > 0")
+  #check data end
+
   l <- length(SD_within)
   M_diff <- extend_var(M_diff, l)
   M1 <- extend_var(M1, l)
