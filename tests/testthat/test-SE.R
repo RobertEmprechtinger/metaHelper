@@ -40,8 +40,8 @@ test_that("SMD.SE from SMD and sample size", {
 })
 
 
-dat <- data.frame(CI_low = c(10, 10, 10),
-                  CI_up = c(5, 5, 5),
+dat <- data.frame(CI_up = c(10, 10, 10),
+                  CI_low = c(5, 5, 5),
                   N1 = c(NA, 10, NA),
                   N2 = c(NA, 10, NA),
                   t_dist = c(F, T, T))

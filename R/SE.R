@@ -21,7 +21,7 @@
 #' SE_from_SD(2, 50)
 SE_from_SD <- function(SD, n){
   #check data
-  check_data(SD, n)
+  check_data(SD=SD, n=n)
   #check data end
 
   SD / sqrt(n)
@@ -51,7 +51,7 @@ SE_from_SD <- function(SD, n){
 #' SEp_from_SDp(2, 50, 75)
 SEp_from_SDp <- function(SDp, n1, n2){
   #check data
-  check_data(SDp, n1, n2)
+  check_data(SD=SDp, n=c(n1, n2))
   #check data end
 
   SDp * sqrt(1/n1 + 1/n2)
@@ -81,6 +81,10 @@ SEp_from_SDp <- function(SDp, n1, n2){
 #' # lower CI = 0.6, upper CI = 0.9
 #' SE.SMD_from_OR.CI(0.6, 0.9)
 SE.SMD_from_OR.CI <- function(CI_low, CI_up, sig_level = 0.05, two_tailed = TRUE){
+  #check data
+  check_data(CI_low = CI_low, CI_up = CI_up, sig_level=sig_level)
+  #check data end
+
   SE_log_OR <- SEp_from_CIp(log(CI_low), log(CI_up), sig_level = sig_level, two_tailed = two_tailed, t_dist = FALSE)
   SE_SMD <- SE_log_OR * sqrt(3)/pi
   return(SE_SMD)
@@ -108,6 +112,10 @@ SE.SMD_from_OR.CI <- function(CI_low, CI_up, sig_level = 0.05, two_tailed = TRUE
 #' # SMD = 0.6, sample size group_1 = 50, sample size group_2 = 75
 #' SE.SMD_from_SMD(0.6, 50, 75)
 SE.SMD_from_SMD <- function(SMD, n1, n2, method = "hedges"){
+  # check data
+  check_data(n = c(n1, n2))
+  # check data end
+
   SE <- c()
   if(length(method) == 1) {
     method <- rep(method, length(SMD))
@@ -142,8 +150,8 @@ SE.SMD_from_SMD <- function(SMD, n1, n2, method = "hedges"){
 #' @param sig_level the significance level
 #' @param two_tailed whether the two-tailed or one-tailed statistics should be calculated
 #' @param CI_up upper OR confidence interval limit
-#' @param N1 sample size group 1 (not required if t_dist = FALSE)
-#' @param N2 sample size group 2 (not required if t_dist = FALSE)
+#' @param n1 sample size group 1 (not required if t_dist = FALSE)
+#' @param n2 sample size group 2 (not required if t_dist = FALSE)
 #' @param t_dist whether the t-distribution should be calculated - requires samples sizes
 #'
 #' @return
@@ -153,7 +161,11 @@ SE.SMD_from_SMD <- function(SMD, n1, n2, method = "hedges"){
 #' @examples
 #' # lower CI = -1.5, upper CI = 0.5
 #' SEp_from_CIp(-1.5, 0.5)
-SEp_from_CIp <- function(CI_low, CI_up, N1 = NA, N2 = NA, sig_level = 0.05, two_tailed = TRUE, t_dist = TRUE){
+SEp_from_CIp <- function(CI_low, CI_up, n1 = NA, n2 = NA, sig_level = 0.05, two_tailed = TRUE, t_dist = TRUE){
+  # check data
+  check_data(CI_low = CI_low, CI_up = CI_up, n = c(n1, n2), sig_level = sig_level)
+  # check data end
+
   l <- length(CI_low)
   sig_level <- extend_var(sig_level, l)
   two_tailed <- extend_var(two_tailed, l)
@@ -162,11 +174,11 @@ SEp_from_CIp <- function(CI_low, CI_up, N1 = NA, N2 = NA, sig_level = 0.05, two_
   result <- c()
   for(i in seq_along(CI_low)){
     if(t_dist[i]){
-      if(is.na(N1[i]) | is.na(N2[i])){
+      if(is.na(n1[i]) | is.na(n2[i])){
         result[i] <- NA
         warning("t_dist needs sample size")
       } else{
-        result[i] <- abs((CI_up[i] - CI_low[i]) / (2 * t_calc(sig_level[i], two_tailed[i], df = N1[i] + N2[i] - 2)))
+        result[i] <- abs((CI_up[i] - CI_low[i]) / (2 * t_calc(sig_level[i], two_tailed[i], df = n1[i] + n2[i] - 2)))
         }
     } else{
       result[i] <- abs((CI_up[i] - CI_low[i]) / (2 * z_calc(sig_level[i], two_tailed[i])))
@@ -197,6 +209,10 @@ SEp_from_CIp <- function(CI_low, CI_up, N1 = NA, N2 = NA, sig_level = 0.05, two_
 #' # TE = 1.5, p = 0.8
 #' SEp_from_TE.p(1.5, 0.8)
 SEp_from_TE.p <- function(TE, p, two_tailed = TRUE){
+  # check data
+  check_data(p)
+  # check data end
+
   SE <- c()
   l <- length(TE)
   two_tailed <- extend_var(two_tailed, length(TE))
