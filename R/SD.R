@@ -17,10 +17,6 @@
 #' @examples
 #' poolSD_hedges(2, 3, 50, 50)
 poolSD_hedges <- function(SD1, SD2, n1, n2) {
-  # data check
-  if(n1 < 0 | n2 < 0) stop("n needs to be > 0")
-  if(SD1 < 0 | SD2 < 0) stop("SD needs to be > 0")
-  # end data check
   result <- c()
   for(i in seq_along(SD1)){
 
@@ -80,8 +76,8 @@ SDp_from_SD <- function(SD1,
                     n2 = NA,
                     method = "hedges") {
   # data check
-  if(n1 < 0 | n2 < 0) stop("n needs to be > 0")
-  if(SD1 < 0 | SD2 < 0) stop("SD needs to be > 0")
+  check_data(SD1=SD1, SD2=SD2)
+  if(any(method == "hedges")) check_data(n1, n2)
   # end data check
 
   # SD calculation according to Hedges 1981 or Cohen
@@ -129,8 +125,7 @@ SDp_from_SD <- function(SD1,
 #'
 SD_from_SE <- function(SE, n){
   # data check
-  if(n < 0) stop("n needs to be > 0")
-  if(SE < 0) stop("SE needs to be > 0")
+  check_data(n=n, SE=SE)
   # end data check
 
   SE * sqrt(n)
@@ -168,8 +163,7 @@ SD_from_SE <- function(SE, n){
 #' SDp_from_SEp(SE, n1, n2)
 SDp_from_SEp <- function(SEp, n1, n2){
   # data check
-  if(n1 < 0 | n2 < 0) stop("n needs to be > 0")
-  if(SEp < 0) stop("SE needs to be > 0")
+  check_data(SE=SEp, n1=n1, n2=n2)
   # end data check
 
   SEp / sqrt(1/n1 + 1/n2)
@@ -207,8 +201,7 @@ SDp_from_SEp <- function(SEp, n1, n2){
 #' SD_from_CI(-05, 2, 100)
 SD_from_CI <- function(CI_low, CI_up, n, sig_level = 0.05, two_sided = TRUE, t_dist = TRUE){
   # data check
-  if(CI_low > CI_up) stop("Lower CI needs to be < than upper CI")
-  if(sig_level <= 0 | sig_level >= 1) stop("Significance level needs to be between 0 and 1")
+  check_data(CI_low=CI_low, CI_up=CI_up, n=n, sig_level=sig_level)
   # end data check
 
   l <- length(CI_low)
@@ -260,8 +253,7 @@ SD_from_CI <- function(CI_low, CI_up, n, sig_level = 0.05, two_sided = TRUE, t_d
 #' SDp_from_CIp(0.5, 0.7, 50, 70)
 SDp_from_CIp <- function(CI_low, CI_up, n1, n2, sig_level = 0.05, two_sided = TRUE, t_dist = TRUE){
   # data check
-  if(CI_low > CI_up) stop("Lower CI needs to be < than upper CI")
-  if(sig_level <= 0 | sig_level >= 1) stop("Significance level needs to be between 0 and 1")
+  check_data(CI_low =CI_low, CI_up=CI_up, n1=n1, n2=n2, sig_level=sig_level)
   # end data check
 
   result <- c()
@@ -308,7 +300,7 @@ SDp_from_CIp <- function(CI_low, CI_up, n1, n2, sig_level = 0.05, two_sided = TR
 #' SD_within_from_SD.r(SD_diff, r)
 SD_within_from_SD_r <- function(SD_diff, r){
   # data check
-  if(SD_diff < 0) stop("SD needs to be > 0")
+  check_data(SD=SD_diff, r=r)
   # end data check
 
   ifelse(abs(r) > 1,
@@ -337,8 +329,7 @@ SD_within_from_SD_r <- function(SD_diff, r){
 #' @examples
 SD_M_n_pooled_from_groups <-function(M, SD, n){
   # data check
-  if(any(SD < 0)) stop("SD needs to be > 0")
-  if(any(n < 0)) stop("n needs to be > 0")
+  check_data(SD, n)
   if(any(c(length(n), length(SD)) != length(M))) stop("All vectors (SD, M, n) need to have the same length")
   if(length(n) == 1) stop("Need multiple groups. Data indicates that you have only provided data of 1 group")
   # end data check

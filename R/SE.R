@@ -20,6 +20,10 @@
 #' # Standard deviation = 2, group size = 50
 #' SE_from_SD(2, 50)
 SE_from_SD <- function(SD, n){
+  #check data
+  check_data(SD, n)
+  #check data end
+
   SD / sqrt(n)
 }
 
@@ -46,6 +50,10 @@ SE_from_SD <- function(SD, n){
 #' # Pooled standard deviation = 2, sample size group a = 50, sample size group b = 75,
 #' SEp_from_SDp(2, 50, 75)
 SEp_from_SDp <- function(SDp, n1, n2){
+  #check data
+  check_data(SDp, n1, n2)
+  #check data end
+
   SDp * sqrt(1/n1 + 1/n2)
 }
 

@@ -16,9 +16,7 @@
 #'
 SMD_from_OR <- function(OR){
   # check data
-  if(OR <= 0){
-    stop("OR needs to be greater than 0")
-  }
+  check_data(OR = OR)
   # check data end
   log(OR) * sqrt(3) / pi
 }
@@ -41,7 +39,7 @@ SMD_from_OR <- function(OR){
 #' SMD_calc(153, 136, 25)
 SMD_from_mean <- function(M1, M2, SD_pooled){
   # check data
-  if(SD_pooled <= 0) stop("SD needs to be greater than 0")
+  check_data(SD = SD_pooled)
   # check data end
 
   (M1 - M2) /
@@ -85,8 +83,8 @@ SMD_from_arm <-
            method = "hedges") {
     if(length(method) == 1) method <- rep(method, length(M1))
     #check data
-    if(n1 < 0 | n2 < 0) stop("n needs to be > 0")
-    if(SD1 < 0 | SD2 < 0) stop("SD needs to be > 0")
+    check_data(SD1 = SD1, SD2 = SD2)
+    if(method == "hedges") check_data(n1 = n1, n2 = n2)
     #check data end
 
     SMD <- c()
@@ -141,7 +139,7 @@ SMD_from_arm <-
 #'     SD_within = SD.within_from_SD.r(SD_between, r))
 SMD_from_mean_matched <- function(M_diff = NA, M1 = NA, M2 = NA, SD_within) {
   #check data
-  if(any(SD_within < 0)) stop("SD needs to be > 0")
+  check_data(SD = SD_within)
   #check data end
 
   l <- length(SD_within)
@@ -183,9 +181,13 @@ SMD_from_arm.pre_post <- function(M1_pre,
                                   n1 = NA,
                                   n2 = NA,
                                   method = "hedges"){
+  # check data
+  check_data(SD = c(SD1_pre, SD1_post, SD2_pre, SD2_post))
+  # check data end
   # 1. get pooled SDs
   if(method == "hedges"){
-    if(is.na(n1) | is.na(n2)){
+    check_data(n1=n1, n2=n2) # another data check
+    if(any(is.na(n1)) | any(is.na(n2))){
       warning("hedges method needs sample size. You could try method='cohen' instead")
       return(NA)
     }
