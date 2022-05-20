@@ -19,6 +19,13 @@ Within standard deviation
 \description{
 Computes the pooled standard deviation for multiple groups.
 }
+\examples{
+# Compute the Standard deviation for the following grouped data
+M <- c(1, 1.5, 2) # Means
+SD <- c(2, 3, 2.5) # SDs
+n <- c(72, 80, 55) # sample sizes
+SD_M_n_pooled_from_groups(M, SD, n)
+}
 \references{
 \href{https://handbook-5-1.cochrane.org/chapter_7/table_7_7_a_formulae_for_combining_groups.htm}{Cochrane Handbook}
 

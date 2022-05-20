@@ -1,3 +1,5 @@
+^renv$
+^renv\.lock$
 ^metaHelper\.Rproj$
 ^\.Rproj\.user$
 ^LICENSE\.md$

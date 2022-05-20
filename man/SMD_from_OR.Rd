@@ -10,12 +10,14 @@ SMD_from_OR(OR)
 \item{OR}{odds ratio}
 }
 \value{
-
+Standardized Mean Difference
 }
 \description{
 Approximates SMD from OR.
 }
 \examples{
+# Transform an OR of 0.3 to SMD
+SMD_from_OR(0.3)
 
 }
 \references{

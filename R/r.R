@@ -16,7 +16,7 @@
 #' SD_diff <- 2
 #' # r is the correlation coefficient between the groups
 #' r <- 0.5
-#' SD.within_from_SD.r(SD_diff, r)
+#' SD_within_from_SD_r(SD_diff, r)
 r.pre_post <- function(SD_diff, r){
   ifelse(abs(r) > 1,
          stop("correlation of r greater 1 is not allowed"),

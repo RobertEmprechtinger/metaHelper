@@ -13,9 +13,6 @@ t_calc(sig_level = 0.05, two_sided = TRUE, df)
 
 \item{df}{= degrees of freedom}
 }
-\value{
-
-}
 \description{
 Calculates the t_value
 }

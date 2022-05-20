@@ -1,19 +1,19 @@
 Package: metaHelper
-Title: What the Package Does (One Line, Title Case)
-Version: 0.0.0.9000
+Title: Transforms values used for meta-analysis
+Version: 0.1
 Authors@R: 
-    person(given = "First",
-           family = "Last",
+    person(given = "Robert",
+           family = "Emprechtinger",
            role = c("aut", "cre"),
-           email = "first.last@example.com",
+           email = "robert.emprechtinger@donau-uni.ac.at",
            comment = c(ORCID = "YOUR-ORCID-ID"))
-Description: What the package does (one paragraph).
+Description: This packages helps you to calculate statistcal values often used for meta-analysis.  For instance, it provides several methods to calculate different forms of standardized-mean-differences. Other values that can be calculated are standard error and standard deviations.
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.1.2
+RoxygenNote: 7.2.0
 Suggests: 
     testthat (>= 3.0.0), metafor
 Config/testthat/edition: 3
-Imports: dplyr, grid, ggplot2, gridExtra, magrittr
+Imports: dplyr, grid, ggplot2, magrittr

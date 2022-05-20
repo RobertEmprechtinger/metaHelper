@@ -23,7 +23,7 @@ differences for matched groups.
 SD_diff <- 2
 # r is the correlation coefficient between the groups
 r <- 0.5
-SD_within_from_SD.r(SD_diff, r)
+SD_within_from_SD_r(SD_diff, r)
 }
 \references{
 Borenstein, M., Hedges, L.V., Higgins, J.P.T. and Rothstein, H.R. (2009). Effect Sizes Based on Means . In Introduction to Meta-Analysis (eds M. Borenstein, L.V. Hedges, J.P.T. Higgins and H.R. Rothstein). https://doi.org/10.1002/9780470743386.ch4

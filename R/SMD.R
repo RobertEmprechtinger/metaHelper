@@ -5,6 +5,7 @@
 #' @param OR odds ratio
 #'
 #' @return
+#' Standardized Mean Difference
 #' @export
 #'
 #' @examples
@@ -32,11 +33,12 @@ SMD_from_OR <- function(OR){
 #' @param SD_pooled the pooled standard deviation or the standard deviation of the control group in case Glass's delta should be calculated
 #'
 #' @return
+#' Standardized Mean Differences
 #' @export
 #'
 #' @examples
 #' # Mean control = 153, Mean intervention = 136, pooled SD = 25
-#' SMD_calc(153, 136, 25)
+#' SMD_from_mean(153, 136, 25)
 SMD_from_mean <- function(M1, M2, SD_pooled){
   # check data
   check_data(SD = SD_pooled)
@@ -60,6 +62,7 @@ SMD_from_mean <- function(M1, M2, SD_pooled){
 #' @param method transformation method ("hedges", "cohen")
 #'
 #' @return
+#' Standardized Mean Differences
 #' @export
 #'
 #' @references
@@ -116,6 +119,7 @@ SMD_from_arm <-
 #' This can be done with [SD_within_from_SD_r()].
 #'
 #' @return
+#' Standardized Mean Differences
 #' @export
 #'
 #' @references
@@ -123,10 +127,10 @@ SMD_from_arm <-
 #'
 #' @examples
 #' # Calcuation with group means
-#' SMD.matched_calc(M1 = 103, M2 = 100, SD_within = 7.1005)
+#' SMD_from_mean_matched(M1 = 103, M2 = 100, SD_within = 7.1005)
 #'
 #' # Calculation with group difference
-#' SMD.matched_calc(M_diff = 3, SD_within = 7.1005)
+#' SMD_from_mean_matched(M_diff = 3, SD_within = 7.1005)
 #'
 #' # Calculation with standard deviation between
 #' # Correlation Coefficient between groups
@@ -135,8 +139,8 @@ SMD_from_arm <-
 #' # SD between groups
 #' SD_between <- 5.5
 #'
-#' SMD.matched_calc(M_diff = 3,
-#'     SD_within = SD.within_from_SD.r(SD_between, r))
+#' SMD_from_mean_matched(M_diff = 3,
+#'     SD_within = SD_within_from_SD_r(SD_between, r))
 SMD_from_mean_matched <- function(M_diff = NA, M1 = NA, M2 = NA, SD_within) {
   #check data
   check_data(SD = SD_within)

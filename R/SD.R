@@ -62,7 +62,7 @@ poolSD_hedges <- function(SD1, SD2, n1, n2) {
 #' Journal of Educational Statistics, 6, 107-128.
 #'
 #' @seealso
-#' [metaHelper::SD_within_from_SD.r()] for matched groups
+#' [metaHelper::SD_within_from_SD_r()] for matched groups
 #'
 #' @examples
 #' # Standard deviation according to Cohen:
@@ -297,7 +297,7 @@ SDp_from_CIp <- function(CI_low, CI_up, n1, n2, sig_level = 0.05, two_sided = TR
 #' SD_diff <- 2
 #' # r is the correlation coefficient between the groups
 #' r <- 0.5
-#' SD_within_from_SD.r(SD_diff, r)
+#' SD_within_from_SD_r(SD_diff, r)
 SD_within_from_SD_r <- function(SD_diff, r){
   # data check
   check_data(SD=SD_diff, r=r)
@@ -327,6 +327,11 @@ SD_within_from_SD_r <- function(SD_diff, r){
 #' Rücker G, Cates CJ, Schwarzer G. Methods for including information from multi-arm trials in pairwise meta-analysis. Res Synth Methods. 2017 Dec;8(4):392-403. doi: 10.1002/jrsm.1259. Epub 2017 Aug 25. PMID: 28759708.
 #'
 #' @examples
+#' # Compute the Standard deviation for the following grouped data
+#' M <- c(1, 1.5, 2) # Means
+#' SD <- c(2, 3, 2.5) # SDs
+#' n <- c(72, 80, 55) # sample sizes
+#' SD_M_n_pooled_from_groups(M, SD, n)
 SD_M_n_pooled_from_groups <-function(M, SD, n){
   # data check
   check_data(SD, n)

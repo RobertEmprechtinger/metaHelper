@@ -75,6 +75,7 @@ SEp_from_SDp <- function(SDp, n1, n2){
 #' @param CI_up upper odds ratio confidence interval limit
 #'
 #' @return
+#' Standard Error
 #' @export
 #'
 #' @examples

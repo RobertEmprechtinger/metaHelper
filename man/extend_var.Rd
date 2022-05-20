@@ -11,14 +11,7 @@ extend_var(variable, length)
 
 \item{length}{length of the returned variable}
 }
-\value{
-
-}
 \description{
 Extends the length of a variable
-}
-\examples{
-x <- "test"
-extend_var(x, 5)
 }
 \keyword{internal}

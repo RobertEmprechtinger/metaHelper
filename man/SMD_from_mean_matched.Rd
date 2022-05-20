@@ -17,7 +17,7 @@ SMD_from_mean_matched(M_diff = NA, M1 = NA, M2 = NA, SD_within)
 This can be done with \code{\link[=SD_within_from_SD_r]{SD_within_from_SD_r()}}.}
 }
 \value{
-
+Standardized Mean Differences
 }
 \description{
 Calculates the standardized mean differences for matched groups. Needs either the mean of the groups or
@@ -26,10 +26,10 @@ SD_within is usually not reported but can be calculated by the use of \code{\lin
 }
 \examples{
 # Calcuation with group means
-SMD.matched_calc(M1 = 103, M2 = 100, SD_within = 7.1005)
+SMD_from_mean_matched(M1 = 103, M2 = 100, SD_within = 7.1005)
 
 # Calculation with group difference
-SMD.matched_calc(M_diff = 3, SD_within = 7.1005)
+SMD_from_mean_matched(M_diff = 3, SD_within = 7.1005)
 
 # Calculation with standard deviation between
 # Correlation Coefficient between groups
@@ -38,8 +38,8 @@ r <- 0.7
 # SD between groups
 SD_between <- 5.5
 
-SMD.matched_calc(M_diff = 3,
-    SD_within = SD.within_from_SD.r(SD_between, r))
+SMD_from_mean_matched(M_diff = 3,
+    SD_within = SD_within_from_SD_r(SD_between, r))
 }
 \references{
 M., Hedges, L.V., Higgins, J.P.T. and Rothstein, H.R. (2009). Converting Among Effect Sizes. In Introduction to Meta-Analysis (eds M. Borenstein, L.V. Hedges, J.P.T. Higgins and H.R. Rothstein). https://doi.org/10.1002/9780470743386.ch7

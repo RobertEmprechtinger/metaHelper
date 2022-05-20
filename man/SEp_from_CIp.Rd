@@ -7,8 +7,8 @@
 SEp_from_CIp(
   CI_low,
   CI_up,
-  N1 = NA,
-  N2 = NA,
+  n1 = NA,
+  n2 = NA,
   sig_level = 0.05,
   two_tailed = TRUE,
   t_dist = TRUE
@@ -19,9 +19,9 @@ SEp_from_CIp(
 
 \item{CI_up}{upper OR confidence interval limit}
 
-\item{N1}{sample size group 1 (not required if t_dist = FALSE)}
+\item{n1}{sample size group 1 (not required if t_dist = FALSE)}
 
-\item{N2}{sample size group 2 (not required if t_dist = FALSE)}
+\item{n2}{sample size group 2 (not required if t_dist = FALSE)}
 
 \item{sig_level}{the significance level}
 

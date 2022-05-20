@@ -23,8 +23,5 @@ mean changes.
 SD_diff <- 2
 # r is the correlation coefficient between the groups
 r <- 0.5
-SD.within_from_SD.r(SD_diff, r)
-}
-\references{
-
+SD_within_from_SD_r(SD_diff, r)
 }

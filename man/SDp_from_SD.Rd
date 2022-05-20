@@ -42,5 +42,5 @@ Hedges, L. V. (1981). Distribution theory for Glass's estimator of effect size a
 Journal of Educational Statistics, 6, 107-128.
 }
 \seealso{
-\code{\link[=SD_within_from_SD.r]{SD_within_from_SD.r()}} for matched groups
+\code{\link[=SD_within_from_SD_r]{SD_within_from_SD_r()}} for matched groups
 }

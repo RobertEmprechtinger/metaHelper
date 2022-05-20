@@ -1,3 +1,6 @@
+#' Check function input data
+#' @keywords internal
+#'
 check_data <- function(
   n = NA,
   SD = NA,

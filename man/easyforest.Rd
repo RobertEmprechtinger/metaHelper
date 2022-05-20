@@ -67,7 +67,7 @@ easyforest(
 \item{z}{transforms the sig_level to z}
 }
 \value{
-
+Forest Plot
 }
 \description{
 Create forest plots for metafor outcomes
@@ -75,7 +75,8 @@ Create forest plots for metafor outcomes
 \examples{
 ### copy BCG vaccine meta-analysis data into 'dat'
 
-dat <- metafor::dat.bcg
+library(metafor)
+dat <- dat.bcg
 
 ### calculate log risk ratios and corresponding sampling variances (and use
 ### the 'slab' argument to store study labels as part of the data frame)

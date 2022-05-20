@@ -16,7 +16,7 @@ SE.SMD_from_OR.CI(CI_low, CI_up, sig_level = 0.05, two_tailed = TRUE)
 \item{two_tailed}{whether the two-tailed or one-tailed z statistics should be calculated}
 }
 \value{
-
+Standard Error
 }
 \description{
 This method uses multiple steps in the background. It:
