@@ -334,7 +334,7 @@ SD_within_from_SD_r <- function(SD_diff, r){
 #' SD_M_n_pooled_from_groups(M, SD, n)
 SD_M_n_pooled_from_groups <-function(M, SD, n){
   # data check
-  check_data(SD, n)
+  check_data(SD=SD, n=n)
   if(any(c(length(n), length(SD)) != length(M))) stop("All vectors (SD, M, n) need to have the same length")
   if(length(n) == 1) stop("Need multiple groups. Data indicates that you have only provided data of 1 group")
   # end data check
