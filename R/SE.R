@@ -211,7 +211,7 @@ SEp_from_CIp <- function(CI_low, CI_up, n1 = NA, n2 = NA, sig_level = 0.05, two_
 #' SEp_from_TE.p(1.5, 0.8)
 SEp_from_TE.p <- function(TE, p, two_tailed = TRUE){
   # check data
-  check_data(p)
+  check_data(p=p)
   # check data end
 
   SE <- c()

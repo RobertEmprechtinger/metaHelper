@@ -41,7 +41,7 @@ check_data <- function(
   # r
   if(any(!is.na(r))) if(any(abs(r) < 0, na.rm = TRUE) | any(abs(r) > 1, na.rm = TRUE)) stop("Absolute r needs to be <= 1 and >= 0")
   # p
-  if(any(!is.na(p))) if(any(p <= 0) | any(p >= 1)) stop("p needs to be between 0 and 1")
+  if(any(!is.na(p))) if(any(p <= 0) | any(p > 1)) stop("p needs to be between 0 and 1")
 
 }
 

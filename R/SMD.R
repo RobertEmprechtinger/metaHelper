@@ -87,7 +87,11 @@ SMD_from_arm <-
     if(length(method) == 1) method <- rep(method, length(M1))
     #check data
     check_data(SD1 = SD1, SD2 = SD2)
-    if(method == "hedges") check_data(n1 = n1, n2 = n2)
+    for(i in 1:length(n1)){
+      if(method[i] == "hedges") {
+          check_data(n1 = n1[i], n2 = n2[i])
+        }
+    }
     #check data end
 
     SMD <- c()
