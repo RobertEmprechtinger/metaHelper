@@ -17,10 +17,12 @@ SMD_from_mean(M1, M2, SD_pooled)
 Standardized Mean Differences
 }
 \description{
-Uses the differences of two means and divides with the (pooled) standard deviation or the standard deviation of the
-control group in case Glass's delta should be calculated.
+Uses the differences of two means and divides with the (pooled) standard deviation or the standard deviation of the control group in case Glass's delta should be calculated.
 }
 \examples{
 # Mean control = 153, Mean intervention = 136, pooled SD = 25
 SMD_from_mean(153, 136, 25)
+}
+\references{
+https://handbook-5-1.cochrane.org/chapter_9/9_2_3_2_the_standardized_mean_difference.htm
 }

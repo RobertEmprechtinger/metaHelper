@@ -2,7 +2,7 @@
 % Please edit documentation in R/SD.R
 \name{SD_from_SE}
 \alias{SD_from_SE}
-\title{SD from Standard Error (Single Group)}
+\title{Standard Deviation from Standard Error (Single Group)}
 \usage{
 SD_from_SE(SE, n)
 }
@@ -15,8 +15,7 @@ SD_from_SE(SE, n)
 Single group standard deviation
 }
 \description{
-Calculates the standard deviation from the standard error for a single group.
-When there are two arms, the following method for pooled standard error has to be used: \code{\link[=SDp_from_SEp]{SDp_from_SEp()}}
+Calculates the standard deviation from the standard error for a single group. When there are two arms, the following method for pooled standard error has to be used: \code{\link[=SDp_from_SEp]{SDp_from_SEp()}}
 }
 \examples{
 # Standard error = 2 and sample size = 100

@@ -36,9 +36,7 @@ poolSD_hedges <- function(SD1, SD2, n1, n2) {
 
 #' Pooled Standard Deviation from two Standard Deviations
 #'
-#' Calculates pooled standard deviation. The method according to Hedges
-#' requires the sample sizes.
-#' If only standard deviations are available, the simpler equation provided by Cohen 1988 can be used.
+#' Calculates pooled standard deviation. The method according to Hedges requires the sample sizes. If only standard deviations are available, the simpler equation provided by Cohen 1988 can be used.
 #'
 #'
 #' @param SD1 standard deviation of group 1
@@ -98,10 +96,9 @@ SDp_from_SD <- function(SD1,
 }
 
 
-#' SD from Standard Error (Single Group)
+#' Standard Deviation from Standard Error (Single Group)
 #'
-#' Calculates the standard deviation from the standard error for a single group.
-#' When there are two arms, the following method for pooled standard error has to be used: [metaHelper::SDp_from_SEp()]
+#' Calculates the standard deviation from the standard error for a single group. When there are two arms, the following method for pooled standard error has to be used: [metaHelper::SDp_from_SEp()]
 #'
 #' @param SE standard error
 #' @param n sample size
@@ -134,9 +131,7 @@ SD_from_SE <- function(SE, n){
 
 #' Standard Deviation from the Pooled Standard Error
 #'
-#' Calculates the standard deviation from the pooled standard error and sample size from two groups (e.g., intervention effects).
-#' For single groups [SD_from_SE()] has to be used.
-#' This method is the reverse method of [SEp_from_SDp()].
+#' Calculates the standard deviation from the pooled standard error and sample size from two groups (e.g., intervention effects). For single groups [SD_from_SE()] has to be used. This method is the reverse method of [SEp_from_SDp()].
 #'
 #' @references
 #' \href{https://handbook-5-1.cochrane.org/chapter_7/7_7_3_3_obtaining_standard_deviations_from_standard_errors.htm}{Cochrane Handbook}
@@ -173,10 +168,7 @@ SDp_from_SEp <- function(SEp, n1, n2){
 #' Standard Deviation from Confidence Interval
 #'
 #'
-#' Computes the standard deviation from the confidence interval and sample size. This method is only valid for single groups and when the
-#' CI is symmetrical around the mean.
-#' For two groups (e.g., intervention effects), [SDp_from_CIp()] has to be used.
-#' For sample sizes smaller than 60, the t_dist is usually used to calculate the confidence interval.
+#' Computes the standard deviation from the confidence interval and sample size. This method is only valid for single groups and when the CI is symmetrical around the mean. For two groups (e.g., intervention effects), [SDp_from_CIp()] has to be used. For sample sizes smaller than 60, the t_dist is usually used to calculate the confidence interval.
 #'
 #' @param CI_low lower limit confidence interval
 #' @param CI_up upper limit confidence interval
@@ -224,10 +216,7 @@ SD_from_CI <- function(CI_low, CI_up, n, sig_level = 0.05, two_sided = TRUE, t_d
 
 #' Pooled Standard Deviation from Confidence Interval
 #'
-#' Computes the pooled standard deviation (e.g., standard deviation of an intervention effect) from confidence intervals and sample sizes.
-#' The Cochrane Handbook (see references) calls the resulting standard deviation as "within-group standard deviation".
-#' This method is only valid if the confidence interval is symmetrical around the mean and when either the t-distribution or
-#' normal-distribution (t_dist = FALSE) has been used to calculate the CI.
+#' Computes the pooled standard deviation (e.g., standard deviation of an intervention effect) from confidence intervals and sample sizes. The Cochrane Handbook (see references) calls the resulting standard deviation as "within-group standard deviation". This method is only valid if the confidence interval is symmetrical around the mean and when either the t-distribution or normal-distribution (t_dist = FALSE) has been used to calculate the CI.
 #'
 #' @param CI_low lower limit confidence interval
 #' @param CI_up upper limit confidence interval
@@ -280,8 +269,7 @@ SDp_from_CIp <- function(CI_low, CI_up, n1, n2, sig_level = 0.05, two_sided = TR
 
 #' Within Standard Deviation for Matched Groups
 #'
-#' Computes the within standard deviation for matched groups. The within standard deviation can further be used to compute the standardized mean
-#' differences for matched groups.
+#' Computes the within standard deviation for matched groups. The within standard deviation can further be used to compute the standardized mean differences for matched groups.
 #'
 #' @param SD_diff standard deviation of the difference
 #' @param r correlation between pair of observations

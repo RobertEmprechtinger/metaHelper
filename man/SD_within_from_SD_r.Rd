@@ -15,8 +15,7 @@ SD_within_from_SD_r(SD_diff, r)
 Within standard deviation
 }
 \description{
-Computes the within standard deviation for matched groups. The within standard deviation can further be used to compute the standardized mean
-differences for matched groups.
+Computes the within standard deviation for matched groups. The within standard deviation can further be used to compute the standardized mean differences for matched groups.
 }
 \examples{
 # SD_diff is the standard deviation of the group difference

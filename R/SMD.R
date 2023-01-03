@@ -25,8 +25,7 @@ SMD_from_OR <- function(OR){
 
 #' Standardized Mean Differences from Means and Standard Deviations
 #'
-#' Uses the differences of two means and divides with the (pooled) standard deviation or the standard deviation of the
-#' control group in case Glass's delta should be calculated.
+#' Uses the differences of two means and divides with the (pooled) standard deviation or the standard deviation of the control group in case Glass's delta should be calculated.
 #'
 #' @param M1 treatment effect size group 1
 #' @param M2 treatment effect size group 2
@@ -35,6 +34,9 @@ SMD_from_OR <- function(OR){
 #' @return
 #' Standardized Mean Differences
 #' @export
+#'
+#' @references
+#' https://handbook-5-1.cochrane.org/chapter_9/9_2_3_2_the_standardized_mean_difference.htm
 #'
 #' @examples
 #' # Mean control = 153, Mean intervention = 136, pooled SD = 25
@@ -112,8 +114,7 @@ SMD_from_arm <-
 
 #' Calculates SMD from matched groups
 #'
-#' Calculates the standardized mean differences for matched groups. Needs either the mean of the groups or
-#' the difference between groups.
+#' Calculates the standardized mean differences for matched groups. Needs either the mean of the groups or the difference between groups.
 #' SD_within is usually not reported but can be calculated by the use of [SD_within_from_SD_r()].
 #'
 #' @param M_diff mean difference between groups

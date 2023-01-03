@@ -20,8 +20,7 @@ This can be done with \code{\link[=SD_within_from_SD_r]{SD_within_from_SD_r()}}.
 Standardized Mean Differences
 }
 \description{
-Calculates the standardized mean differences for matched groups. Needs either the mean of the groups or
-the difference between groups.
+Calculates the standardized mean differences for matched groups. Needs either the mean of the groups or the difference between groups.
 SD_within is usually not reported but can be calculated by the use of \code{\link[=SD_within_from_SD_r]{SD_within_from_SD_r()}}.
 }
 \examples{
