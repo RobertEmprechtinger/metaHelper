@@ -11,6 +11,9 @@ z_calc(sig_level = 0.05, two_sided = TRUE)
 
 \item{two_sided}{whether the two sided z statistics or single sided should be calculated}
 }
+\value{
+
+}
 \description{
 Calculates the z_value
 }

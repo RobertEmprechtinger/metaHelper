@@ -25,3 +25,6 @@ SD_diff <- 2
 r <- 0.5
 SD_within_from_SD_r(SD_diff, r)
 }
+\references{
+
+}
