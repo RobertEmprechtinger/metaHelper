@@ -19,9 +19,9 @@ dat <- data.frame(SD1 = c(2,3, NA), SD2 = c(3,5, 3), n1 = c(20, 40, 50), n2= c(3
 dat2 <- data.frame(SD1 = c(2,3, NA), SD2 = c(3,5, 3), n1 = c(20, 40, 50), n2= c(30, 60, 50),
                    method = c("hedges", "hedges", "hedges"))
 test_that("SD pool data frame", {
-  expect_equal(mutate(dat, SD = SDp_from_SD(SD1, SD2, n1, n2)) %>%
+  expect_equal(dplyr::mutate(dat, SD = SDp_from_SD(SD1, SD2, n1, n2)) %>%
                  dplyr::pull(SD), c(2.649686, 4.316556, NA), tolerance = 0.0001)
-  expect_equal(mutate(dat2, SD = SDp_from_SD(SD1, SD2, n1, n2, method)) %>%
+  expect_equal(dplyr::mutate(dat2, SD = SDp_from_SD(SD1, SD2, n1, n2, method)) %>%
                  dplyr::pull(SD), c(2.649686, 4.316556, NA), tolerance = 0.0001)
 })
 
@@ -48,10 +48,10 @@ dat <- data.frame(CI_low = c(81.5261, 81.5261, 81.5261, 81.5261, 30),
                   CI_up = c(84.2739, 84.2739, 84.2739, 84.2739, 34.2),
                   N = c(360, 360, 20, 20, 25),
                   t_dist = c(FALSE, TRUE, FALSE, TRUE, TRUE))
-mutate(dat, SD = SD_from_CI(CI_low, CI_up, N, t_dist = t_dist))
+dplyr::mutate(dat, SD = SD_from_CI(CI_low, CI_up, N, t_dist = t_dist))
 test_that("SD from CI single group",{
   expect_equal(SD_from_CI(81.5261, 84.2739, 360, t_dist = FALSE), 13.3, tolerance = 0.001)
-  expect_equal(mutate(dat, SD = SD_from_CI(CI_low, CI_up, N, t_dist = t_dist)) %>% dplyr::pull(SD),
+  expect_equal(dplyr::mutate(dat, SD = SD_from_CI(CI_low, CI_up, N, t_dist = t_dist)) %>% dplyr::pull(SD),
                c(13.3, 13.255, 3.134, 2.935, 5.09), tolerance = 0.001)
 })
 
@@ -65,7 +65,7 @@ test_that("SD pooled from CI pooled", {
   expect_equal(SDp_from_CIp(-0.666, 4.86, 25, 22, t_dist = T), 4.69, tolerance = 0.001)
   expect_equal(SDp_from_CIp(-0.666, 4.86, NA, NA, t_dist = T), NA)
   expect_error(SDp_from_CIp(-0.666, 4.86, t_dist = T))
-  expect_equal(mutate(dat, SD = SDp_from_CIp(CI_low, CI_up, n1, n2, t_dist = t_dist)) %>% dplyr::pull(SD),
+  expect_equal(dplyr::mutate(dat, SD = SDp_from_CIp(CI_low, CI_up, n1, n2, t_dist = t_dist)) %>% dplyr::pull(SD),
                c(4.69, 22.8036, 22.8174), tolerance = 0.001)
 })
 

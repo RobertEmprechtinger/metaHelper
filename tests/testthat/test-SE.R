@@ -15,7 +15,7 @@ test_that("SMD.SE from OR", {
   expect_equal(SE.SMD_from_OR.CI(1.07, 26.5), 0.452, tolerance = 0.01)
   expect_equal(SE.SMD_from_OR.CI(1.07, 26.5, two_tailed = F), 0.5378, tolerance = 0.01)
   expect_equal(SE.SMD_from_OR.CI(0.18, 1.89), 0.331, tolerance = 0.01)
-  expect_equal(mutate(dat,
+  expect_equal(dplyr::mutate(dat,
                       SE = SE.SMD_from_OR.CI(CI_low, CI_up, sig_level, two_tailed)) %>%
                  dplyr::pull(SE),
                c(0.41, 0.452, 0.5378), tolerance = 0.01)
@@ -34,7 +34,7 @@ test_that("SMD.SE from SMD and sample size", {
   expect_equal(SE.SMD_from_SMD(0.8, 55, 60, "hedges"), 0.1926, tolerance = 0.001)
   expect_equal(
     dat %>%
-      mutate(SE = SE.SMD_from_SMD(SMD, n1, n2, method)) %>%
+      dplyr::mutate(SE = SE.SMD_from_SMD(SMD, n1, n2, method)) %>%
       dplyr::pull(SE),
     c(as.double(NA), 0.2598, 0.1926), tolerance = 0.001)
 })
@@ -48,7 +48,7 @@ dat <- data.frame(CI_up = c(10, 10, 10),
 test_that("Pooled standard error from CI", {
   expect_equal(SEp_from_CIp(-0.37, 5, t_dist = F), 1.37, tolerance = 0.001)
   expect_equal(SEp_from_CIp(-0.666, 5, 10, 15, t_dist = T), 1.37, tolerance = 0.001)
-  expect_equal(suppressWarnings(mutate(dat, SE = SEp_from_CIp(CI_low, CI_up, N1, N2, t_dist = t_dist))) %>% dplyr::pull(SE),
+  expect_equal(suppressWarnings(dplyr::mutate(dat, SE = SEp_from_CIp(CI_low, CI_up, N1, N2, t_dist = t_dist))) %>% dplyr::pull(SE),
                c(1.27551, 1.189, NA), tolerance = 0.001)
 })
 
@@ -58,7 +58,7 @@ test_that("SE pooled from p and treatment effect", {
   expect_equal(SEp_from_TE.p(17, 0.032), 7.94, tolerance = 0.01)
   expect_equal(SEp_from_TE.p(1.204, 0.034), 0.569, tolerance = 0.01)
   expect_equal(dat %>%
-                 mutate(SE = SEp_from_TE.p(TE, p, two_tailed = TRUE)) %>%
+                 dplyr::mutate(SE = SEp_from_TE.p(TE, p, two_tailed = TRUE)) %>%
                  dplyr::pull(SE), c(7.94, 0.569, 79788.45, 79788.45), tolerance = 0.01
                )
 })

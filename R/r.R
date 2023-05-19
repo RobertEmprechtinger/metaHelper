@@ -1,6 +1,6 @@
-#' Approximates correlation coefficient pre post studies
+#' Approximates correlation coefficient for pre post studies
 #'
-#' The correlation correlation coefficient can then be used to calculate SD for
+#' The correlation coefficient can then be used to calculate SD for
 #' mean changes.
 #'
 #' @param SD_diff standard deviation of the difference
@@ -17,9 +17,9 @@
 #' # r is the correlation coefficient between the groups
 #' r <- 0.5
 #' SD_within_from_SD_r(SD_diff, r)
-r.pre_post <- function(SD_diff, r){
-  ifelse(abs(r) > 1,
-         stop("correlation of r greater 1 is not allowed"),
-         SD_diff / sqrt(2 * (1 - r) )
-  )
-}
+#r.pre_post <- function(SD_diff, r){
+#  ifelse(abs(r) > 1,
+#         stop("correlation of r greater 1 is not allowed"),
+#         SD_diff / sqrt(2 * (1 - r) )
+#  )
+#}

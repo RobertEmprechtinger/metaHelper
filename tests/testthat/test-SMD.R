@@ -14,7 +14,7 @@ test_that("SMD from arm", {
   expect_equal(SMD_from_arm(103, 100, 5.5, 4.5, 50, 50), 0.5924, tolerance = 0.001)
   expect_equal(SMD_from_arm(103, 100, 5.5, 4.5, method = "cohen"), 0.597, tolerance = 0.001)
   expect_error(SMD_from_arm(103, 100, 5.5, 4.5, method = "hedge"))
-  expect_equal(suppressWarnings(mutate(dat, SMD = SMD_from_arm(M1, M2, SD1, SD2, n1, n2, method))) %>% dplyr::pull(SMD),
+  expect_equal(suppressWarnings(dplyr::mutate(dat, SMD = SMD_from_arm(M1, M2, SD1, SD2, n1, n2, method))) %>% dplyr::pull(SMD),
                c(0.5924, 0.597, NA), tolerance = 0.001)
 })
 
@@ -25,7 +25,7 @@ test_that("SMD calculation matched groups", {
   expect_equal(SMD_from_mean_matched(M_diff = 3, M1 = 103, M2 = 100, SD_within = 7.1005), 0.4225, tolerance = 0.0001)
   expect_error(SMD_from_mean_matched(M_diff = 3, M1 = 103, M2 = 100))
   expect_equal(SMD_from_mean_matched(M_diff = 2, SD_within = 4.1005), 0.4877454, tolerance = 0.0001)
-  expect_equal(mutate(dat, SMD = SMD_from_mean_matched(M_diff, M1, M2, SD_within)) %>% dplyr::pull(SMD),
+  expect_equal(dplyr::mutate(dat, SMD = SMD_from_mean_matched(M_diff, M1, M2, SD_within)) %>% dplyr::pull(SMD),
                c(0.4225, 0.4225, 0.4225, 0.4877454), tolerance = 0.0001)
 })
 
