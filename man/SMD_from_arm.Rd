@@ -19,13 +19,13 @@ SMD_from_arm(M1, M2, SD1, SD2, n1 = NA, n2 = NA, method = "hedges")
 
 \item{n2}{sample size group 2}
 
-\item{method}{transformation method ("hedges", "cohen")}
+\item{method}{calculation method ("hedges", "cohen")}
 }
 \value{
 Standardized Mean Differences
 }
 \description{
-Calculates SMD directly from study data. Method "hedges" needs sample size data.
+Calculates SMD directly from study data. Method "hedges" needs sample size data and returns Hedges' g. Method "cohen" returns Cohen's d.
 }
 \examples{
 # Mean control = 23, Mean intervention = 56, SD control = 30,

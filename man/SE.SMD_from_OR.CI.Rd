@@ -2,7 +2,7 @@
 % Please edit documentation in R/SE.R
 \name{SE.SMD_from_OR.CI}
 \alias{SE.SMD_from_OR.CI}
-\title{Standard Error of Standardized Mean Differences from Confidence Intervals of Odds Ratio}
+\title{Standard Error of from Confidence Intervals of Odds Ratio}
 \usage{
 SE.SMD_from_OR.CI(CI_low, CI_up, sig_level = 0.05, two_tailed = TRUE)
 }
@@ -19,12 +19,13 @@ SE.SMD_from_OR.CI(CI_low, CI_up, sig_level = 0.05, two_tailed = TRUE)
 Standard Error
 }
 \description{
-This method uses multiple steps in the background. It:
-\enumerate{
-\item Takes odds ratio (OR) limits and transforms them to log(OR)
-\item Calculates the standard error for the log(OR)
-\item Transforms the log(OR) standard error to standardized mean differences (SMD) standard error by multiplying it with sqrt(3)/pi
+Calculates the standard error from an odds ratio confidence interval.
 }
+\details{
+This method uses multiple steps in the background:
+1 Takes odds ratio (OR) limits and transforms them to log(OR)
+2 Calculates the standard error for the log(OR)
+3 Transforms the log(OR) standard error to standardized mean differences (SMD) standard error by multiplying it with sqrt(3)/pi
 }
 \examples{
 # lower CI = 0.6, upper CI = 0.9

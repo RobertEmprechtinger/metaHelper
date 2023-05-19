@@ -17,7 +17,7 @@ SD_M_n_pooled_from_groups(M, SD, n)
 Within standard deviation
 }
 \description{
-Computes the pooled standard deviation for multiple groups.
+Computes the pooled standard deviation for multiple groups and also returns the combined mean and the combined n.
 }
 \examples{
 # Compute the Standard deviation for the following grouped data

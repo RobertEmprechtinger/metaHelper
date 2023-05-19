@@ -33,8 +33,8 @@ SEp_from_CIp(
 Pooled standard error (e.g. intervention effect)
 }
 \description{
-Calculates the standard error from confidence interval limits for differences of means.
-This method is only valid when the confidence interval is symmetrical around the mean and only works for t- or normal distribution (argument t_dist).
+Calculates the standard error from confidence interval limits for differences of means (hence, it also works for confidence intervals of SMD).
+This method is only valid when the confidence interval is symmetrical around the mean and only works for t- or normal distribution (argument t_dist). For sample sizes < 60 usually the t-distribution should be used.
 }
 \examples{
 # lower CI = -1.5, upper CI = 0.5

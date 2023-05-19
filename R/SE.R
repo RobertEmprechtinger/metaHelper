@@ -58,12 +58,14 @@ SEp_from_SDp <- function(SDp, n1, n2){
 }
 
 
-#' Standard Error of Standardized Mean Differences from Confidence Intervals of Odds Ratio
+#' Standard Error of from Confidence Intervals of Odds Ratio
 #'
-#' This method uses multiple steps in the background. It:
-#' 1. Takes odds ratio (OR) limits and transforms them to log(OR)
-#' 2. Calculates the standard error for the log(OR)
-#' 3. Transforms the log(OR) standard error to standardized mean differences (SMD) standard error by multiplying it with sqrt(3)/pi
+#' Calculates the standard error from an odds ratio confidence interval.
+#'
+#' This method uses multiple steps in the background:
+#' 1 Takes odds ratio (OR) limits and transforms them to log(OR)
+#' 2 Calculates the standard error for the log(OR)
+#' 3 Transforms the log(OR) standard error to standardized mean differences (SMD) standard error by multiplying it with sqrt(3)/pi
 #'
 #' @references
 #' Chinn S. A simple method for converting an odds ratio to effect size for use in meta-analysis. Stat Med. 2000 Nov 30;19(22):3127-31. doi: 10.1002/1097-0258(20001130)19:22<3127::aid-sim784>3.0.co;2-m. PMID: 11113947.
@@ -141,8 +143,8 @@ SE.SMD_from_SMD <- function(SMD, n1, n2, method = "hedges"){
 
 #' Standard Error from Confidence Interval for Differences of Means
 #'
-#' Calculates the standard error from confidence interval limits for differences of means.
-#' This method is only valid when the confidence interval is symmetrical around the mean and only works for t- or normal distribution (argument t_dist).
+#' Calculates the standard error from confidence interval limits for differences of means (hence, it also works for confidence intervals of SMD).
+#' This method is only valid when the confidence interval is symmetrical around the mean and only works for t- or normal distribution (argument t_dist). For sample sizes < 60 usually the t-distribution should be used.
 #'
 #' @references
 #' https://handbook-5-1.cochrane.org/chapter_7/7_7_7_2_obtaining_standard_errors_from_confidence_intervals_and.htm

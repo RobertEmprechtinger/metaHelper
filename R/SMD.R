@@ -23,9 +23,11 @@ SMD_from_OR <- function(OR){
 }
 
 
-#' Standardized Mean Differences from Means and Standard Deviations
+#' Standardized Mean Difference (SMD) from Means and Standard Deviations
 #'
-#' Uses the differences of two means and divides with the (pooled) standard deviation or the standard deviation of the control group in case Glass's delta should be calculated.
+#' A simple method to calculate the SMD. It needs to be provided with the pooled standard deviation. If the pooled standard deviation is not available [SMD_from_arm()] provides a direct method to calculate the SMD and also offers different forms like Hedges' g or Cohen's d.
+#'
+#' Be careful: If you want to get Hedges' g it is insufficient to simply pool the standard deviation with [SDp_from_SD()]. The resulting SMD needs to be further multiplied with the hedges factor. This is done automatically when you use [SMD_from_arm()].
 #'
 #' @param M1 treatment effect size group 1
 #' @param M2 treatment effect size group 2
@@ -45,7 +47,6 @@ SMD_from_mean <- function(M1, M2, SD_pooled){
   # check data
   check_data(SD = SD_pooled)
   # check data end
-
   (M1 - M2) /
     SD_pooled
 }
@@ -53,7 +54,7 @@ SMD_from_mean <- function(M1, M2, SD_pooled){
 
 #' Standardized Mean Differences from Arm Data
 #'
-#' Calculates SMD directly from study data. Method "hedges" needs sample size data.
+#' Calculates SMD directly from study data. Method "hedges" needs sample size data and returns Hedges' g. Method "cohen" returns Cohen's d.
 #'
 #' @param M1 treatment effect size group 1
 #' @param M2 treatment effect size group 2
@@ -61,7 +62,7 @@ SMD_from_mean <- function(M1, M2, SD_pooled){
 #' @param SD2 standard deviation group 2
 #' @param n1 sample size group 1
 #' @param n2 sample size group 2
-#' @param method transformation method ("hedges", "cohen")
+#' @param method calculation method ("hedges", "cohen")
 #'
 #' @return
 #' Standardized Mean Differences
@@ -99,15 +100,17 @@ SMD_from_arm <-
     SMD <- c()
 
     for(i in seq_along(M1)){
-      if(!(method[i] %in% c("hedges", "cohen"))) stop("method needs to be either 'hedges' or 'cohen'")
+      if(!(method[i] %in% c("hedges", "cohen"))) stop("method needs to be either 'hedges', 'cohen'")
 
       SMD[i] <- SMD_from_mean(M1[i], M2[i],
                          SDp_from_SD(SD1[i], SD2[i], n1[i], n2[i], method[i]))
 
+      # Hedges
       if(method[i] == "hedges"){
         SMD[i] <- SMD[i] * hedges_factor(n1[i], n2[i])
       }
     }
+
     return(SMD)
   }
 
