@@ -36,7 +36,7 @@ poolSD_hedges <- function(SD1, SD2, n1, n2) {
 
 #' Pooled Standard Deviation from two Standard Deviations
 #'
-#' Calculates pooled standard deviation. The method according to Hedges requires the sample sizes. If only standard deviations are available, the simpler equation provided by Cohen 1988 can be used. If there are more than two group [SD_M_n_pooled_from_groups()] hast tp be used.
+#' Calculates pooled standard deviation. The method according to Hedges requires the sample sizes. If only standard deviations are available, the simpler equation provided by Cohen 1988 can be used. If there are more than two groups [SD_M_n_pooled_from_groups()] has to be used.
 #'
 #'
 #' @param SD1 standard deviation of group 1
