@@ -44,7 +44,7 @@ SE_from_SD <- function(SD, n){
 #' @export
 #'
 #' @references
-#' https://handbook-5-1.cochrane.org/chapter_7/7_7_3_3_obtaining_standard_deviations_from_standard_errors.htm
+#' \href{https://handbook-5-1.cochrane.org/chapter_7/7_7_3_3_obtaining_standard_deviations_from_standard_errors.htm}
 #'
 #' @examples
 #' # Pooled standard deviation = 2, sample size group a = 50, sample size group b = 75,
@@ -161,6 +161,9 @@ SE.SMD_from_SMD <- function(SMD, n1, n2, method = "hedges"){
 #' Pooled standard error (e.g. intervention effect)
 #' @export
 #'
+#' @references
+#' \href{https://handbook-5-1.cochrane.org/chapter_7/7_7_3_2_obtaining_standard_deviations_from_standard_errors_and.htm}
+#'
 #' @examples
 #' # lower CI = -1.5, upper CI = 0.5
 #' SEp_from_CIp(-1.5, 0.5)
@@ -207,6 +210,7 @@ SEp_from_CIp <- function(CI_low, CI_up, n1 = NA, n2 = NA, sig_level = 0.05, two_
 #'
 #' @references
 #' Altman D G, Bland J M. How to obtain the confidence interval from a P value BMJ 2011; 343 :d2090 doi:10.1136/bmj.d2090
+#' \href{https://handbook-5-1.cochrane.org/chapter_7/7_7_3_2_obtaining_standard_deviations_from_standard_errors_and.htm}
 #'
 #' @examples
 #' # TE = 1.5, p = 0.8
