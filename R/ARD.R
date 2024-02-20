@@ -1,6 +1,6 @@
 #' Absolute Risk Difference
 #'
-#' Calculates the Absolute Risk Difference from a Risk Ratio and baseline risk using simulations. Results is ARD per 1000 patients. Number of replications is fixed to 100000.
+#' Calculates the Absolute Risk Difference (ARD) from a Risk Ratio and baseline risk using simulations. Results is ARD as decimal. Number of replications is fixed to 100000.
 #'
 #' @param BR baseline risk
 #' @param BRLL baseline risk lower limit confidence interval
@@ -11,7 +11,7 @@
 #' @param seed seed that is used for the simulation to ensure reproducibility
 #'
 #' @return
-#' Absolute Risk Difference per 1000 Patients
+#' Absolute Risk Difference as decimal
 #'
 #' @references
 #' Murad M H, Wang Z, Zhu Y, Saadi S, Chu H, Lin L et al. Methods for deriving risk difference (absolute risk reduction) from a meta-analysis BMJ 2023; 381 :e073141 doi:10.1136/bmj-2022-073141
@@ -48,7 +48,7 @@ ARD_from_RR <- function(BR, BRLL, BRUL, RR, RRLL, RRUL, seed = 1){
     # Simulation
     sim_BR <- rbeta(R, alpha, beta, ncp = 0)
     sim_RR <- rlnorm(R, meanlog = log(RR[i]), sdlog = (log(RRUL[i]) - log(RRLL[i]))/3.92)
-    RD <- sim_BR*(sim_RR - 1)*1000 # Multiplying by 1,000 scales RD to per 1,000 patients
+    RD <- sim_BR*(sim_RR - 1)
 
 
     # Output

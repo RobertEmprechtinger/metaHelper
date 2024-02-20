@@ -22,10 +22,10 @@ ARD_from_RR(BR, BRLL, BRUL, RR, RRLL, RRUL, seed = 1)
 \item{seed}{seed that is used for the simulation to ensure reproducibility}
 }
 \value{
-Absolute Risk Difference per 1000 Patients
+Absolute Risk Difference as decimal
 }
 \description{
-Calculates the Absolute Risk Difference from a Risk Ratio and baseline risk using simulations. Results is ARD per 1000 patients. Number of replications is fixed to 100000.
+Calculates the Absolute Risk Difference (ARD) from a Risk Ratio and baseline risk using simulations. Results is ARD as decimal. Number of replications is fixed to 100000.
 }
 \examples{
 # Input : Baseline risk and 95\% CI (BR BRLL and BRUL), risk ratio and 95\% CI (RR, RRLL, RRUL)
