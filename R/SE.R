@@ -11,8 +11,11 @@
 #' @return
 #' Single group standard error
 #'
+#' @export
+#'
 #' @references
 #' \href{https://handbook-5-1.cochrane.org/chapter_7/7_7_3_2_obtaining_standard_deviations_from_standard_errors_and.htm'}{Cochrane Handbook}
+#'
 #' @examples
 #' # Standard deviation = 2, group size = 50
 #' SE_from_SD(2, 50)
@@ -20,10 +23,8 @@ SE_from_SD <- function(SD, n){
   #check data
   check_data(SD=SD, n=n)
   #check data end
-
   SD / sqrt(n)
 }
-
 
 
 #' Standard Error (Pooled)
@@ -39,6 +40,8 @@ SE_from_SD <- function(SD, n){
 #'
 #' @return
 #' Pooled standard error for two groups (e.g. standard error of intervention effect)
+#'
+#' @export
 #'
 #' @references
 #' \href{https://handbook-5-1.cochrane.org/chapter_7/7_7_3_3_obtaining_standard_deviations_from_standard_errors.htm}{Cochrane Handbook}
@@ -74,10 +77,12 @@ SEp_from_SDp <- function(SDp, n1, n2){
 #' @return
 #' Standard Error
 #'
+#' @export
+#'
 #' @examples
 #' # lower CI = 0.6, upper CI = 0.9
 #' SE.SMD_from_OR.CI(0.6, 0.9)
-foobar <- function(CI_low, CI_up, sig_level = 0.05, two_tailed = TRUE){
+SE.SMD_from_OR.CI <- function(CI_low, CI_up, sig_level = 0.05, two_tailed = TRUE){
   #check data
   check_data(CI_low = CI_low, CI_up = CI_up, sig_level=sig_level)
   #check data end
@@ -86,7 +91,6 @@ foobar <- function(CI_low, CI_up, sig_level = 0.05, two_tailed = TRUE){
   SE_SMD <- SE_log_OR * sqrt(3)/pi
   return(SE_SMD)
 }
-
 
 
 #' Standard Error from Sample Sizes and SMD
@@ -104,6 +108,8 @@ foobar <- function(CI_low, CI_up, sig_level = 0.05, two_tailed = TRUE){
 #' @param method transformation method ("hedges", "cohen")
 #'
 #' @return Standard error of SMD (e.g. standard error of intervention effect)
+#'
+#' @export
 #'
 #' @examples
 #' # SMD = 0.6, sample size group_1 = 50, sample size group_2 = 75
@@ -154,6 +160,8 @@ SE.SMD_from_SMD <- function(SMD, n1, n2, method = "hedges"){
 #' @return
 #' Pooled standard error (e.g. intervention effect)
 #'
+#' @export
+#'
 #' @references
 #' \href{https://handbook-5-1.cochrane.org/chapter_7/7_7_3_2_obtaining_standard_deviations_from_standard_errors_and.htm}{Cochrane Handbook}
 #'
@@ -198,6 +206,8 @@ SEp_from_CIp <- function(CI_low, CI_up, n1 = NA, n2 = NA, sig_level = 0.05, two_
 #'
 #' @return
 #' Pooled standard error (e.g. standard error of intervention effect)
+#'
+#' @export
 #'
 #' @references
 #' Altman D G, Bland J M. How to obtain the confidence interval from a P value BMJ 2011; 343 :d2090 doi:10.1136/bmj.d2090
