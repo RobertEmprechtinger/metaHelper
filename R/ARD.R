@@ -1,14 +1,14 @@
 #' Absolute Risk Difference
 #'
-#' Calculates the Absolute Risk Difference from a Risk Ratio and baseline risk using simulations. Results is ARD per 1000 patients.
+#' Calculates the Absolute Risk Difference from a Risk Ratio and baseline risk using simulations. Results is ARD per 1000 patients. Number of replications is fixed to 100000.
 #'
-#' @param BR
-#' @param BRLL
-#' @param BRUL
-#' @param RR
-#' @param RRLL
-#' @param RRUL
-#' @param seed
+#' @param BR baseline risk
+#' @param BRLL baseline risk lower limit confidence interval
+#' @param BRUL baseline risk upper limit confidence interval
+#' @param RR risk ratio
+#' @param RRLL risk ratio lower limit confidence interval
+#' @param RRUL risk ratio upper limit confidence interval
+#' @param seed seed that is used for the simulation to ensure reproducibility
 #'
 #' @return
 #' Absolute Risk Difference per 1000 Patients
@@ -19,10 +19,10 @@
 #' @export
 #'
 #' @examples
-#' Input : Baseline risk and 95% CI (BR BRLL and BRUL), risk ratio and 95% CI (RR, RRLL, RRUL)
+#' # Input : Baseline risk and 95% CI (BR BRLL and BRUL), risk ratio and 95% CI (RR, RRLL, RRUL)
 #' BR <- 0.053; BRLL <- 0.039; BRUL <- 0.072
 #' RR <- 0.77; RRLL <- 0.63; RRUL <- 0.94
-#' ARR_from_RR(BR, BRLL, BRUL, RR, RRLL, RRUL)
+#' ARD_from_RR(BR, BRLL, BRUL, RR, RRLL, RRUL)
 ARD_from_RR <- function(BR, BRLL, BRUL, RR, RRLL, RRUL, seed = 1){
   R <- 100000 # No. of simulations
 
@@ -65,6 +65,5 @@ ARD_from_RR <- function(BR, BRLL, BRUL, RR, RRLL, RRUL, seed = 1){
     else return(result_fin)
 }
 
-ARD_from_RR(c(BR, BR), c(BRLL, BRLL), c(BRUL, BRUL), c(RR, RR), c(RRLL, RRLL), c(RRUL, RRUL))
 
 

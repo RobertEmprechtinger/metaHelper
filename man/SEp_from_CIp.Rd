@@ -41,5 +41,7 @@ This method is only valid when the confidence interval is symmetrical around the
 SEp_from_CIp(-1.5, 0.5)
 }
 \references{
-https://handbook-5-1.cochrane.org/chapter_7/7_7_7_2_obtaining_standard_errors_from_confidence_intervals_and.htm
+\href{https://handbook-5-1.cochrane.org/chapter_7/7_7_7_2_obtaining_standard_errors_from_confidence_intervals_and.htm}{Cochrane Handbook}
+
+\href{https://handbook-5-1.cochrane.org/chapter_7/7_7_3_2_obtaining_standard_deviations_from_standard_errors_and.htm}{Cochrane Handbook}
 }

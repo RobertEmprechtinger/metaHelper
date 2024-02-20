@@ -20,11 +20,11 @@ Pooled standard error for two groups (e.g. standard error of intervention effect
 Caclulates the pooled standard error for two groups (e.g., intervention effect). When there is only one group, the following method has to be used: \code{\link[=SE_from_SD]{SE_from_SD()}}
 }
 \examples{
-# Pooled standard deviation = 2, sample size group a = 50, sample size group b = 75,
+# Pooled standard deviation = 2, sample size group a = 50, sample size group b = 75
 SEp_from_SDp(2, 50, 75)
 }
 \references{
-https://handbook-5-1.cochrane.org/chapter_7/7_7_3_3_obtaining_standard_deviations_from_standard_errors.htm
+\href{https://handbook-5-1.cochrane.org/chapter_7/7_7_3_3_obtaining_standard_deviations_from_standard_errors.htm}{Cochrane Handbook}
 }
 \seealso{
 \code{\link[=SE_from_SD]{SE_from_SD()}} for a single group

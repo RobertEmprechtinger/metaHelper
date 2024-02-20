@@ -13,9 +13,6 @@
 #'
 #' @references
 #' \href{https://handbook-5-1.cochrane.org/chapter_7/7_7_3_2_obtaining_standard_deviations_from_standard_errors_and.htm'}{Cochrane Handbook}
-#'
-#' @export
-#'
 #' @examples
 #' # Standard deviation = 2, group size = 50
 #' SE_from_SD(2, 50)
@@ -26,6 +23,7 @@ SE_from_SD <- function(SD, n){
 
   SD / sqrt(n)
 }
+
 
 
 #' Standard Error (Pooled)
@@ -41,19 +39,17 @@ SE_from_SD <- function(SD, n){
 #'
 #' @return
 #' Pooled standard error for two groups (e.g. standard error of intervention effect)
-#' @export
 #'
 #' @references
-#' \href{https://handbook-5-1.cochrane.org/chapter_7/7_7_3_3_obtaining_standard_deviations_from_standard_errors.htm}
+#' \href{https://handbook-5-1.cochrane.org/chapter_7/7_7_3_3_obtaining_standard_deviations_from_standard_errors.htm}{Cochrane Handbook}
 #'
 #' @examples
-#' # Pooled standard deviation = 2, sample size group a = 50, sample size group b = 75,
+#' # Pooled standard deviation = 2, sample size group a = 50, sample size group b = 75
 #' SEp_from_SDp(2, 50, 75)
 SEp_from_SDp <- function(SDp, n1, n2){
   #check data
   check_data(SD=SDp, n=c(n1, n2))
   #check data end
-
   SDp * sqrt(1/n1 + 1/n2)
 }
 
@@ -68,8 +64,7 @@ SEp_from_SDp <- function(SDp, n1, n2){
 #' 3 Transforms the log(OR) standard error to standardized mean differences (SMD) standard error by multiplying it with sqrt(3)/pi
 #'
 #' @references
-#' Chinn S. A simple method for converting an odds ratio to effect size for use in meta-analysis. Stat Med. 2000 Nov 30;19(22):3127-31. doi: 10.1002/1097-0258(20001130)19:22<3127::aid-sim784>3.0.co;2-m. PMID: 11113947.
-#'
+#' Chinn S. A simple method for converting an odds ratio to effect size for use in meta-analysis. Stat Med. 2000 Nov 30;19(22):3127-31. doi: 10.1002/1097-0258(20001130)
 #'
 #' @param CI_low lower odds ratio confidence interval limit
 #' @param sig_level the significance level
@@ -78,12 +73,11 @@ SEp_from_SDp <- function(SDp, n1, n2){
 #'
 #' @return
 #' Standard Error
-#' @export
 #'
 #' @examples
 #' # lower CI = 0.6, upper CI = 0.9
 #' SE.SMD_from_OR.CI(0.6, 0.9)
-SE.SMD_from_OR.CI <- function(CI_low, CI_up, sig_level = 0.05, two_tailed = TRUE){
+foobar <- function(CI_low, CI_up, sig_level = 0.05, two_tailed = TRUE){
   #check data
   check_data(CI_low = CI_low, CI_up = CI_up, sig_level=sig_level)
   #check data end
@@ -92,6 +86,7 @@ SE.SMD_from_OR.CI <- function(CI_low, CI_up, sig_level = 0.05, two_tailed = TRUE
   SE_SMD <- SE_log_OR * sqrt(3)/pi
   return(SE_SMD)
 }
+
 
 
 #' Standard Error from Sample Sizes and SMD
@@ -109,7 +104,6 @@ SE.SMD_from_OR.CI <- function(CI_low, CI_up, sig_level = 0.05, two_tailed = TRUE
 #' @param method transformation method ("hedges", "cohen")
 #'
 #' @return Standard error of SMD (e.g. standard error of intervention effect)
-#' @export
 #'
 #' @examples
 #' # SMD = 0.6, sample size group_1 = 50, sample size group_2 = 75
@@ -134,8 +128,8 @@ SE.SMD_from_SMD <- function(SMD, n1, n2, method = "hedges"){
     )
 
     SE[i] <- ifelse(method[i] == "hedges",
-                 SE[i] * hedges_factor(n1[i], n2[i]),
-                 SE[i])
+                    SE[i] * hedges_factor(n1[i], n2[i]),
+                    SE[i])
   }
   return(SE)
 }
@@ -147,7 +141,7 @@ SE.SMD_from_SMD <- function(SMD, n1, n2, method = "hedges"){
 #' This method is only valid when the confidence interval is symmetrical around the mean and only works for t- or normal distribution (argument t_dist). For sample sizes < 60 usually the t-distribution should be used.
 #'
 #' @references
-#' https://handbook-5-1.cochrane.org/chapter_7/7_7_7_2_obtaining_standard_errors_from_confidence_intervals_and.htm
+#' \href{https://handbook-5-1.cochrane.org/chapter_7/7_7_7_2_obtaining_standard_errors_from_confidence_intervals_and.htm}{Cochrane Handbook}
 #'
 #' @param CI_low lover OR confidence interval limit
 #' @param sig_level the significance level
@@ -159,10 +153,9 @@ SE.SMD_from_SMD <- function(SMD, n1, n2, method = "hedges"){
 #'
 #' @return
 #' Pooled standard error (e.g. intervention effect)
-#' @export
 #'
 #' @references
-#' \href{https://handbook-5-1.cochrane.org/chapter_7/7_7_3_2_obtaining_standard_deviations_from_standard_errors_and.htm}
+#' \href{https://handbook-5-1.cochrane.org/chapter_7/7_7_3_2_obtaining_standard_deviations_from_standard_errors_and.htm}{Cochrane Handbook}
 #'
 #' @examples
 #' # lower CI = -1.5, upper CI = 0.5
@@ -185,7 +178,7 @@ SEp_from_CIp <- function(CI_low, CI_up, n1 = NA, n2 = NA, sig_level = 0.05, two_
         warning("t_dist needs sample size")
       } else{
         result[i] <- abs((CI_up[i] - CI_low[i]) / (2 * t_calc(sig_level[i], two_tailed[i], df = n1[i] + n2[i] - 2)))
-        }
+      }
     } else{
       result[i] <- abs((CI_up[i] - CI_low[i]) / (2 * z_calc(sig_level[i], two_tailed[i])))
     }
@@ -206,11 +199,9 @@ SEp_from_CIp <- function(CI_low, CI_up, n1 = NA, n2 = NA, sig_level = 0.05, two_
 #' @return
 #' Pooled standard error (e.g. standard error of intervention effect)
 #'
-#' @export
-#'
 #' @references
 #' Altman D G, Bland J M. How to obtain the confidence interval from a P value BMJ 2011; 343 :d2090 doi:10.1136/bmj.d2090
-#' \href{https://handbook-5-1.cochrane.org/chapter_7/7_7_3_2_obtaining_standard_deviations_from_standard_errors_and.htm}
+#' \href{https://handbook-5-1.cochrane.org/chapter_7/7_7_3_2_obtaining_standard_deviations_from_standard_errors_and.htm}{Cochrane Handbook}
 #'
 #' @examples
 #' # TE = 1.5, p = 0.8
@@ -232,4 +223,5 @@ SEp_from_TE.p <- function(TE, p, two_tailed = TRUE){
   }
   return(SE)
 }
+
 
