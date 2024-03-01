@@ -14,3 +14,17 @@ test_that("ARD_from_RR", {
   expect_warning(ARD_from_RR(c(NA, 0.053), c(0.039, 0.039), c(0.072, 0.072), c(0.77, 0.77), c(0.63, 0.63), c(0.94, 0.94)))
 })
 
+
+test_that("ARD_from_RR Seed test", {
+  # Same seed
+  result_ARD_function1 <- ARD_from_RR(0.053, 0.039, 0.072, 0.77, 0.63, 0.94, seed = 1)
+  result_ARD_function2 <- ARD_from_RR(0.053, 0.039, 0.072, 0.77, 0.63, 0.94, seed = 1)
+  expect_true(all(result_ARD_function2 == result_ARD_function1))
+
+  # Different seed
+  result_ARD_function1 <- ARD_from_RR(0.053, 0.039, 0.072, 0.77, 0.63, 0.94, seed = 1)
+  result_ARD_function2 <- ARD_from_RR(0.053, 0.039, 0.072, 0.77, 0.63, 0.94, seed = 2)
+  expect_false(all(result_ARD_function2 == result_ARD_function1))
+})
+
+
