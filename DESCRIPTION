@@ -1,6 +1,6 @@
 Package: metaHelper
 Title: Transforms values used for meta-analysis
-Version: 0.1
+Version: 0.2
 Authors@R: 
     person(given = "Robert",
            family = "Emprechtinger",
