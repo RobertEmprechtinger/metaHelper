@@ -1,7 +1,7 @@
-#' Confidence Interval for Proprotions
+#' Confidence Interval for Proportions
 #'
-#' Calculates a confidence interval for proportions. For a discussion on the differences between the methods to calculate the confidence intervals see
-#' This method uses the R package \href{https://cran.r-project.org/web/packages/confintr/index.html}{confintr}
+#' Calculates a confidence interval for proportions. For a discussion on the differences between the methods to calculate the confidence intervals see the stackoverflow discussion under references.
+#' This method uses the R package confintr to calculate the confidence intervals.
 #'
 #' @param events number of events
 #' @param n sample size
@@ -13,7 +13,8 @@
 #' @export
 #'
 #' @references
-#' \href{https://search.r-project.org/CRAN/refmans/confintr/html/ci_proportion.html}{confintr}
+#' \href{https://search.r-project.org/CRAN/refmans/confintr/html/ci_proportion.html}{confintr function link}
+#' \href{https://stats.stackexchange.com/questions/82720/confidence-interval-around-binomial-estimate-of-0-or-1}{confintr function link}
 #'
 #' @examples
 #' # CI for 9 events in a sample of 10

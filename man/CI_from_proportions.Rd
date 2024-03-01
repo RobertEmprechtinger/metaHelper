@@ -2,7 +2,7 @@
 % Please edit documentation in R/CI_from_proportions.R
 \name{CI_from_proportions}
 \alias{CI_from_proportions}
-\title{Confidence Interval for Proprotions}
+\title{Confidence Interval for Proportions}
 \usage{
 CI_from_proportions(events, n, method = "Clopper-Pearson")
 }
@@ -17,13 +17,14 @@ CI_from_proportions(events, n, method = "Clopper-Pearson")
 List of confidence interval of proportions if input length > 1. If input length = 1 Lower CI and Upper CI.
 }
 \description{
-Calculates a confidence interval for proportions. For a discussion on the differences between the methods to calculate the confidence intervals see
-This method uses the R package \href{https://cran.r-project.org/web/packages/confintr/index.html}{confintr}
+Calculates a confidence interval for proportions. For a discussion on the differences between the methods to calculate the confidence intervals see the stackoverflow discussion under references.
+This method uses the R package confintr to calculate the confidence intervals.
 }
 \examples{
 # CI for 9 events in a sample of 10
 CI_from_proportions(9, 10)
 }
 \references{
-\href{https://search.r-project.org/CRAN/refmans/confintr/html/ci_proportion.html}{confintr}
+\href{https://search.r-project.org/CRAN/refmans/confintr/html/ci_proportion.html}{confintr function link}
+\href{https://stats.stackexchange.com/questions/82720/confidence-interval-around-binomial-estimate-of-0-or-1}{confintr function link}
 }
