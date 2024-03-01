@@ -1,6 +1,6 @@
 #' Confidence Interval for Proprotions
 #'
-#' Calculates a confidence interval for proportions. For a discussion on the differences between the methods to calculate the confidence intervals see \href{https://stats.stackexchange.com/questions/82720/confidence-interval-around-binomial-estimate-of-0-or-1}{stackoverflow}
+#' Calculates a confidence interval for proportions. For a discussion on the differences between the methods to calculate the confidence intervals see
 #'
 #' This method uses the R package \href{https://cran.r-project.org/web/packages/confintr/index.html}{confintr}
 #'
