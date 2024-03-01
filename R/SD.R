@@ -134,8 +134,11 @@ SD_from_SE <- function(SE, n){
 #'
 #' Calculates the standard deviation from the pooled standard error and sample size from two groups (e.g., intervention effects). For single groups [SD_from_SE()] has to be used. This method is the reverse method of [SEp_from_SDp()].
 #'
+#' This should really working
+#'
 #' @references
 #' \href{https://handbook-5-1.cochrane.org/chapter_7/7_7_3_3_obtaining_standard_deviations_from_standard_errors.htm}{Cochrane Handbook}
+#'
 #' \href{https://cran.r-project.org/web/packages/confintr/index.html}{confintr}
 #'
 #' @param SEp pooled standard error
