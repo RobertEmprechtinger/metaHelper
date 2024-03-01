@@ -23,7 +23,6 @@ Pooled standard deviation
 }
 \description{
 Calculates pooled standard deviation. The method according to Hedges requires the sample sizes. If only standard deviations are available, the simpler equation provided by Cohen 1988 can be used. If there are more than two groups \code{\link[=SD_M_n_pooled_from_groups]{SD_M_n_pooled_from_groups()}} has to be used.
-\href{https://cran.r-project.org/web/packages/confintr/index.html}{confintr}.
 }
 \examples{
 # Standard deviation according to Cohen:
