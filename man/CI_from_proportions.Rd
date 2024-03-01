@@ -25,6 +25,6 @@ This method uses the R package confintr to calculate the confidence intervals.
 CI_from_proportions(9, 10)
 }
 \references{
-\href{https://search.r-project.org/CRAN/refmans/confintr/html/ci_proportion.html}{confintr function link}
-\href{https://stats.stackexchange.com/questions/82720/confidence-interval-around-binomial-estimate-of-0-or-1}{confintr function link}
+\href{https://search.r-project.org/CRAN/refmans/confintr/html/ci_proportion.html}{Confintr Function Description}
+\href{https://stats.stackexchange.com/questions/82720/confidence-interval-around-binomial-estimate-of-0-or-1}{Stackoverflow Method Discussion}
 }

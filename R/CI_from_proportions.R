@@ -13,8 +13,8 @@
 #' @export
 #'
 #' @references
-#' \href{https://search.r-project.org/CRAN/refmans/confintr/html/ci_proportion.html}{confintr function link}
-#' \href{https://stats.stackexchange.com/questions/82720/confidence-interval-around-binomial-estimate-of-0-or-1}{confintr function link}
+#' \href{https://search.r-project.org/CRAN/refmans/confintr/html/ci_proportion.html}{Confintr Function Description}
+#' \href{https://stats.stackexchange.com/questions/82720/confidence-interval-around-binomial-estimate-of-0-or-1}{Stackoverflow Method Discussion}
 #'
 #' @examples
 #' # CI for 9 events in a sample of 10
