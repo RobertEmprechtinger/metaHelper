@@ -29,7 +29,7 @@ SDp_from_SEp(SE, n1, n2)
 }
 \references{
 \href{https://handbook-5-1.cochrane.org/chapter_7/7_7_3_3_obtaining_standard_deviations_from_standard_errors.htm}{Cochrane Handbook}
-\href{https://cran.r-project.org/web/packages/confintr/index.html}{confintr}.
+\href{https://cran.r-project.org/web/packages/confintr/index.html}{confintr}
 }
 \seealso{
 \code{\link[=SD_from_SE]{SD_from_SE()}} for a single group.
