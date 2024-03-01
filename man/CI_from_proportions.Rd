@@ -18,8 +18,6 @@ List of confidence interval of proportions if input length > 1. If input length 
 }
 \description{
 Calculates a confidence interval for proportions. For a discussion on the differences between the methods to calculate the confidence intervals see
-}
-\details{
 This method uses the R package \href{https://cran.r-project.org/web/packages/confintr/index.html}{confintr}
 }
 \examples{
@@ -27,5 +25,5 @@ This method uses the R package \href{https://cran.r-project.org/web/packages/con
 CI_from_proportions(9, 10)
 }
 \references{
-Linkt to the function: \href{https://search.r-project.org/CRAN/refmans/confintr/html/ci_proportion.html}{confintr}
+\href{https://search.r-project.org/CRAN/refmans/confintr/html/ci_proportion.html}{confintr}
 }

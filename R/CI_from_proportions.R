@@ -1,7 +1,6 @@
 #' Confidence Interval for Proprotions
 #'
 #' Calculates a confidence interval for proportions. For a discussion on the differences between the methods to calculate the confidence intervals see
-#'
 #' This method uses the R package \href{https://cran.r-project.org/web/packages/confintr/index.html}{confintr}
 #'
 #' @param events number of events
@@ -14,7 +13,7 @@
 #' @export
 #'
 #' @references
-#' Linkt to the function: \href{https://search.r-project.org/CRAN/refmans/confintr/html/ci_proportion.html}{confintr}
+#' \href{https://search.r-project.org/CRAN/refmans/confintr/html/ci_proportion.html}{confintr}
 #'
 #' @examples
 #' # CI for 9 events in a sample of 10
