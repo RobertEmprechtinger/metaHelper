@@ -19,9 +19,6 @@ Pooled standard deviation
 \description{
 Calculates the standard deviation from the pooled standard error and sample size from two groups (e.g., intervention effects). For single groups \code{\link[=SD_from_SE]{SD_from_SE()}} has to be used. This method is the reverse method of \code{\link[=SEp_from_SDp]{SEp_from_SDp()}}.
 }
-\details{
-This should really working
-}
 \examples{
 #pooled standard error, sample size 1 and sample size 2
 SE <- 0.12
@@ -32,8 +29,6 @@ SDp_from_SEp(SE, n1, n2)
 }
 \references{
 \href{https://handbook-5-1.cochrane.org/chapter_7/7_7_3_3_obtaining_standard_deviations_from_standard_errors.htm}{Cochrane Handbook}
-
-\href{https://cran.r-project.org/web/packages/confintr/index.html}{confintr}
 }
 \seealso{
 \code{\link[=SD_from_SE]{SD_from_SE()}} for a single group.

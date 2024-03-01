@@ -20,12 +20,12 @@ List of confidence interval of proportions if input length > 1. If input length 
 Calculates a confidence interval for proportions. For a discussion on the differences between the methods to calculate the confidence intervals see \href{https://stats.stackexchange.com/questions/82720/confidence-interval-around-binomial-estimate-of-0-or-1}{stackoverflow discussion}
 }
 \details{
-This method uses the R package \href{https://cran.r-project.org/web/packages/confintr/index.html}{confintr}.
+This method uses the R package \href{https://cran.r-project.org/web/packages/confintr/index.html}{confintr}
 }
 \examples{
 # CI for 9 events in a sample of 10
 CI_from_proportions(9, 10)
 }
 \references{
-ci_proportion function of the confintr package: \href{https://search.r-project.org/CRAN/refmans/confintr/html/ci_proportion.html}{link}
+\href{https://search.r-project.org/CRAN/refmans/confintr/html/ci_proportion.html}{link}
 }
