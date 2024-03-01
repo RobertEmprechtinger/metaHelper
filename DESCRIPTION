@@ -16,5 +16,5 @@ RoxygenNote: 7.2.3
 Suggests: 
     testthat (>= 3.0.0), metafor
 Config/testthat/edition: 3
-Imports: dplyr, grid, ggplot2, magrittr, stats
+Imports: dplyr, grid, ggplot2, magrittr, stats, confintr
 

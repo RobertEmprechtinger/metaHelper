@@ -75,7 +75,8 @@ SDp_from_SD <- function(SD1,
                     method = "hedges") {
   # data check
   check_data(SD1=SD1, SD2=SD2)
-  if(any(method == "hedges")) check_data(n1, n2)
+  if(any(method == "hedges")) check_data(n = n1)
+  if(any(method == "hedges")) check_data(n = n2)
   # end data check
 
   # SD calculation according to Hedges 1981 or Cohen
