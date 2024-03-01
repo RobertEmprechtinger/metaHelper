@@ -5,9 +5,9 @@ Authors@R:
     person(given = "Robert",
            family = "Emprechtinger",
            role = c("aut", "cre"),
-           email = "robert.emprechtinger@donau-uni.ac.at",
+           email = "robert.emprechtinger@stateofhealth.at",
            comment = c(ORCID = "YOUR-ORCID-ID"))
-Description: This packages helps you to calculate statistcal values often used for meta-analysis.  For instance, it provides several methods to calculate different forms of standardized-mean-differences. Other values that can be calculated are standard error and standard deviations.
+Description: This packages helps you to calculate statistcal values often used for meta-analysis. For instance, it provides several methods to calculate different forms of standardized-mean-differences. Other values that can be calculated are standard error and standard deviations.
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
