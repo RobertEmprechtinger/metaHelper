@@ -6,6 +6,7 @@
 #' @param two_sided whether the two sided t statistics or single sided should be calculated
 #' @param df = degrees of freedom
 #'
+#' @importFrom stats qt
 t_calc <- function(sig_level = 0.05,
                    two_sided = TRUE,
                    df) {

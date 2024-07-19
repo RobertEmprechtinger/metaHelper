@@ -18,6 +18,8 @@
 #'
 #' @export
 #'
+#' @importFrom stats median quantile rbeta rlnorm
+#'
 #' @examples
 #' # Input : Baseline risk and 95% CI (BR BRLL and BRUL), risk ratio and 95% CI (RR, RRLL, RRUL)
 #' BR <- 0.053; BRLL <- 0.039; BRUL <- 0.072
