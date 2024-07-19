@@ -1,7 +1,7 @@
 #' Confidence Interval for Proportions
 #'
-#' Calculates a confidence interval for proportions. For a discussion on the differences between the methods to calculate the confidence intervals see the stackoverflow discussion under references.
-#' This method uses the R package confintr to calculate the confidence intervals.
+#' Calculates a confidence interval for proportions. For a discussion on the differences between methods to calculate confidence intervals, see the Stack Overflow discussion under References.
+#' This method uses the R package "confintr" to calculate the confidence intervals.
 #'
 #' @param events number of events
 #' @param n sample size

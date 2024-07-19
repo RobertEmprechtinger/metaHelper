@@ -1,6 +1,6 @@
 #' Absolute Risk Difference
 #'
-#' Calculates the Absolute Risk Difference (ARD) from a Risk Ratio and baseline risk using simulations. Results is ARD as decimal. Number of replications is fixed to 100000.
+#' Calculates the Absolute Risk Difference (ARD) from a Risk Ratio and baseline risk using simulations. The result is ARD as a decimal. The number of replications is fixed at 100,000.
 #'
 #' @param BR baseline risk
 #' @param BRLL baseline risk lower limit confidence interval
