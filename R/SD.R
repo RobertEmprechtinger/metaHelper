@@ -54,12 +54,12 @@ poolSD_hedges <- function(SD1, SD2, n1, n2) {
 #'
 #' Cohen, J. (1977). Statistical power analysis for the behavioral sciences (2nd ed.). Hillsdale, NJ, US: Lawrence Erlbaum Associates, Inc.
 #'
-#' Ellis, P.D. (2009), "Effect size equations". \href{https://www.polyu.edu.hk/mm/effectsizefaqs/effect_size_equations2.html accessed on 2021.08.31.}{Link}
+#' Ellis, P.D. (2009), "Effect size equations".
 #'
 #' Hedges, L. V. (1981). Distribution theory for Glass's estimator of effect size and related estimators.
 #' Journal of Educational Statistics, 6, 107-128.
 #'
-#' Difference between Cohen's d and Hedges' g for effect size metrics. Stackoverflow. \href{https://stats.stackexchange.com/q/338043 accessed on 2024.07.19.}{Link}
+#' Difference between Cohen's d and Hedges' g for effect size metrics. Stackoverflow. \href{https://stats.stackexchange.com/q/338043}{Link}
 #'
 #' @seealso
 #' [metaHelper::SD_within_from_SD_r()] for matched groups

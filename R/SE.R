@@ -15,7 +15,7 @@
 #' @export
 #'
 #' @references
-#' \href{https://handbook-5-1.cochrane.org/chapter_7/7_7_3_2_obtaining_standard_deviations_from_standard_errors_and.htm'}{Cochrane Handbook}
+#' \href{https://handbook-5-1.cochrane.org/chapter_7/7_7_3_2_obtaining_standard_deviations_from_standard_errors_and.htm}{Cochrane Handbook}
 #'
 #' @examples
 #' # Standard deviation = 2, group size = 50

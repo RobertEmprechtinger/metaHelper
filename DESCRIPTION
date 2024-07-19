@@ -23,3 +23,5 @@ Suggests:
     testthat (>= 3.0.0)
 Config/testthat/edition: 3
 Imports: magrittr, stats, confintr
+URL: https://github.com/RobertEmprechtinger/metaHelper
+BugReports: https://github.com/RobertEmprechtinger/metaHelper/issues
