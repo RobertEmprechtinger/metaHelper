@@ -1,6 +1,8 @@
 #' Standard Error for a Single Group
 #'
-#' Calculates the standard error for a single group. In case of two groups (e.g. intervention effect), [SEp_from_SDp()] has to be used.
+#' **IMPORTANT**: For cases involving two groups (e.g., intervention effects), use [SEp_from_SDp()] instead.
+#'
+#' Calculates the standard error for a single group. This method is only valid for single groups
 #'
 #' @seealso
 #' [SEp_from_SDp()] for two groups
