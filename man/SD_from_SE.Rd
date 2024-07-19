@@ -15,7 +15,10 @@ SD_from_SE(SE, n)
 Single group standard deviation
 }
 \description{
-Calculates the standard deviation from the standard error for a single group. When there are two arms, the following method for pooled standard error has to be used: \code{\link[=SDp_from_SEp]{SDp_from_SEp()}}
+IMPORTANT: When there are two groups, use the method for calculating the pooled standard error provided by the function \code{\link[=SDp_from_SEp]{SDp_from_SEp()}}!
+}
+\details{
+Calculates the standard deviation from the standard error for a single group.
 }
 \examples{
 # Standard error = 2 and sample size = 100
@@ -28,5 +31,5 @@ SD_from_SE(SE, n)
 \href{https://handbook-5-1.cochrane.org/chapter_7/7_7_3_2_obtaining_standard_deviations_from_standard_errors_and.htm}{Cochrane Handbook}
 }
 \seealso{
-\code{\link[=SDp_from_SEp]{SDp_from_SEp()}} in case of two arms.
+\code{\link[=SDp_from_SEp]{SDp_from_SEp()}} in case of two groups.
 }

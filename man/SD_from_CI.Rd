@@ -23,7 +23,7 @@ SD_from_CI(CI_low, CI_up, n, sig_level = 0.05, two_sided = TRUE, t_dist = TRUE)
 Standard deviation single group
 }
 \description{
-Computes the standard deviation from the confidence interval and sample size. This method is only valid for single groups and when the CI is symmetrical around the mean. For two groups (e.g., intervention effects), \code{\link[=SDp_from_CIp]{SDp_from_CIp()}} has to be used. For sample sizes smaller than 60, the t_dist is usually used to calculate the confidence interval.
+Computes the standard deviation from the confidence interval and sample size. This method is valid only for single groups and assumes the confidence interval is symmetrical around the mean. For two groups (e.g., intervention effects), use \code{\link[=SDp_from_CIp]{SDp_from_CIp()}}. For sample sizes smaller than 60, the t-distribution (parameter "t-dist") is typically used to calculate the confidence interval.
 }
 \examples{
 # lower CI = -0.5, upper CI = 2, sample size = 100

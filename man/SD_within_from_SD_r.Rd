@@ -2,7 +2,7 @@
 % Please edit documentation in R/SD.R
 \name{SD_within_from_SD_r}
 \alias{SD_within_from_SD_r}
-\title{Within Standard Deviation for Matched Groups}
+\title{Within-Group Standard Deviation for Matched Groups}
 \usage{
 SD_within_from_SD_r(SD_diff, r)
 }
@@ -15,7 +15,7 @@ SD_within_from_SD_r(SD_diff, r)
 Within standard deviation
 }
 \description{
-Computes the within standard deviation for matched groups. The within standard deviation can further be used to compute the standardized mean differences for matched groups.
+Computes the within-group standard deviation for matched groups. This within-group standard deviation can be used to calculate standardized mean differences for matched groups. This method requires a correlation coefficient r.
 }
 \examples{
 # SD_diff is the standard deviation of the group difference

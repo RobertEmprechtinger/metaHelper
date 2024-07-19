@@ -2,7 +2,7 @@
 % Please edit documentation in R/SD.R
 \name{SD_M_n_pooled_from_groups}
 \alias{SD_M_n_pooled_from_groups}
-\title{Combined Group Standard Deviation}
+\title{Combined Standard Deviation for Multiple Groups}
 \usage{
 SD_M_n_pooled_from_groups(M, SD, n)
 }
@@ -17,7 +17,8 @@ SD_M_n_pooled_from_groups(M, SD, n)
 Within standard deviation
 }
 \description{
-Computes the pooled standard deviation for multiple groups and also returns the combined mean and the combined n.
+Computes the pooled standard deviation for multiple groups. This function also returns the combined mean and the total sample size across all groups.
+Requires also the mean for all individual groups. If there are only two groups and the mean is not available \code{\link[=SDp_from_SD]{SDp_from_SD()}} can be used instead.
 }
 \examples{
 # Compute the Standard deviation for the following grouped data
