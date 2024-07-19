@@ -15,9 +15,7 @@ SD_from_SE(SE, n)
 Single group standard deviation
 }
 \description{
-IMPORTANT: When there are two groups, use the method for calculating the pooled standard error provided by the function \code{\link[=SDp_from_SEp]{SDp_from_SEp()}}!
-}
-\details{
+\strong{IMPORTANT}: When there are two groups, use the method for calculating the pooled standard error provided by the function \code{\link[=SDp_from_SEp]{SDp_from_SEp()}}!
 Calculates the standard deviation from the standard error for a single group.
 }
 \examples{

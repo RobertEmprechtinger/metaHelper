@@ -17,7 +17,10 @@ SD_M_n_pooled_from_groups(M, SD, n)
 Within standard deviation
 }
 \description{
-Computes the pooled standard deviation for multiple groups. This function also returns the combined mean and the total sample size across all groups.
+Computes the pooled standard deviation for multiple groups.
+}
+\details{
+This function also returns the combined mean and the total sample size across all groups.
 Requires also the mean for all individual groups. If there are only two groups and the mean is not available \code{\link[=SDp_from_SD]{SDp_from_SD()}} can be used instead.
 }
 \examples{

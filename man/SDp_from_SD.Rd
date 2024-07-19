@@ -22,9 +22,10 @@ The "cohen" method uses a simplified method by and does not rely on sample sizes
 Pooled standard deviation
 }
 \description{
-Calculates the pooled standard deviation. The method according to Hedges requires the sample sizes. If only standard deviations are available, the simpler equation provided by Cohen (1988) can be used. If there are more than two groups, \code{\link[=SD_M_n_pooled_from_groups]{SD_M_n_pooled_from_groups()}} should be used.
+Calculates the pooled standard deviation.
 }
 \details{
+The method according to Hedges requires the sample sizes. If only standard deviations are available, the simpler equation provided by Cohen (1988) can be used. If there are more than two groups, \code{\link[=SD_M_n_pooled_from_groups]{SD_M_n_pooled_from_groups()}} should be used.
 Note: The use of the names "Cohen" and "Hedges" for the methods can be inconsistent in the literature. It is somewhat unusual because Cohen (1977) outlined both estimators for the pooled standard deviation before Hedges (1981) discussed them.
 }
 \examples{

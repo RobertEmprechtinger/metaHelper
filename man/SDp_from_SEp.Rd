@@ -17,9 +17,7 @@ SDp_from_SEp(SEp, n1, n2)
 Pooled standard deviation
 }
 \description{
-IMPORTANT: For a single group, use \code{\link[=SD_from_SE]{SD_from_SE()}}!
-}
-\details{
+\strong{IMPORTANT}: For a single group, use \code{\link[=SD_from_SE]{SD_from_SE()}}!
 Calculates the standard deviation from the pooled standard error and sample sizes of two groups (e.g., for intervention effects). This method is the reverse of \code{\link[=SEp_from_SDp]{SEp_from_SDp()}}.
 }
 \examples{

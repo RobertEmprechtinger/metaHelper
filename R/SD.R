@@ -31,8 +31,10 @@ poolSD_hedges <- function(SD1, SD2, n1, n2) {
 
 #' Pooled Standard Deviation from Two Standard Deviations
 #'
-#' Calculates the pooled standard deviation. The method according to Hedges requires the sample sizes. If only standard deviations are available, the simpler equation provided by Cohen (1988) can be used. If there are more than two groups, [SD_M_n_pooled_from_groups()] should be used.
+#' Calculates the pooled standard deviation.
 #'
+#' @details
+#' The method according to Hedges requires the sample sizes. If only standard deviations are available, the simpler equation provided by Cohen (1988) can be used. If there are more than two groups, [SD_M_n_pooled_from_groups()] should be used.
 #' Note: The use of the names "Cohen" and "Hedges" for the methods can be inconsistent in the literature. It is somewhat unusual because Cohen (1977) outlined both estimators for the pooled standard deviation before Hedges (1981) discussed them.
 #'
 #' @param SD1 standard deviation of group 1
@@ -99,8 +101,7 @@ SDp_from_SD <- function(SD1,
 
 #' Standard Deviation from Standard Error (Single Group)
 #'
-#' IMPORTANT: When there are two groups, use the method for calculating the pooled standard error provided by the function [SDp_from_SEp()]!
-#'
+#' **IMPORTANT**: When there are two groups, use the method for calculating the pooled standard error provided by the function [SDp_from_SEp()]!
 #' Calculates the standard deviation from the standard error for a single group.
 #'
 #' @param SE standard error
@@ -134,8 +135,7 @@ SD_from_SE <- function(SE, n){
 
 #' Standard Deviation from the Pooled Standard Error
 #'
-#' IMPORTANT: For a single group, use [SD_from_SE()]!
-#'
+#' **IMPORTANT**: For a single group, use [SD_from_SE()]!
 #' Calculates the standard deviation from the pooled standard error and sample sizes of two groups (e.g., for intervention effects). This method is the reverse of [SEp_from_SDp()].
 #'
 #' @references
@@ -304,7 +304,9 @@ SD_within_from_SD_r <- function(SD_diff, r){
 
 #' Combined Standard Deviation for Multiple Groups
 #'
-#' Computes the pooled standard deviation for multiple groups. This function also returns the combined mean and the total sample size across all groups.
+#' Computes the pooled standard deviation for multiple groups.
+#'
+#' This function also returns the combined mean and the total sample size across all groups.
 #' Requires also the mean for all individual groups. If there are only two groups and the mean is not available [SDp_from_SD()] can be used instead.
 #'
 #' @param n vector of group sample sizes
