@@ -99,8 +99,7 @@ SDp_from_SD <- function(SD1,
 
 #' Standard Deviation from Standard Error (Single Group)
 #'
-#' **IMPORTANT**: When there are two groups, use the method for calculating the pooled standard error provided by the function [SDp_from_SEp()]!
-#'
+#' IMPORTANT: When there are two groups, use the method for calculating the pooled standard error provided by the function [SDp_from_SEp()]!
 #' Calculates the standard deviation from the standard error for a single group.
 #'
 #' @param SE standard error
@@ -134,8 +133,7 @@ SD_from_SE <- function(SE, n){
 
 #' Standard Deviation from the Pooled Standard Error
 #'
-#' **IMPORTANT**: For a single group, use [SD_from_SE()]!
-#'
+#' IMPORTANT: For a single group, use [SD_from_SE()]!
 #' Calculates the standard deviation from the pooled standard error and sample sizes of two groups (e.g., for intervention effects). This method is the reverse of [SEp_from_SDp()].
 #'
 #' @references

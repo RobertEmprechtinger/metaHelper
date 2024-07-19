@@ -15,7 +15,10 @@ SE_from_SD(SD, n)
 Single group standard error
 }
 \description{
-Calculates the standard error for a single group. In case of two groups (e.g. intervention effect), \code{\link[=SEp_from_SDp]{SEp_from_SDp()}} has to be used.
+\strong{IMPORTANT}: For cases involving two groups (e.g., intervention effects), use \code{\link[=SEp_from_SDp]{SEp_from_SDp()}} instead.
+}
+\details{
+Calculates the standard error for a single group. This method is only valid for single groups
 }
 \examples{
 # Standard deviation = 2, group size = 50
