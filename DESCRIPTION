@@ -1,5 +1,5 @@
 Package: metaHelper
-Title: Transforms values used for meta-analysis
+Title: Transforms Statistical Measures Commonly Used for Meta-Analysis
 Version: 1.0.0
 Authors@R:
     c(
@@ -7,13 +7,13 @@ Authors@R:
              family = "Emprechtinger",
              role = c("aut", "cre"),
              email = "robert.emprechtinger@stateofhealth.at",
-             comment = c(ORCID = "YOUR-ORCID-ID")),
+             comment = c(ORCID = "0000-0003-3114-9812")),
       person(given = "Guido",
              family = "Schwarzer",
              role = c("aut"),
              email = "guido.schwarzer@uniklinik-freiburg.de")
     )
-Description: This package helps calculate statistical values commonly used in meta-analysis. It provides several methods to compute different forms of standardized mean differences, as well as other values such as standard errors and standard deviations.
+Description: Helps calculate statistical values commonly used in meta-analysis. It provides several methods to compute different forms of standardized mean differences, as well as other values such as standard errors and standard deviations.
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
