@@ -1,4 +1,5 @@
 #' Pools the SD According to Hedges
+#' @noRd
 #'
 #' @keywords internal
 #'
@@ -34,17 +35,18 @@ poolSD_hedges <- function(SD1, SD2, n1, n2) {
 }
 
 
-#' Pooled Standard Deviation from two Standard Deviations
+#' Pooled Standard Deviation from Two Standard Deviations
 #'
-#' Calculates pooled standard deviation. The method according to Hedges requires the sample sizes. If only standard deviations are available, the simpler equation provided by Cohen 1988 can be used. If there are more than two groups [SD_M_n_pooled_from_groups()] has to be used.
+#' Calculates the pooled standard deviation. The method according to Hedges requires the sample sizes. If only standard deviations are available, the simpler equation provided by Cohen (1988) can be used. If there are more than two groups, [SD_M_n_pooled_from_groups()] should be used.
 #'
+#' Note: The use of the names "Cohen" and "Hedges" for the methods can be inconsistent in the literature. It is somewhat unusual because Cohen (1977) outlined both estimators for the pooled standard deviation before Hedges (1981) discussed them.
 #'
 #' @param SD1 standard deviation of group 1
 #' @param SD2 standard deviation of group 2
 #' @param n1 sample size of group 1
 #' @param n2 sample size of group 2
 #' @param method the method ("hedges", "cohen") that should be used to calculate the SD. Method "hedges" requires sample sizes.
-#' The "cohen" method uses the simplified method by Cohen 1988 and does not rely on sample sizes.
+#' The "cohen" method uses a simplified method by and does not rely on sample sizes.
 #'
 #' @return
 #' Pooled standard deviation
@@ -54,10 +56,14 @@ poolSD_hedges <- function(SD1, SD2, n1, n2) {
 #' @references
 #' Borenstein, M., Hedges, L.V., Higgins, J.P.T. and Rothstein, H.R. (2009). Converting Among Effect Sizes. In Introduction to Meta-Analysis (eds M. Borenstein, L.V. Hedges, J.P.T. Higgins and H.R. Rothstein). https://doi.org/10.1002/9780470743386.ch7
 #'
+#' Cohen, J. (1977). Statistical power analysis for the behavioral sciences (2nd ed.). Hillsdale, NJ, US: Lawrence Erlbaum Associates, Inc.
+#'
 #' Ellis, P.D. (2009), "Effect size equations". \href{https://www.polyu.edu.hk/mm/effectsizefaqs/effect_size_equations2.html accessed on 2021.08.31.}{Link}
 #'
 #' Hedges, L. V. (1981). Distribution theory for Glass's estimator of effect size and related estimators.
 #' Journal of Educational Statistics, 6, 107-128.
+#'
+#' Difference between Cohen's d and Hedges' g for effect size metrics. Stackoverflow. \href{https://stats.stackexchange.com/q/338043 accessed on 2024.07.19.}{Link}
 #'
 #' @seealso
 #' [metaHelper::SD_within_from_SD_r()] for matched groups
@@ -99,7 +105,7 @@ SDp_from_SD <- function(SD1,
 
 #' Standard Deviation from Standard Error (Single Group)
 #'
-#' Calculates the standard deviation from the standard error for a single group. When there are two arms, the following method for pooled standard error has to be used: [metaHelper::SDp_from_SEp()]
+#' Calculates the standard deviation from the standard error for a single group. When there are two arms, the following method for pooled standard error should be used: [metaHelper::SDp_from_SEp()].
 #'
 #' @param SE standard error
 #' @param n sample size
