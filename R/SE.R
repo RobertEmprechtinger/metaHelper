@@ -1,7 +1,6 @@
 #' Standard Error for a Single Group
 #'
-#' **IMPORTANT**: For cases involving two groups (e.g., intervention effects), use [SEp_from_SDp()] instead.
-#'
+#' **IMPORTANT**: For cases involving two groups (e.g., intervention effects), use [SEp_from_SDp()] instead.#'
 #' Calculates the standard error for a single group. This method is only valid for single groups
 #'
 #' @seealso
@@ -31,7 +30,8 @@ SE_from_SD <- function(SD, n){
 
 #' Standard Error (Pooled)
 #'
-#' Caclulates the pooled standard error for two groups (e.g., intervention effect). When there is only one group, the following method has to be used: [SE_from_SD()]
+#' **IMPORTANT**: When there is only one group, the following method has to be used: [SE_from_SD()]
+#' Calculates the pooled standard error for two groups (e.g., intervention effect).
 #'
 #' @seealso
 #' [SE_from_SD()] for a single group
@@ -145,8 +145,10 @@ SE.SMD_from_SMD <- function(SMD, n1, n2, method = "hedges"){
 
 #' Standard Error from Confidence Interval for Differences of Means
 #'
-#' Calculates the standard error from confidence interval limits for differences of means (hence, it also works for confidence intervals of SMD).
-#' This method is only valid when the confidence interval is symmetrical around the mean and only works for t- or normal distribution (argument t_dist). For sample sizes < 60 usually the t-distribution should be used.
+#' Calculates the standard error from the confidence interval limits for differences of means (and can also be used for the confidence intervals of standardized mean differences, SMD).
+#' This method is valid only when the confidence interval is symmetrical around the mean and is applicable for t-distributions or normal distributions (as specified by the `t_dist` argument).
+#' For sample sizes less than 60, it is generally recommended to use the t-distribution.
+
 #'
 #' @references
 #' \href{https://handbook-5-1.cochrane.org/chapter_7/7_7_7_2_obtaining_standard_errors_from_confidence_intervals_and.htm}{Cochrane Handbook}
@@ -199,8 +201,8 @@ SEp_from_CIp <- function(CI_low, CI_up, n1 = NA, n2 = NA, sig_level = 0.05, two_
 
 #' Standard Error from Treatment Effect and p-Value
 #'
-#' Calculates the pooled standard error using the treatment effect and p value.
-#' To avoid an infinitive return when p = 1, p is automatically adjusted to 0.99999
+#' Calculates the pooled standard error using the treatment effect and p-value.
+#' To avoid an infinitive return when p-value = 1, the p-value is automatically adjusted to 0.99999
 #'
 #' @param TE reported treatment effect
 #' @param p reported p-value

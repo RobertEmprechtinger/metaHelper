@@ -17,7 +17,8 @@ SEp_from_SDp(SDp, n1, n2)
 Pooled standard error for two groups (e.g. standard error of intervention effect)
 }
 \description{
-Caclulates the pooled standard error for two groups (e.g., intervention effect). When there is only one group, the following method has to be used: \code{\link[=SE_from_SD]{SE_from_SD()}}
+\strong{IMPORTANT}: When there is only one group, the following method has to be used: \code{\link[=SE_from_SD]{SE_from_SD()}}
+Calculates the pooled standard error for two groups (e.g., intervention effect).
 }
 \examples{
 # Pooled standard deviation = 2, sample size group a = 50, sample size group b = 75

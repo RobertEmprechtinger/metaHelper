@@ -17,8 +17,8 @@ SEp_from_TE.p(TE, p, two_tailed = TRUE)
 Pooled standard error (e.g. standard error of intervention effect)
 }
 \description{
-Calculates the pooled standard error using the treatment effect and p value.
-To avoid an infinitive return when p = 1, p is automatically adjusted to 0.99999
+Calculates the pooled standard error using the treatment effect and p-value.
+To avoid an infinitive return when p-value = 1, the p-value is automatically adjusted to 0.99999
 }
 \examples{
 # TE = 1.5, p = 0.8
