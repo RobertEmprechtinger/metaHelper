@@ -17,8 +17,8 @@ CI_from_proportions(events, n, method = "Clopper-Pearson")
 List of confidence interval of proportions if input length > 1. If input length = 1 Lower CI and Upper CI.
 }
 \description{
-Calculates a confidence interval for proportions. For a discussion on the differences between the methods to calculate the confidence intervals see the stackoverflow discussion under references.
-This method uses the R package confintr to calculate the confidence intervals.
+Calculates a confidence interval for proportions. For a discussion on the differences between methods to calculate confidence intervals, see the Stack Overflow discussion under References.
+This method uses the R package "confintr" to calculate the confidence intervals.
 }
 \examples{
 # CI for 9 events in a sample of 10

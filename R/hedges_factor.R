@@ -1,4 +1,4 @@
-#' Computational simple calculation of the hedges factor
+#' Computational simple approximation of the hedges factor
 #' @noRd
 #'
 #' @param n1 sample size group 1
@@ -19,7 +19,7 @@ hedges_factor_approx <- function(n1 = NA, n2 = NA, n_total = NA){
 }
 
 
-#' Hedges factor calculation
+#' Hedges factor exact calculation using the gamma distribution.
 #' @noRd
 #'
 #' @param n1 sample size group 1

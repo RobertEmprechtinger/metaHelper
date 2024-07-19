@@ -25,7 +25,7 @@ ARD_from_RR(BR, BRLL, BRUL, RR, RRLL, RRUL, seed = 1)
 Absolute Risk Difference as decimal
 }
 \description{
-Calculates the Absolute Risk Difference (ARD) from a Risk Ratio and baseline risk using simulations. Results is ARD as decimal. Number of replications is fixed to 100000.
+Calculates the Absolute Risk Difference (ARD) from a Risk Ratio and baseline risk using simulations. The result is ARD as a decimal. The number of replications is fixed at 100,000.
 }
 \examples{
 # Input : Baseline risk and 95\% CI (BR BRLL and BRUL), risk ratio and 95\% CI (RR, RRLL, RRUL)
