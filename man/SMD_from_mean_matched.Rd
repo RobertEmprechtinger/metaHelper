@@ -2,7 +2,7 @@
 % Please edit documentation in R/SMD.R
 \name{SMD_from_mean_matched}
 \alias{SMD_from_mean_matched}
-\title{Calculates SMD from matched groups}
+\title{Calculates SMD from Matched Groups}
 \usage{
 SMD_from_mean_matched(M_diff = NA, M1 = NA, M2 = NA, SD_within)
 }

@@ -2,7 +2,7 @@
 % Please edit documentation in R/SMD.R
 \name{SMD_from_mean}
 \alias{SMD_from_mean}
-\title{Standardized Mean Difference (SMD) from Means and Standard Deviations}
+\title{Standardized Mean Difference (SMD) from Means and Pooled Standard Deviation}
 \usage{
 SMD_from_mean(M1, M2, SD_pooled)
 }
@@ -17,10 +17,10 @@ SMD_from_mean(M1, M2, SD_pooled)
 Standardized Mean Differences
 }
 \description{
-A simple method to calculate the SMD. It needs to be provided with the pooled standard deviation. If the pooled standard deviation is not available \code{\link[=SMD_from_arm]{SMD_from_arm()}} provides a direct method to calculate the SMD and also offers different forms like Hedges' g or Cohen's d.
+Calculates the SMD. It needs to be provided with the pooled standard deviation. If the pooled standard deviation is not available \code{\link[=SMD_from_group]{SMD_from_group()}} provides a direct method to calculate the SMD and also offers different forms like Hedges' g or Cohen's d.
 }
 \details{
-Be careful: If you want to get Hedges' g it is insufficient to simply pool the standard deviation with \code{\link[=SDp_from_SD]{SDp_from_SD()}}. The resulting SMD needs to be further multiplied with the hedges factor. This is done automatically when you use \code{\link[=SMD_from_arm]{SMD_from_arm()}}.
+CAVE: If you want to get Hedges' g it is insufficient to simply pool the standard deviation with \code{\link[=SDp_from_SD]{SDp_from_SD()}}. The resulting SMD needs to be further multiplied with the hedges factor. This is done automatically when you use \code{\link[=SMD_from_group]{SMD_from_group()}}.
 }
 \examples{
 # Mean control = 153, Mean intervention = 136, pooled SD = 25

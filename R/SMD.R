@@ -23,11 +23,11 @@ SMD_from_OR <- function(OR){
 }
 
 
-#' Standardized Mean Difference (SMD) from Means and Standard Deviations
+#' Standardized Mean Difference (SMD) from Means and Pooled Standard Deviation
 #'
-#' A simple method to calculate the SMD. It needs to be provided with the pooled standard deviation. If the pooled standard deviation is not available [SMD_from_arm()] provides a direct method to calculate the SMD and also offers different forms like Hedges' g or Cohen's d.
+#' Calculates the SMD. It needs to be provided with the pooled standard deviation. If the pooled standard deviation is not available [SMD_from_group()] provides a direct method to calculate the SMD and also offers different forms like Hedges' g or Cohen's d.
 #'
-#' Be careful: If you want to get Hedges' g it is insufficient to simply pool the standard deviation with [SDp_from_SD()]. The resulting SMD needs to be further multiplied with the hedges factor. This is done automatically when you use [SMD_from_arm()].
+#' CAVE: If you want to get Hedges' g it is insufficient to simply pool the standard deviation with [SDp_from_SD()]. The resulting SMD needs to be further multiplied with the hedges factor. This is done automatically when you use [SMD_from_group()].
 #'
 #' @param M1 treatment effect size group 1
 #' @param M2 treatment effect size group 2
@@ -52,9 +52,9 @@ SMD_from_mean <- function(M1, M2, SD_pooled){
 }
 
 
-#' Standardized Mean Differences from Arm Data
+#' Standardized Mean Differences from Group Data
 #'
-#' Calculates SMD directly from study data. Method "hedges" needs sample size data and returns Hedges' g. Method "cohen" returns Cohen's d.
+#' Calculates SMD directly from group data. Method "hedges" needs sample size data and returns Hedges' g. Method "cohen" returns Cohen's d.
 #'
 #' @param M1 treatment effect size group 1
 #' @param M2 treatment effect size group 2
@@ -78,8 +78,8 @@ SMD_from_mean <- function(M1, M2, SD_pooled){
 #' @examples
 #' # Mean control = 23, Mean intervention = 56, SD control = 30,
 #' #    SD intervention = 35, sample size control = 45, sample size intervention = 60
-#' SMD_from_arm(23, 56, 30, 35, 45, 60)
-SMD_from_arm <-
+#' SMD_from_group(23, 56, 30, 35, 45, 60)
+SMD_from_group <-
   function(M1,
            M2,
            SD1,
@@ -115,7 +115,7 @@ SMD_from_arm <-
   }
 
 
-#' Calculates SMD from matched groups
+#' Calculates SMD from Matched Groups
 #'
 #' Calculates the standardized mean differences for matched groups. Needs either the mean of the groups or the difference between groups.
 #' SD_within is usually not reported but can be calculated by the use of [SD_within_from_SD_r()].
@@ -180,41 +180,3 @@ SMD_from_mean_matched <- function(M_diff = NA, M1 = NA, M2 = NA, SD_within) {
   }
   return(SMD)
 }
-
-
-SMD_from_arm.pre_post <- function(M1_pre,
-                                  M2_pre,
-                                  M1_post,
-                                  M2_post,
-                                  SD1_pre,
-                                  SD2_pre,
-                                  SD1_post,
-                                  SD2_post,
-                                  n1 = NA,
-                                  n2 = NA,
-                                  method = "hedges"){
-  # check data
-  check_data(SD = c(SD1_pre, SD1_post, SD2_pre, SD2_post))
-  # check data end
-  # 1. get pooled SDs
-  if(method == "hedges"){
-    check_data(n1=n1, n2=n2) # another data check
-    if(any(is.na(n1)) | any(is.na(n2))){
-      warning("hedges method needs sample size. You could try method='cohen' instead")
-      return(NA)
-    }
-  }
-  SD1 <- SDp_from_SD(SD1_pre, SD1_post, n1, n2, method)
-  SD2 <- SDp_from_SD(SD2_pre, SD2_post, n1, n2, method)
-
-  # 2. get pre post differences
-  MDiff1 <- M1_post - M1_pre
-  MDiff2 <- M2_post - M2_pre
-
-  # 3. Calculate SMD
-  SMD_from_arm(MDiff1, MDiff2, SD1, SD2, n1, n2, method)
-}
-
-
-
-
