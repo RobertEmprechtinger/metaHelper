@@ -40,7 +40,7 @@ Borenstein, M., Hedges, L.V., Higgins, J.P.T. and Rothstein, H.R. (2009). Conver
 
 Cohen, J. (1977). Statistical power analysis for the behavioral sciences (2nd ed.). Hillsdale, NJ, US: Lawrence Erlbaum Associates, Inc.
 
-Ellis, P.D. (2009), "Effect size equations".
+Ellis, P.D. (2009), "Effect size equations". \href{https://www.psychometrica.de/effect_size.html}{Link}
 
 Hedges, L. V. (1981). Distribution theory for Glass's estimator of effect size and related estimators.
 Journal of Educational Statistics, 6, 107-128.

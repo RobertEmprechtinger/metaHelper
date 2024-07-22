@@ -11,7 +11,7 @@
 #' @param seed seed that is used for the simulation to ensure reproducibility
 #'
 #' @return
-#' Absolute Risk Difference as decimal
+#' Named numeric vector containing median ARD, the lower and upper CI of the ARD.
 #'
 #' @references
 #' Murad M H, Wang Z, Zhu Y, Saadi S, Chu H, Lin L et al. Methods for deriving risk difference (absolute risk reduction) from a meta-analysis BMJ 2023; 381 :e073141 doi:10.1136/bmj-2022-073141

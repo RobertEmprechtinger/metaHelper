@@ -42,7 +42,5 @@ For sample sizes less than 60, it is generally recommended to use the t-distribu
 SEp_from_CIp(-1.5, 0.5)
 }
 \references{
-\href{https://handbook-5-1.cochrane.org/chapter_7/7_7_7_2_obtaining_standard_errors_from_confidence_intervals_and.htm}{Cochrane Handbook}
-
 \href{https://handbook-5-1.cochrane.org/chapter_7/7_7_3_2_obtaining_standard_deviations_from_standard_errors_and.htm}{Cochrane Handbook}
 }

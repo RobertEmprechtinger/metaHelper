@@ -1,5 +1,5 @@
 #' Extends the length of a variable
-#'
+#' @noRd
 #' @keywords internal
 #'
 #' @param variable variable that should be extended

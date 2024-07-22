@@ -26,7 +26,5 @@ Approximates SMD standard error from sample sizes and SMD.
 SE.SMD_from_SMD(0.6, 50, 75)
 }
 \references{
-Borenstein M: Effect sizes for continuous data.
-The Handbook of Research Synthesis and Meta-Analysis. Edited by: Cooper H, Hedges LV, Valentine JC. 2009,
-New York: Russell Sage, 221-235. 2
+Cooper, H., Hedges, L. V., & Valentine, J. C. (Eds.). (2009). \href{https://psycnet.apa.org/record/2009-05060-000}{Link}
 }

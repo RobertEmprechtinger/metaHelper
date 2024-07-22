@@ -100,9 +100,7 @@ SE.SMD_from_OR.CI <- function(CI_low, CI_up, sig_level = 0.05, two_tailed = TRUE
 #' Approximates SMD standard error from sample sizes and SMD.
 #'
 #' @references
-#' Borenstein M: Effect sizes for continuous data.
-#' The Handbook of Research Synthesis and Meta-Analysis. Edited by: Cooper H, Hedges LV, Valentine JC. 2009,
-#' New York: Russell Sage, 221-235. 2
+#' Cooper, H., Hedges, L. V., & Valentine, J. C. (Eds.). (2009). \href{https://psycnet.apa.org/record/2009-05060-000}{Link}
 #'
 #' @param n1 sample size group 1
 #' @param n2 sample size group 2
@@ -148,10 +146,6 @@ SE.SMD_from_SMD <- function(SMD, n1, n2, method = "hedges"){
 #' Calculates the standard error from the confidence interval limits for differences of means (and can also be used for the confidence intervals of standardized mean differences, SMD).
 #' This method is valid only when the confidence interval is symmetrical around the mean and is applicable for t-distributions or normal distributions (as specified by the `t_dist` argument).
 #' For sample sizes less than 60, it is generally recommended to use the t-distribution.
-
-#'
-#' @references
-#' \href{https://handbook-5-1.cochrane.org/chapter_7/7_7_7_2_obtaining_standard_errors_from_confidence_intervals_and.htm}{Cochrane Handbook}
 #'
 #' @param CI_low lover OR confidence interval limit
 #' @param sig_level the significance level

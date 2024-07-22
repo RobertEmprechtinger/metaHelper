@@ -22,7 +22,7 @@ ARD_from_RR(BR, BRLL, BRUL, RR, RRLL, RRUL, seed = 1)
 \item{seed}{seed that is used for the simulation to ensure reproducibility}
 }
 \value{
-Absolute Risk Difference as decimal
+Named numeric vector containing median ARD, the lower and upper CI of the ARD.
 }
 \description{
 Calculates the Absolute Risk Difference (ARD) from a Risk Ratio and baseline risk using simulations. The result is ARD as a decimal. The number of replications is fixed at 100,000.

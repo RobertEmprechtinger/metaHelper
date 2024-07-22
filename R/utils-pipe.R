@@ -1,6 +1,6 @@
 #' Pipe operator
+#' @noRd
 #'
-#' See \code{magrittr::\link[magrittr:pipe]{\%>\%}} for details.
 #'
 #' @name %>%
 #' @rdname pipe

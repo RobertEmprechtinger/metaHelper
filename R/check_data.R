@@ -1,4 +1,5 @@
 #' Check function input data
+#' @noRd
 #' @keywords internal
 #'
 check_data <- function(

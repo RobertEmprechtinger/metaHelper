@@ -11,9 +11,37 @@ Authors@R:
       person(given = "Guido",
              family = "Schwarzer",
              role = c("aut"),
-             email = "guido.schwarzer@uniklinik-freiburg.de")
+             email = "guido.schwarzer@uniklinik-freiburg.de"),
+      person(given = "Ulf",
+             family = "Tölch",
+             role = c("aut"),
+             email = "ulf.toelch@bih-charite.de"),
+      person(given = "Günther",
+             family = "Schreder",
+             role = c("aut"),
+             email = "Guenther.Schreder@donau-uni.ac.at"),
+      person(given = "Gerald",
+             family = "Gartlehner",
+             role = c("aut"),
+             email = "gerald.gartlehner@donau-uni.ac.at")
     )
-Description: Helps calculate statistical values commonly used in meta-analysis. It provides several methods to compute different forms of standardized mean differences, as well as other values such as standard errors and standard deviations.
+Description: Helps calculate statistical values commonly used in meta-analysis. It provides several methods to compute different forms of standardized mean differences, as well as other values such as standard errors and standard deviations. 
+  The methods used in this package are described in the following references:
+  Altman D G, Bland J M. (2011) <doi:10.1136/bmj.d2090>
+  Borenstein, M., Hedges, L.V., Higgins, J.P.T. and Rothstein, H.R. (2009) <doi:https://doi.org/10.1002/9780470743386.ch4'>
+  Chinn S. (2000) <doi:10.1002/1097-0258(20001130)>
+  Cochrane Handbook (2011) <https:https://handbook-5-1.cochrane.org/front_page.htm>
+  Cochrane Handbook (2011) <https://training.cochrane.org/handbook/current>
+  Cooper, H., Hedges, L. V., & Valentine, J. C. (2009) <https:https://psycnet.apa.org/record/2009-05060-000>
+  Cohen, J. (1977) <https:https://psycnet.apa.org/record/1987-98267-000>
+  Ellis, P.D. (2009) <https:https://www.psychometrica.de/effect_size.html>
+  Goulet-Pelletier, J.-C., & Cousineau, D. (2018) <doi:https://doi.org/10.20982/tqmp.14.4.p242>
+  Hedges, L. V. (1981) <doi:https://doi.org/10.2307/1164588>
+  Hedges L. V., Olkin I. (1985) <doi:https://doi.org/10.1016/C2009-0-03396-0'>
+  Murad M H, Wang Z, Zhu Y, Saadi S, Chu H, Lin L et al. (2023) <doi:10.1136/bmj-2022-073141#'>
+  Mayer M (2023) <https:https://search.r-project.org/CRAN/refmans/confintr/html/ci_proportion.html>
+  Stackoverflow (2014) <https:https://stats.stackexchange.com/questions/82720/confidence-interval-around-binomial-estimate-of-0-or-1>
+  Stackoverflow (2018) <https:https://stats.stackexchange.com/q/338043>
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
@@ -25,3 +53,4 @@ Config/testthat/edition: 3
 Imports: magrittr, stats, confintr
 URL: https://github.com/RobertEmprechtinger/metaHelper
 BugReports: https://github.com/RobertEmprechtinger/metaHelper/issues
+Date: 2024-07-22
