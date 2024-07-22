@@ -57,8 +57,6 @@ ARD_from_RR <- function(BR, BRLL, BRUL, RR, RRLL, RRUL, seed = 1){
     result <- c(median(RD), quantile(RD, c(0.025, 0.975)))
     names(result) <- c("Median ARD", "Lower CI", "Upper CI")
 
-    print(result)
-
     if(i ==1) result_fin <- list(result) else result_fin[i] <- list(result)
   }
 
