@@ -2,6 +2,26 @@
 ### Package Author Response
 Thank you again! 
 
+I have URL encoded the doi according to this guide (https://www-doi-org.ezproxy.csu.edu.au/doi-handbook/HTML/encoding-rules-for-urls.html). I hope it works as it should now.
+
+### CRAN Response
+Thanks, we see:
+
+  Found the following (possibly) invalid DOIs:
+    DOI: 10.1002/1097-0258(20001130)19:22<3127::aid-sim784
+      From: DESCRIPTION
+      Status: 404
+      Message: Not Found
+
+Unfortunately, the doi comtains a ">" char which is markup for "end of DOI". Therefore, please URLencode() the DOI.
+
+Best,
+Uwe Ligges 
+
+## Resubmission 1.0.0
+### Package Author Response
+Thank you again! 
+
 I have changed the URL to a doi.
 
 ### CRAN Response
