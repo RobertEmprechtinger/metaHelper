@@ -1,5 +1,26 @@
 ## Resubmission 1.0.0
 ### Package Author Response
+Thank you again! 
+
+I have changed the URL to a doi.
+
+### CRAN Response
+Thanks, we see:
+
+
+  The Description field contains
+
+<https://onlinelibrary.wiley.com/doi/10.1002/1097-0258(20001130)19:22%3C3127::AID-SIM784%3E3.0.CO;2-M>
+  Please use permanent DOI markup for linking to publications as in <doi:prefix/suffix>.
+
+Please fix and resubmit.
+
+Best,
+Uwe Ligges
+
+
+## Resubmission 1.0.0
+### Package Author Response
 Many thanks for your time. The issues with the references should be fixed now.
 
 ### CRAN Response
