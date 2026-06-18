@@ -28,7 +28,7 @@ Gerald Gartlehner
 - [Cohen, J. (1977)](https://psycnet.apa.org/record/1987-98267-000)
 - [Ellis, P.D. (2009)](https://www.psychometrica.de/effect_size.html)
 - [Goulet-Pelletier, J.-C., & Cousineau, D. (2018), DOI: 10.20982/tqmp.14.4.p242](https://doi.org/10.20982/tqmp.14.4.p242)
-- [Hedges, L. V. (1981), DOI: 10.2307/1164588](https:/doi.org/10.2307/1164588)
+- [Hedges, L. V. (1981), DOI: 10.2307/1164588](https://doi.org/10.2307/1164588)
 - [Hedges L. V., Olkin I. (1985), DOI: 10.1016/C2009-0-03396-0](https://doi.org/10.1016/C2009-0-03396-0)
 - [Murad M H, Wang Z, Zhu Y, Saadi S, Chu H, Lin L et al. (2023), DOI: 10.1136/bmj-2022-073141 ](https://doi.org/10.1136/bmj-2022-073141)
 - [Mayer M (2023)](https://search.r-project.org/CRAN/refmans/confintr/html/ci_proportion.html)
