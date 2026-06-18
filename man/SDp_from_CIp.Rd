@@ -40,7 +40,7 @@ Computes the implied pooled within-group SD under the equal outcome SD assumptio
 SDp_from_CIp(0.5, 0.7, 50, 70)
 }
 \references{
-\href{https://handbook-5-1.cochrane.org/chapter_7/7_7_3_3_obtaining_standard_deviations_from_standard_errors.htm}{Cochrane Handbook}
+\href{https://www.cochrane.org/authors/handbooks-and-manuals/handbook/archive/v5.1.0}{Cochrane Handbook}
 }
 \seealso{
 \code{\link[=SD_from_CI]{SD_from_CI()}} for single group standard deviation.

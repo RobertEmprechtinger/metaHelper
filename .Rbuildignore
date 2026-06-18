@@ -2,6 +2,7 @@
 ^renv\.lock$
 ^metaHelper\.Rproj$
 ^\.Rproj\.user$
+^\.Rprofile$
 ^LICENSE\.md$
 ^cran-comments\.md$
 ^CRAN-SUBMISSION$

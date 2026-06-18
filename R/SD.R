@@ -111,7 +111,7 @@ SDp_from_SD <- function(SD1,
 #' Single group standard deviation
 #'
 #' @references
-#' \href{https://handbook-5-1.cochrane.org/chapter_7/7_7_3_2_obtaining_standard_deviations_from_standard_errors_and.htm}{Cochrane Handbook}
+#' \href{https://www.cochrane.org/authors/handbooks-and-manuals/handbook/archive/v5.1.0}{Cochrane Handbook}
 #'
 #' @export
 #'
@@ -140,7 +140,7 @@ SD_from_SE <- function(SE, n){
 #' Do not use with SEs for SMDs, odds ratios, risk ratios, hazard ratios, log effects, adjusted model estimates when reconstructing raw SDs, Welch tests, or paired designs.
 #'
 #' @references
-#' \href{https://handbook-5-1.cochrane.org/chapter_7/7_7_3_3_obtaining_standard_deviations_from_standard_errors.htm}{Cochrane Handbook}
+#' \href{https://www.cochrane.org/authors/handbooks-and-manuals/handbook/archive/v5.1.0}{Cochrane Handbook}
 #'
 #' @param SEp SE of a raw mean difference from two independent groups
 #' @param n1 sample size group 1
@@ -189,7 +189,7 @@ SDp_from_SEp <- function(SEp, n1, n2){
 #' Standard deviation single group
 #'
 #' @references
-#' \href{https://handbook-5-1.cochrane.org/chapter_7/7_7_3_2_obtaining_standard_deviations_from_standard_errors_and.htm}{Cochrane Handbook}
+#' \href{https://www.cochrane.org/authors/handbooks-and-manuals/handbook/archive/v5.1.0}{Cochrane Handbook}
 #'
 #' @export
 #'
@@ -240,7 +240,7 @@ SD_from_CI <- function(CI_low, CI_up, n, sig_level = 0.05, two_sided = TRUE, t_d
 #' [SD_from_CI()] for single group standard deviation.
 #'
 #' @references
-#' \href{https://handbook-5-1.cochrane.org/chapter_7/7_7_3_3_obtaining_standard_deviations_from_standard_errors.htm}{Cochrane Handbook}
+#' \href{https://www.cochrane.org/authors/handbooks-and-manuals/handbook/archive/v5.1.0}{Cochrane Handbook}
 #'
 #' @examples
 #' #lower CI = 0.5, upper CI = 0.7, N1 = 50, N2 = 70
@@ -318,7 +318,7 @@ SD_within_from_SD_r <- function(SD_diff, r){
 #' @export
 #'
 #' @references
-#' \href{https://handbook-5-1.cochrane.org/chapter_7/table_7_7_a_formulae_for_combining_groups.htm}{Cochrane Handbook}
+#' \href{https://www.cochrane.org/authors/handbooks-and-manuals/handbook/archive/v5.1.0}{Cochrane Handbook}
 #'
 #' Rücker G, Cates CJ, Schwarzer G. Methods for including information from multi-arm trials in pairwise meta-analysis. Res Synth Methods. 2017 Dec;8(4):392-403. doi: 10.1002/jrsm.1259. Epub 2017 Aug 25. PMID: 28759708.
 #'

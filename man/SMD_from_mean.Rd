@@ -27,5 +27,5 @@ CAVE: If you want to get Hedges' g it is insufficient to simply pool the standar
 SMD_from_mean(153, 136, 25)
 }
 \references{
-https://handbook-5-1.cochrane.org/chapter_9/9_2_3_2_the_standardized_mean_difference.htm
+https://www.cochrane.org/authors/handbooks-and-manuals/handbook/archive/v5.1.0
 }

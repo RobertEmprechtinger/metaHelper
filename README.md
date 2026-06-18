@@ -23,7 +23,7 @@ Gerald Gartlehner
 - [Altman D G, Bland J M. (2011), DOI: 10.1136/bmj.d2090](https://doi.org/10.1136/bmj.d2090) 
 - [Borenstein, M., Hedges, L.V., Higgins, J.P.T. and Rothstein, H.R. (2009), DOI: 10.1002/9780470743386.ch4](https://doi.org/10.1002/9780470743386.ch4)
 - [Chinn S. (2000), DOI: 10.1002/1097-0258(20001130)19:22%3C3127::aid-sim784%3E3.0.co;2-m](https://doi.org/10.1002/1097-0258(20001130)19:22%3C3127::aid-sim784%3E3.0.co;2-m)
-- [Cochrane Handbook (2011)](https://handbook-5-1.cochrane.org/front_page.htm)
+- [Cochrane Handbook (2011)](https://www.cochrane.org/authors/handbooks-and-manuals/handbook/archive/v5.1.0)
 - [Cooper, H., Hedges, L. V., & Valentine, J. C. (2009)](https://psycnet.apa.org/record/2009-05060-000)
 - [Cohen, J. (1977)](https://psycnet.apa.org/record/1987-98267-000)
 - [Ellis, P.D. (2009)](https://www.psychometrica.de/effect_size.html)

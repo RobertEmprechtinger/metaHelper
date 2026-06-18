@@ -30,7 +30,7 @@ Computes the standard deviation from a CI around one group mean and sample size.
 SD_from_CI(-0.5, 2, 100)
 }
 \references{
-\href{https://handbook-5-1.cochrane.org/chapter_7/7_7_3_2_obtaining_standard_deviations_from_standard_errors_and.htm}{Cochrane Handbook}
+\href{https://www.cochrane.org/authors/handbooks-and-manuals/handbook/archive/v5.1.0}{Cochrane Handbook}
 }
 \seealso{
 \code{\link[=SDp_from_CIp]{SDp_from_CIp()}} for a CI around a raw mean difference from two independent groups.

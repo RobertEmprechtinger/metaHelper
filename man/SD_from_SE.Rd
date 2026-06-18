@@ -26,7 +26,7 @@ SD_from_SE(SE, n)
 
 }
 \references{
-\href{https://handbook-5-1.cochrane.org/chapter_7/7_7_3_2_obtaining_standard_deviations_from_standard_errors_and.htm}{Cochrane Handbook}
+\href{https://www.cochrane.org/authors/handbooks-and-manuals/handbook/archive/v5.1.0}{Cochrane Handbook}
 }
 \seealso{
 \code{\link[=SDp_from_SEp]{SDp_from_SEp()}} for the SE of a raw mean difference from two independent groups.
