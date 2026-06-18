@@ -54,9 +54,15 @@ test_that("Pooled standard error from CI", {
 
 
 dat <- data.frame(TE = c(17, 1.204, 1, 1), p = c(0.032, 0.034, 1, 0.99999))
-test_that("SE pooled from p and treatment effect", {
+test_that("SE from p and effect estimate", {
   expect_equal(SEp_from_TE.p(17, 0.032), 7.94, tolerance = 0.01)
   expect_equal(SEp_from_TE.p(1.204, 0.034), 0.569, tolerance = 0.01)
+  expect_equal(SEp_from_TE.p(-1.204, 0.034), SEp_from_TE.p(1.204, 0.034), tolerance = 0.01)
+  expect_gt(SEp_from_TE.p(-1.204, 0.034), 0)
+  expect_equal(SEp_from_TE.p(1.204, 0.034), SEp_from_TE.p(1.204, 0.034, method = "z"))
+  expect_false(isTRUE(all.equal(SEp_from_TE.p(2, 0.05, method = "z"),
+                                SEp_from_TE.p(2, 0.05, method = "t", n1 = 10, n2 = 10))))
+  expect_error(SEp_from_TE.p(2, 0.05, method = "t"))
   expect_equal(dat %>%
                  dplyr::mutate(SE = SEp_from_TE.p(TE, p, two_tailed = TRUE)) %>%
                  dplyr::pull(SE), c(7.94, 0.569, 79788.45, 79788.45), tolerance = 0.01

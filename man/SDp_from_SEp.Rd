@@ -2,12 +2,12 @@
 % Please edit documentation in R/SD.R
 \name{SDp_from_SEp}
 \alias{SDp_from_SEp}
-\title{Standard Deviation from the Pooled Standard Error}
+\title{Pooled Within-Group Standard Deviation from SE of Raw Mean Difference}
 \usage{
 SDp_from_SEp(SEp, n1, n2)
 }
 \arguments{
-\item{SEp}{pooled standard error}
+\item{SEp}{SE of a raw mean difference from two independent groups}
 
 \item{n1}{sample size group 1}
 
@@ -18,10 +18,11 @@ Pooled standard deviation
 }
 \description{
 \strong{IMPORTANT}: For a single group, use \code{\link[=SD_from_SE]{SD_from_SE()}}!
-Calculates the standard deviation from the pooled standard error and sample sizes of two groups (e.g., for intervention effects). This method is the reverse of \code{\link[=SEp_from_SDp]{SEp_from_SDp()}}.
+Calculates the implied pooled within-group standard deviation from the SE of a raw mean difference from two independent groups and their sample sizes. This method is the reverse of \code{\link[=SEp_from_SDp]{SEp_from_SDp()}} under the equal SD assumption.
+Do not use with SEs for SMDs, odds ratios, risk ratios, hazard ratios, log effects, adjusted model estimates when reconstructing raw SDs, Welch tests, or paired designs.
 }
 \examples{
-#pooled standard error, sample size 1 and sample size 2
+# SE of a raw mean difference, sample size 1 and sample size 2
 SE <- 0.12
 n1 <- 140
 n2 <- 140

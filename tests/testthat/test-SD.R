@@ -35,12 +35,14 @@ test_that("SD cohen", {
 
 test_that("Single group SD", {
   expect_equal(SD_from_SE(1.13, 63), 9, tolerance = 0.1)
+  expect_equal(SD_from_SE(2, 25), 2 * sqrt(25))
 })
 
 test_that("SD pooled from SE pooled", {
   expect_equal(SDp_from_SEp(0.1195, 140, 140), 1, tolerance = 0.001)
   expect_equal(SDp_from_SEp(0.18257419, 60, 60), 1, tolerance = 0.001)
   expect_equal(SDp_from_SEp(1.37, 25, 22), 4.69, tolerance = 0.001)
+  expect_equal(SDp_from_SEp(0.5, 20, 30), 0.5 / sqrt(1 / 20 + 1 / 30))
 })
 
 
@@ -84,6 +86,9 @@ test_that("Pooled SD, mean and n for multiple groups", {
   expect_equal(SD_M_n_pooled_from_groups(SD = c(2.7, 2.7), M = c(2.2, 2.2), n = c(145, 81))[2], c(mean = 2.2), tolerance = 0.001)
   expect_equal(SD_M_n_pooled_from_groups(SD = c(2.7, 2.7), M = c(2.2, 2.2), n = c(145, 81))[3], c(n = 226), tolerance = 0.001)
   expect_equal(SD_M_n_pooled_from_groups(SD = c(2.7, 2.7, 10), M = c(2.2, 2.2, 10), n = c(145, 81, 90))[1], c(SD = 6.77), tolerance = 0.001)
+  expect_gt(SD_M_n_pooled_from_groups(SD = c(1, 1), M = c(0, 10), n = c(10, 10))[1],
+            SDp_from_SD(1, 1, 10, 10))
+  expect_error(SD_M_n_pooled_from_groups(SD = c(1, 1), n = c(10, 10)))
   expect_error(SD_M_n_pooled_from_groups(SD = c(2.7, 2.7, 10), M = c(2.2, 2.2), n = c(145, 81, 90)))
   expect_error(SD_M_n_pooled_from_groups(SD = c(2.7), M = c(2.2), n = c(145)))
 })

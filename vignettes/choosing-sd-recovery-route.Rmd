@@ -1,0 +1,36 @@
+---
+title: "Choosing the correct SD recovery route"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Choosing the correct SD recovery route}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+## The sacred distinction
+
+Arm level statistics describe one group mean.
+
+Contrast level statistics describe a difference between groups.
+
+Before recovering an SD, first decide whether the reported statistic belongs to one group or to a comparison between groups. Mixing these routes can produce a plausible number that is not the SD needed for a continuous outcome meta-analysis.
+
+## Arm level routes
+
+Use `SD_from_SE()` only when SE is the standard error around one group mean. Do not use for the SE of a mean difference or treatment contrast.
+
+Use `SD_from_CI()` only for a CI around one group mean. The CI should be symmetric around the mean. Small samples should generally use a t distribution.
+
+## Contrast level routes for raw mean differences
+
+Use `SDp_from_SEp()` only when the input is the SE of a raw mean difference from two independent groups. Do not use it for SMDs, odds ratios, risk ratios, hazard ratios, log effects, adjusted model estimates when reconstructing raw SDs, Welch tests, or paired designs.
+
+Use `SDp_from_CIp()` only when the input is a CI around a raw mean difference from two independent groups. The output is not the SD of the effect. It is the implied pooled within group SD under the equal outcome SD assumption for the two groups.
+
+Use `SEp_from_CIp()` to recover the SE from a CI around a raw mean difference from two independent groups. It can also recover an SE from an SMD CI for generic inverse variance meta-analysis, but that SE should not then be passed into `SDp_from_SEp()` to recover a raw pooled SD.
+
+Use `SEp_from_TE.p()` as an effect estimate and p value helper. The default `method = "z"` is z based. For SD recovery through `SDp_from_SEp()`, the effect estimate must be a raw mean difference. For small independent two group continuous outcomes, `method = "t"` uses `df = n1 + n2 - 2`.
+
+## Combining subgroups
+
+Use `SD_M_n_pooled_from_groups()` to combine subgroups into one combined group. This requires subgroup means, SDs, and sample sizes. `SDp_from_SD()` calculates a pooled within group SD denominator for two independent groups and is not the same as combining subgroups into one group when subgroup means differ.

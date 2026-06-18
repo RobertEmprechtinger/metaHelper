@@ -21,7 +21,7 @@ Computes the pooled standard deviation for multiple groups.
 }
 \details{
 This function also returns the combined mean and the total sample size across all groups.
-Requires also the mean for all individual groups. If there are only two groups and the mean is not available \code{\link[=SDp_from_SD]{SDp_from_SD()}} can be used instead.
+Use this function to combine subgroups into one combined group. This requires subgroup means, SDs, and sample sizes. \code{\link[=SDp_from_SD]{SDp_from_SD()}} calculates a pooled within group SD denominator for two independent groups and is not the same as combining subgroups into one group when subgroup means differ.
 }
 \examples{
 # Compute the Standard deviation for the following grouped data

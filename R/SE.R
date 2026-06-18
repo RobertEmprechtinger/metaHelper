@@ -141,22 +141,23 @@ SE.SMD_from_SMD <- function(SMD, n1, n2, method = "hedges"){
 }
 
 
-#' Standard Error from Confidence Interval for Differences of Means
+#' Standard Error from Confidence Interval for Mean Differences
 #'
-#' Calculates the standard error from the confidence interval limits for differences of means (and can also be used for the confidence intervals of standardized mean differences, SMD).
+#' Calculates the standard error from the confidence interval limits for differences of means.
+#' For SMD confidence intervals, this function can recover an SE for generic inverse variance meta-analysis. Keep that SE separate from raw SD recovery: do not pass an SE from an SMD CI into [SDp_from_SEp()] to recover a raw pooled SD.
 #' This method is valid only when the confidence interval is symmetrical around the mean and is applicable for t-distributions or normal distributions (as specified by the `t_dist` argument).
 #' For sample sizes less than 60, it is generally recommended to use the t-distribution.
 #'
-#' @param CI_low lover OR confidence interval limit
+#' @param CI_low lower CI limit
 #' @param sig_level the significance level
 #' @param two_tailed whether the two-tailed or one-tailed statistics should be calculated
-#' @param CI_up upper OR confidence interval limit
+#' @param CI_up upper CI limit
 #' @param n1 sample size group 1 (not required if t_dist = FALSE)
 #' @param n2 sample size group 2 (not required if t_dist = FALSE)
 #' @param t_dist whether the t-distribution should be calculated - requires samples sizes
 #'
 #' @return
-#' Pooled standard error (e.g. intervention effect)
+#' Standard error of the effect estimate
 #'
 #' @export
 #'
@@ -193,17 +194,21 @@ SEp_from_CIp <- function(CI_low, CI_up, n1 = NA, n2 = NA, sig_level = 0.05, two_
 }
 
 
-#' Standard Error from Treatment Effect and p-Value
+#' Standard Error from Effect Estimate and p-Value
 #'
-#' Calculates the pooled standard error using the treatment effect and p-value.
-#' To avoid an infinitive return when p-value = 1, the p-value is automatically adjusted to 0.99999
+#' Calculates the standard error using the effect estimate and p-value. The default `method = "z"` is a z-based Wald-style SE recovery helper for effect estimates. For SD recovery examples, pass the returned SE to [SDp_from_SEp()] only when the effect estimate is a raw mean difference from two independent groups.
+#' The optional `method = "t"` uses a t distribution with `df = n1 + n2 - 2` and is intended for small independent two group continuous outcomes. Cochrane describes the z-based p value route for Wald-style tests, but t tests for continuous outcome data should use the continuous outcome route instead.
+#' To avoid an infinite return when p-value = 1, the p-value is automatically adjusted to 0.99999.
 #'
-#' @param TE reported treatment effect
+#' @param TE reported effect estimate
 #' @param p reported p-value
 #' @param two_tailed whether one-tailed or two-tailed statistics should be calculated
+#' @param method calculation method. Use `"z"` for the default normal approximation or `"t"` for a t-based route that requires `n1` and `n2`.
+#' @param n1 sample size group 1, required when `method = "t"`
+#' @param n2 sample size group 2, required when `method = "t"`
 #'
 #' @return
-#' Pooled standard error (e.g. standard error of intervention effect)
+#' Standard error of the effect estimate
 #'
 #' @export
 #'
@@ -212,22 +217,47 @@ SEp_from_CIp <- function(CI_low, CI_up, n1 = NA, n2 = NA, sig_level = 0.05, two_
 #' \href{https://handbook-5-1.cochrane.org/chapter_7/7_7_3_2_obtaining_standard_deviations_from_standard_errors_and.htm}{Cochrane Handbook}
 #'
 #' @examples
-#' # TE = 1.5, p = 0.8
+#' # raw mean difference = 1.5, p = 0.8
 #' SEp_from_TE.p(1.5, 0.8)
-SEp_from_TE.p <- function(TE, p, two_tailed = TRUE){
+#'
+#' # t-based route for a small independent two group continuous outcome
+#' SEp_from_TE.p(1.5, 0.8, method = "t", n1 = 12, n2 = 14)
+SEp_from_TE.p <- function(TE, p, two_tailed = TRUE, method = "z", n1 = NA, n2 = NA){
   # check data
   check_data(p=p)
   # check data end
 
   SE <- c()
   l <- length(TE)
-  two_tailed <- extend_var(two_tailed, length(TE))
+  p <- extend_var(p, l)
+  two_tailed <- extend_var(two_tailed, l)
+  method <- extend_var(method, l)
+  n1 <- extend_var(n1, l)
+  n2 <- extend_var(n2, l)
+
+  for(i in seq_along(method)){
+    if(!is.element(method[i], c("z", "t"))) stop("method needs to be either 'z' or 't'")
+  }
+
+  if(any(method == "t")){
+    check_data(n = c(n1[method == "t"], n2[method == "t"]))
+    if(any(is.na(n1[method == "t"])) | any(is.na(n2[method == "t"]))){
+      stop("method = 't' requires n1 and n2")
+    }
+    if(any(n1[method == "t"] + n2[method == "t"] <= 2)){
+      stop("method = 't' requires n1 + n2 > 2")
+    }
+  }
 
   for(i in seq_along(TE)){
     ifelse(p[i] == 1,
            p[i] <- 0.99999,
            p[i])
-    SE[i] <- TE[i] / z_calc(p[i], two_tailed[i])
+    if(method[i] == "t"){
+      SE[i] <- abs(TE[i]) / t_calc(p[i], two_tailed[i], df = n1[i] + n2[i] - 2)
+    } else{
+      SE[i] <- abs(TE[i]) / z_calc(p[i], two_tailed[i])
+    }
   }
   return(SE)
 }

@@ -43,14 +43,19 @@ Description: Helps calculate statistical values commonly used in meta-analysis. 
   Stackoverflow (2014) <https://stats.stackexchange.com/questions/82720/confidence-interval-around-binomial-estimate-of-0-or-1>
   Stackoverflow (2018) <https://stats.stackexchange.com/q/338043>.
 License: MIT + file LICENSE
+Depends:
+    R (>= 4.6.0)
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.3.2
 Suggests: 
+    knitr,
+    rmarkdown,
     testthat (>= 3.0.0)
 Config/testthat/edition: 3
 Imports: magrittr, stats, confintr
 URL: https://github.com/RobertEmprechtinger/metaHelper
 BugReports: https://github.com/RobertEmprechtinger/metaHelper/issues
-Date: 2024-07-22
+Date: 2026-06-18
+VignetteBuilder: knitr

@@ -2,27 +2,37 @@
 % Please edit documentation in R/SE.R
 \name{SEp_from_TE.p}
 \alias{SEp_from_TE.p}
-\title{Standard Error from Treatment Effect and p-Value}
+\title{Standard Error from Effect Estimate and p-Value}
 \usage{
-SEp_from_TE.p(TE, p, two_tailed = TRUE)
+SEp_from_TE.p(TE, p, two_tailed = TRUE, method = "z", n1 = NA, n2 = NA)
 }
 \arguments{
-\item{TE}{reported treatment effect}
+\item{TE}{reported effect estimate}
 
 \item{p}{reported p-value}
 
 \item{two_tailed}{whether one-tailed or two-tailed statistics should be calculated}
+
+\item{method}{calculation method. Use \code{"z"} for the default normal approximation or \code{"t"} for a t-based route that requires \code{n1} and \code{n2}.}
+
+\item{n1}{sample size group 1, required when \code{method = "t"}}
+
+\item{n2}{sample size group 2, required when \code{method = "t"}}
 }
 \value{
-Pooled standard error (e.g. standard error of intervention effect)
+Standard error of the effect estimate
 }
 \description{
-Calculates the pooled standard error using the treatment effect and p-value.
-To avoid an infinitive return when p-value = 1, the p-value is automatically adjusted to 0.99999
+Calculates the standard error using the effect estimate and p-value. The default \code{method = "z"} is a z-based Wald-style SE recovery helper for effect estimates. For SD recovery examples, pass the returned SE to \code{\link[=SDp_from_SEp]{SDp_from_SEp()}} only when the effect estimate is a raw mean difference from two independent groups.
+The optional \code{method = "t"} uses a t distribution with \code{df = n1 + n2 - 2} and is intended for small independent two group continuous outcomes. Cochrane describes the z-based p value route for Wald-style tests, but t tests for continuous outcome data should use the continuous outcome route instead.
+To avoid an infinite return when p-value = 1, the p-value is automatically adjusted to 0.99999.
 }
 \examples{
-# TE = 1.5, p = 0.8
+# raw mean difference = 1.5, p = 0.8
 SEp_from_TE.p(1.5, 0.8)
+
+# t-based route for a small independent two group continuous outcome
+SEp_from_TE.p(1.5, 0.8, method = "t", n1 = 12, n2 = 14)
 }
 \references{
 Altman D G, Bland J M. How to obtain the confidence interval from a P value BMJ 2011; 343 :d2090 doi:10.1136/bmj.d2090

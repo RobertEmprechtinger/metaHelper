@@ -2,7 +2,7 @@
 % Please edit documentation in R/SE.R
 \name{SEp_from_CIp}
 \alias{SEp_from_CIp}
-\title{Standard Error from Confidence Interval for Differences of Means}
+\title{Standard Error from Confidence Interval for Mean Differences}
 \usage{
 SEp_from_CIp(
   CI_low,
@@ -15,9 +15,9 @@ SEp_from_CIp(
 )
 }
 \arguments{
-\item{CI_low}{lover OR confidence interval limit}
+\item{CI_low}{lower CI limit}
 
-\item{CI_up}{upper OR confidence interval limit}
+\item{CI_up}{upper CI limit}
 
 \item{n1}{sample size group 1 (not required if t_dist = FALSE)}
 
@@ -30,10 +30,11 @@ SEp_from_CIp(
 \item{t_dist}{whether the t-distribution should be calculated - requires samples sizes}
 }
 \value{
-Pooled standard error (e.g. intervention effect)
+Standard error of the effect estimate
 }
 \description{
-Calculates the standard error from the confidence interval limits for differences of means (and can also be used for the confidence intervals of standardized mean differences, SMD).
+Calculates the standard error from the confidence interval limits for differences of means.
+For SMD confidence intervals, this function can recover an SE for generic inverse variance meta-analysis. Keep that SE separate from raw SD recovery: do not pass an SE from an SMD CI into \code{\link[=SDp_from_SEp]{SDp_from_SEp()}} to recover a raw pooled SD.
 This method is valid only when the confidence interval is symmetrical around the mean and is applicable for t-distributions or normal distributions (as specified by the \code{t_dist} argument).
 For sample sizes less than 60, it is generally recommended to use the t-distribution.
 }

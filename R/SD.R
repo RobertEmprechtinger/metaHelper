@@ -101,8 +101,8 @@ SDp_from_SD <- function(SD1,
 
 #' Standard Deviation from Standard Error (Single Group)
 #'
-#' **IMPORTANT**: When there are two groups, use the method for calculating the pooled standard error provided by the function [SDp_from_SEp()]!
-#' Calculates the standard deviation from the standard error for a single group.
+#' Use only when SE is the standard error around one group mean. Do not use for the SE of a mean difference or treatment contrast.
+#' Calculates the standard deviation from the standard error for a single group mean.
 #'
 #' @param SE standard error
 #' @param n sample size
@@ -116,7 +116,7 @@ SDp_from_SD <- function(SD1,
 #' @export
 #'
 #' @seealso
-#' [metaHelper::SDp_from_SEp()] in case of two groups.
+#' [metaHelper::SDp_from_SEp()] for the SE of a raw mean difference from two independent groups.
 #'
 #' @examples
 #' # Standard error = 2 and sample size = 100
@@ -133,15 +133,16 @@ SD_from_SE <- function(SE, n){
 }
 
 
-#' Standard Deviation from the Pooled Standard Error
+#' Pooled Within-Group Standard Deviation from SE of Raw Mean Difference
 #'
 #' **IMPORTANT**: For a single group, use [SD_from_SE()]!
-#' Calculates the standard deviation from the pooled standard error and sample sizes of two groups (e.g., for intervention effects). This method is the reverse of [SEp_from_SDp()].
+#' Calculates the implied pooled within-group standard deviation from the SE of a raw mean difference from two independent groups and their sample sizes. This method is the reverse of [SEp_from_SDp()] under the equal SD assumption.
+#' Do not use with SEs for SMDs, odds ratios, risk ratios, hazard ratios, log effects, adjusted model estimates when reconstructing raw SDs, Welch tests, or paired designs.
 #'
 #' @references
 #' \href{https://handbook-5-1.cochrane.org/chapter_7/7_7_3_3_obtaining_standard_deviations_from_standard_errors.htm}{Cochrane Handbook}
 #'
-#' @param SEp pooled standard error
+#' @param SEp SE of a raw mean difference from two independent groups
 #' @param n1 sample size group 1
 #' @param n2 sample size group 2
 #'
@@ -155,7 +156,7 @@ SD_from_SE <- function(SE, n){
 #' @export
 #'
 #' @examples
-#' #pooled standard error, sample size 1 and sample size 2
+#' # SE of a raw mean difference, sample size 1 and sample size 2
 #' SE <- 0.12
 #' n1 <- 140
 #' n2 <- 140
@@ -172,7 +173,7 @@ SDp_from_SEp <- function(SEp, n1, n2){
 
 #' Standard Deviation from Confidence Interval
 #'
-#' Computes the standard deviation from the confidence interval and sample size. This method is valid only for single groups and assumes the confidence interval is symmetrical around the mean. For two groups (e.g., intervention effects), use [SDp_from_CIp()]. For sample sizes smaller than 60, the t-distribution (parameter "t-dist") is typically used to calculate the confidence interval.
+#' Computes the standard deviation from a CI around one group mean and sample size. This method is valid only for single groups and assumes the confidence interval is symmetric around the mean. For two groups, use [SDp_from_CIp()] only when the CI is around a raw mean difference from two independent groups. Small samples should generally use the t distribution (`t_dist = TRUE`).
 #'
 #' @param CI_low lower limit confidence interval
 #' @param CI_up upper limit confidence interval
@@ -182,7 +183,7 @@ SDp_from_SEp <- function(SEp, n1, n2){
 #' @param n sample size
 #'
 #' @seealso
-#' [SDp_from_CIp()] for two groups (e.g. intervention effects).
+#' [SDp_from_CIp()] for a CI around a raw mean difference from two independent groups.
 #'
 #' @return
 #' Standard deviation single group
@@ -194,7 +195,7 @@ SDp_from_SEp <- function(SEp, n1, n2){
 #'
 #' @examples
 #' # lower CI = -0.5, upper CI = 2, sample size = 100
-#' SD_from_CI(-05, 2, 100)
+#' SD_from_CI(-0.5, 2, 100)
 SD_from_CI <- function(CI_low, CI_up, n, sig_level = 0.05, two_sided = TRUE, t_dist = TRUE){
   # data check
   check_data(CI_low=CI_low, CI_up=CI_up, n=n, sig_level=sig_level)
@@ -220,7 +221,7 @@ SD_from_CI <- function(CI_low, CI_up, n, sig_level = 0.05, two_sided = TRUE, t_d
 
 #' Pooled Standard Deviation from Confidence Interval
 #'
-#' Computes the pooled standard deviation (e.g., standard deviation of an intervention effect) from confidence intervals and sample sizes. According to the Cochrane Handbook (see references), this standard deviation is referred to as the "within-group standard deviation." This method is valid only if the confidence interval is symmetrical around the mean and if either the t-distribution or normal distribution (when "t_dist = FALSE") was used to calculate the confidence interval.
+#' Computes the implied pooled within-group SD under the equal outcome SD assumption for the two groups from a CI around a raw mean difference from two independent groups. The output is not the SD of the effect. This method is valid only if the confidence interval is symmetric around the raw mean difference and if either the t distribution or normal distribution (when `t_dist = FALSE`) was used to calculate the confidence interval.
 #'
 #' @param CI_low lower limit confidence interval
 #' @param CI_up upper limit confidence interval
@@ -307,7 +308,7 @@ SD_within_from_SD_r <- function(SD_diff, r){
 #' Computes the pooled standard deviation for multiple groups.
 #'
 #' This function also returns the combined mean and the total sample size across all groups.
-#' Requires also the mean for all individual groups. If there are only two groups and the mean is not available [SDp_from_SD()] can be used instead.
+#' Use this function to combine subgroups into one combined group. This requires subgroup means, SDs, and sample sizes. [SDp_from_SD()] calculates a pooled within group SD denominator for two independent groups and is not the same as combining subgroups into one group when subgroup means differ.
 #'
 #' @param n vector of group sample sizes
 #' @param SD vector of group SDs
