@@ -86,7 +86,7 @@ The doi start 10...., not https which is a URL rather than a DOI.
 
   The Description field contains
     <doi:https://doi.org/10.1002/9780470743386.ch4'> Chinn S. (2000)
-    <https:https://www.cochrane.org/authors/handbooks-and-manuals/handbook/archive/v5.1.0> Cochrane
+    <https://www.cochrane.org/authors/handbooks-and-manuals/handbook/archive/v5.1.0> Cochrane
     <https:https://psycnet.apa.org/record/2009-05060-000> Cohen, J. (1977)
     <https:https://psycnet.apa.org/record/1987-98267-000> Ellis, P.D.
     (2009) <https:https://www.psychometrica.de/effect_size.html>
